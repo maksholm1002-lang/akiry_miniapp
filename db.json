@@ -5,7 +5,7 @@
       "title": "Наруто",
       "title_jp": "",
       "description": "Описание пока не добавлено.",
-      "genre": "—",
+      "genre": "Аниме",
       "year": 2024,
       "status": "ongoing",
       "cover_file_id": "",
@@ -13,8 +13,8 @@
         {
           "num": 19,
           "title": "Забуза Исчезает в Снегу...",
-          "duration": "23:30",
-          "file_id": "BAACAgIAAxkBAANDacB4U3KfOXffNMhXnBI0M3bjK3UAAtaiAAL_SQFKKSH7qYUqNLo6BA"
+          "duration": "—",
+          "video_url": "https://video.sibnet.ru/shell.php?videoid=6154038"
         }
       ]
     }
