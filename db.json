@@ -9,7 +9,14 @@
       "year": 2024,
       "status": "ongoing",
       "cover_file_id": "",
-      "episodes": []
+      "episodes": [
+        {
+          "num": 19,
+          "title": "Забуза Исчезает в Снегу...",
+          "duration": "23:30",
+          "file_id": "BAACAgIAAxkBAAM9acBysz7XG8bCSkxbHgkBDtts6VUAAvWSAALJ1wlKIp9HgjHFio86BA"
+        }
+      ]
     }
   }
 }
