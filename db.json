@@ -1,3 +1,15 @@
 {
-  "anime": {}
+  "anime": {
+    "1": {
+      "id": "1",
+      "title": "Наруто",
+      "title_jp": "",
+      "description": "Описание пока не добавлено.",
+      "genre": "—",
+      "year": 2024,
+      "status": "ongoing",
+      "cover_file_id": "",
+      "episodes": []
+    }
+  }
 }
