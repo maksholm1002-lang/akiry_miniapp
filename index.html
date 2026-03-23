@@ -1120,8 +1120,108 @@ function openPlayer(idx){
   saveCW(a.id,idx,30); renderCW();
   document.getElementById('playerOv').classList.add('open');
   if(tg) tg.BackButton.show();
+  let viewSynced = false;  // флаг что просмотр уже засчитан
+
+function startWatchTracking() {
+    // Отправляем просмотр ТОЛЬКО ОДИН РАЗ
+    if (!viewSynced) {
+        viewSynced = true;
+        syncFirstView();
+    }
+    
+    // Остальное для прогресса
+    watchStart = Date.now();
+    viewInterval = setInterval(() => {
+        const watchTime = Math.floor((Date.now() - watchStart) / 1000);
+        syncProgress(watchTime);
+    }, 30000);
 }
 
+async function syncFirstView() {
+    const animeId = curAnime?.id;
+    const episodeNum = curAnime?.episodes?.[curEpIdx]?.num;
+    if (!animeId || !episodeNum) return;
+    
+    try {
+        await fetch('/api/sync.php?action=view', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                user_id: MY_USER_ID,
+                anime_id: animeId,
+                episode_num: episodeNum,
+                watch_time: 0
+            })
+        });
+    } catch(e) {}
+}
+
+async function syncProgress(watchTime) {
+    // Это только для прогресса, не влияет на общий счетчик
+    // Можно сохранять в localStorage
+    const animeId = curAnime?.id;
+    const episodeNum = curAnime?.episodes?.[curEpIdx]?.num;
+    if (!animeId || !episodeNum) return;
+    
+    // Сохраняем прогресс локально
+    localStorage.setItem(`progress_${animeId}_${episodeNum}`, watchTime);
+}
+
+// После того как видео начало играть
+let viewInterval;
+let watchStart = 0;
+
+function startWatchTracking() {
+    watchStart = Date.now();
+    viewInterval = setInterval(() => {
+        const watchTime = Math.floor((Date.now() - watchStart) / 1000);
+        syncView(watchTime);
+    }, 30000); // каждые 30 секунд
+}
+
+function stopWatchTracking() {
+    clearInterval(viewInterval);
+    // Финальная синхронизация
+    const watchTime = Math.floor((Date.now() - watchStart) / 1000);
+    syncView(watchTime);
+}
+
+async function syncView(watchTime) {
+    const animeId = curAnime?.id;
+    const episodeNum = curAnime?.episodes?.[curEpIdx]?.num;
+    if (!animeId || !episodeNum) return;
+    
+    try {
+        await fetch('/api/sync.php?action=view', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                user_id: MY_USER_ID,
+                anime_id: animeId,
+                episode_num: episodeNum,
+                watch_time: watchTime
+            })
+        });
+    } catch(e) {}
+}
+
+async function syncRating(episodeNum, rating) {
+    const animeId = curAnime?.id;
+    if (!animeId) return;
+    
+    try {
+        await fetch('/api/sync.php?action=rate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                user_id: MY_USER_ID,
+                anime_id: animeId,
+                episode_num: episodeNum,
+                rating: rating
+            })
+        });
+    } catch(e) {}
+}
 function switchSource(src){
   const ep=curAnime?.episodes?.[curEpIdx];if(!ep)return;
   activeSource=src;
