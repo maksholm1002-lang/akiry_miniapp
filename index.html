@@ -494,7 +494,6 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
       <div class="sec"><div class="sec-t">Продолжить</div></div>
       <div class="cw-scroll" id="cwScroll"></div>
     </div>
-    <div class="sec"><div class="sec-t">Сейчас в эфире</div></div>
     <div class="feat-scroll" id="featScroll" style="display:none"></div>
     <div class="sec" style="margin-top:4px"><div class="sec-t">Все тайтлы</div></div>
     <div class="grid" id="catalogGrid"><div class="empty" style="grid-column:1/-1"><div class="empty-icon">🌀</div><p>Загрузка...</p></div></div>
@@ -609,7 +608,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
   <div class="vpad">
     <div class="about-wrap">
       <div class="about-icon">🎌</div>
-      <div class="about-name">Команда Акиры</div>
+      <div class="about-name">Команда Акиру</div>
       <div class="about-desc">Создаём качественную русскую озвучку аниме. Каждая серия — это труд всей команды.</div>
       <div class="about-stats">
         <div class="about-stat"><div class="abst-v" id="abEps">0</div><div class="abst-l">Серий</div></div>
@@ -1187,14 +1186,16 @@ document.addEventListener('click',e=>{
 
 // ── TABS ──────────────────────────────────────────────
 function showTab(tab){
-  ['catalog','bookmarks','actors','calendar','about'].forEach(t=>{
-    document.getElementById(`view${t.charAt(0).toUpperCase()+t.slice(1)}`).classList.toggle('hidden',t!==tab);
+  ['catalog','news','bookmarks','actors','calendar','apply','about'].forEach(t=>{
+    const el=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
+    if(el) el.classList.toggle('hidden',t!==tab);
   });
-  document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('active',['catalog','bookmarks','actors','calendar','about'][i]===tab));
-  document.querySelectorAll('.bnav-btn').forEach((el,i)=>el.classList.toggle('active',['catalog','bookmarks','actors','calendar','about'][i]===tab));
+  document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('active',['catalog','news','bookmarks','actors','calendar','apply','about'][i]===tab));
+  document.querySelectorAll('.bnav-btn').forEach((el,i)=>el.classList.toggle('active',['catalog','news','bookmarks','actors','calendar','_','about'][i]===tab));
   document.getElementById('srchWrap').style.display=tab==='catalog'?'':'none';
   if(tab==='calendar')renderCalendar();
   if(tab==='bookmarks')renderBookmarks();
+  if(tab==='news')renderNews();
 }
 
 // ── CLOSE ─────────────────────────────────────────────
@@ -1259,25 +1260,21 @@ function submitApply(){
   if(!tz){showToast('⚠️ Выбери часовой пояс');return}
   if(!selectedRole){showToast('⚠️ Выбери роль');return}
   const roleNames={actor:'Актёр',sound:'Звукорежиссёр',admin:'Администратор',other:'Другое'};
-  const text='📋 Новая заявка в команду
-
-'+
-    '👤 ФИО: '+fio+'
-'+
-    '🎂 Возраст: '+age+'
-'+
-    '🌍 Часовой пояс: '+tz+'
-'+
-    '🎭 Претендует на: '+roleNames[selectedRole]+'
-'+
-    (exp?'💼 Опыт: '+exp+'
-':'')+
-    (edu?'🎓 Образование: '+edu+'
-':'')+
-    (demo?'🔗 Демо: '+demo+'
-':'')+
-    '
-🆔 Telegram: '+(tg?.initDataUnsafe?.user?.username?'@'+tg.initDataUnsafe.user.username:'не указан');
+  const tgUser = tg && tg.initDataUnsafe && tg.initDataUnsafe.user;
+  const tgName = tgUser && tgUser.username ? '@' + tgUser.username : 'не указан';
+  const lines = [
+    '📋 Новая заявка в команду',
+    '👤 ФИО: ' + fio,
+    '🎂 Возраст: ' + age,
+    '🌍 Часовой пояс: ' + tz,
+    '🎭 Претендует на: ' + roleNames[selectedRole]
+  ];
+  if(exp) lines.push('💼 Опыт: ' + exp);
+  if(edu) lines.push('🎓 Образование: ' + edu);
+  if(demo) lines.push('🔗 Демо: ' + demo);
+  lines.push('');
+  lines.push('🆔 Telegram: ' + tgName);
+  const text = lines.join('\n');
   if(tg){tg.sendData(JSON.stringify({action:'apply',text}))}
   document.getElementById('applyBtn').disabled=true;
   document.getElementById('applyBtn').textContent='✅ Заявка отправлена!';
