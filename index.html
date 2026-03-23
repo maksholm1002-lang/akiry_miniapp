@@ -1141,7 +1141,7 @@ document.addEventListener('click', function(e){
   const wlBtn=e.target.closest('[data-wlid]');
   if(bmBtn){e.stopPropagation();qBM(bmBtn.dataset.bmid,bmBtn);return;}
   if(wlBtn){e.stopPropagation();qWL(wlBtn.dataset.wlid,wlBtn);return;}
-  if(card && card.dataset.animeid){openAnime(card.dataset.animeid);}
+  if(card && card.dataset.animeid){alert('click: '+card.dataset.animeid);openAnime(card.dataset.animeid);}
 });
 
 
@@ -1160,7 +1160,8 @@ function renderCW(){const d=getCW();if(!d.length){document.getElementById('cwWra
 
 // ANIME DETAIL
 function openAnime(id){
-  const a=DB.anime[id]; if(!a) return;
+  alert('openAnime: '+id+' anime='+JSON.stringify(Object.keys(DB.anime||{})));
+  const a=DB.anime[id]; if(!a){alert('NOT FOUND');return;}
   curAnime=a;
   // Hero image
   const heroEl=document.getElementById('detHero');
