@@ -448,8 +448,10 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
 
 /* ══ BOTTOM NAV ══ */
 .bnav{flex-shrink:0;display:flex;background:rgba(0,0,0,.96);backdrop-filter:blur(30px);
-  border-top:1px solid var(--border);padding:7px 0 max(8px,env(safe-area-inset-bottom));z-index:50}
-.bnav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  border-top:1px solid var(--border);padding:7px 0 max(8px,env(safe-area-inset-bottom));z-index:50;
+  overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.bnav::-webkit-scrollbar{display:none}
+.bnav-btn{flex:0 0 60px;display:flex;flex-direction:column;align-items:center;gap:3px;
   padding:5px 2px;cursor:pointer;color:var(--muted);transition:color .18s;border:none;background:none;position:relative}
 .bnav-btn.active{color:#fff}
 .bnav-btn svg{width:20px;height:20px}
@@ -465,6 +467,54 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
   padding:9px 16px;border-radius:20px;z-index:500;white-space:nowrap;
   border:1px solid var(--border2);transition:opacity .25s,transform .25s;opacity:0;pointer-events:none}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ══ STATS ══ */
+.stats-period{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;scrollbar-width:none}
+.stats-period::-webkit-scrollbar{display:none}
+.period-btn{flex:0 0 auto;font-size:11px;font-weight:700;padding:6px 14px;border-radius:20px;
+  cursor:pointer;border:1px solid var(--border);color:var(--muted2);background:none;transition:all .15s}
+.period-btn.active{background:#fff;color:#000;border-color:#fff}
+.stats-card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px}
+.stats-anime-title{font-size:14px;font-weight:700;margin-bottom:10px}
+.stats-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)}
+.stats-row:last-child{border:none}
+.stats-ep{font-size:12px;color:var(--muted2)}
+.stats-count{font-size:13px;font-weight:700;color:var(--gold)}
+.stats-bar-wrap{flex:1;margin:0 10px;height:4px;background:var(--s3);border-radius:2px;overflow:hidden}
+.stats-bar{height:100%;background:var(--gold);border-radius:2px;transition:width .4s}
+.stats-total{display:flex;gap:8px;margin-bottom:16px}
+.stats-total-card{flex:1;background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center}
+.stats-total-v{font-size:20px;font-weight:800;color:var(--gold)}
+.stats-total-l{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-top:2px}
+
+/* ══ APPLICATIONS ══ */
+.app-card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;animation:cin .4s both}
+.app-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.app-name{font-size:14px;font-weight:700}
+.app-role{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,.08);color:var(--muted2)}
+.app-field{font-size:12px;color:var(--muted2);margin-bottom:4px}
+.app-field span{color:var(--text);font-weight:500}
+.app-tg{font-size:11px;color:var(--blue);margin-top:6px}
+.app-date{font-size:10px;color:var(--muted);margin-top:4px}
+.app-actions{display:flex;gap:8px;margin-top:10px}
+.app-btn{flex:1;padding:8px;border-radius:10px;border:none;font-family:'Inter',sans-serif;
+  font-size:12px;font-weight:700;cursor:pointer;transition:opacity .15s}
+.app-btn:active{opacity:.8}
+.app-btn.accept{background:var(--teal);color:#000}
+.app-btn.reject{background:var(--s3);color:var(--muted2)}
+
+/* ══ EDIT ABOUT ══ */
+.edit-about-wrap{padding:0 16px 100px}
+.edit-field{margin-bottom:14px}
+.edit-label{font-size:11px;font-weight:700;color:var(--muted2);letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px;display:block}
+.edit-input{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:12px;
+  padding:11px 13px;color:#fff;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s}
+.edit-input:focus{border-color:var(--border2)}
+.edit-textarea{min-height:80px;resize:none;line-height:1.6}
+.save-btn{width:100%;padding:13px;background:#fff;color:#000;border:none;border-radius:12px;
+  font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;margin-top:6px}
+.save-btn:active{opacity:.85}
+
 </style>
 </head>
 <body>
@@ -589,15 +639,20 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
 <!-- ABOUT -->
 <div class="view hidden" id="viewAbout">
   <div class="vpad">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+      <div class="sec-t">О нас</div>
+      <div id="editAboutBtn" style="display:none;font-size:12px;font-weight:600;color:var(--muted2);cursor:pointer" onclick="showTab('editAbout')">✏️ Редактировать</div>
+    </div>
     <div class="about-wrap">
       <div class="about-icon">🎌</div>
-      <div class="about-name">Команда Акиру</div>
-      <div class="about-desc">Создаём качественную русскую озвучку аниме. Каждая серия — это труд всей команды.</div>
+      <div class="about-name" id="aboutTeamName">Команда Акиру</div>
+      <div class="about-desc" id="aboutTeamDesc">Создаём качественную русскую озвучку аниме. Каждая серия — это труд всей команды.</div>
       <div class="about-stats">
         <div class="about-stat"><div class="abst-v" id="abEps">0</div><div class="abst-l">Серий</div></div>
         <div class="about-stat"><div class="abst-v" id="abAnime">0</div><div class="abst-l">Аниме</div></div>
         <div class="about-stat"><div class="abst-v" id="abActors">0</div><div class="abst-l">Актёров</div></div>
       </div>
+      <div id="aboutLinks" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:4px"></div>
     </div>
     <div class="about-note">Все права на оригинальные произведения принадлежат их авторам. Мы создаём некоммерческую озвучку.</div>
   </div>
@@ -637,17 +692,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
         <div class="eps-hdr">Серии</div>
         <div id="epList"></div>
       </div>
-      <div class="cmt-wrap" id="cmtWrap" style="display:none">
-        <div class="cmt-hdr" id="cmtTitle">Комментарии</div>
-        <div class="cmt-input-row">
-          <div class="cmt-av" id="myAva">😊</div>
-          <textarea class="cmt-input" id="cmtInput" placeholder="Напиши комментарий..." rows="1"></textarea>
-          <button class="cmt-send" onclick="sendComment()">
-            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-          </button>
-        </div>
-        <div id="cmtList"></div>
-      </div>
+
     </div>
   </div>
 </div>
@@ -701,6 +746,49 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
   </div>
 </div>
 
+
+<!-- STATS VIEW -->
+<div class="view hidden" id="viewStats">
+  <div class="vpad">
+    <div class="sec"><div class="sec-t">Статистика</div></div>
+    <div class="stats-period">
+      <button class="period-btn active" onclick="setPeriod('all',this)">Всё время</button>
+      <button class="period-btn" onclick="setPeriod('month',this)">Месяц</button>
+      <button class="period-btn" onclick="setPeriod('week',this)">Неделя</button>
+      <button class="period-btn" onclick="setPeriod('day',this)">Сегодня</button>
+    </div>
+    <div class="stats-total">
+      <div class="stats-total-card"><div class="stats-total-v" id="statsTotalViews">0</div><div class="stats-total-l">Просмотров</div></div>
+      <div class="stats-total-card"><div class="stats-total-v" id="statsTotalAnime">0</div><div class="stats-total-l">Тайтлов</div></div>
+      <div class="stats-total-card"><div class="stats-total-v" id="statsTotalEps">0</div><div class="stats-total-l">Серий</div></div>
+    </div>
+    <div id="statsContent"></div>
+  </div>
+</div>
+
+<!-- APPLICATIONS VIEW -->
+<div class="view hidden" id="viewApplications">
+  <div class="vpad">
+    <div class="sec"><div class="sec-t">Заявки</div><div class="sec-m" id="appCount"></div></div>
+    <div id="appsList"><div class="empty"><div class="empty-icon">📋</div><p>Заявок пока нет</p></div></div>
+  </div>
+</div>
+
+<!-- EDIT ABOUT VIEW -->
+<div class="view hidden" id="viewEditAbout">
+  <div class="vpad" style="padding-bottom:20px">
+    <div class="sec"><div class="sec-t">Редактировать «О нас»</div></div>
+  </div>
+  <div class="edit-about-wrap">
+    <div class="edit-field"><label class="edit-label">Название команды</label><input class="edit-input" id="editTeamName" placeholder="Команда Акиру"></div>
+    <div class="edit-field"><label class="edit-label">Описание</label><textarea class="edit-input edit-textarea" id="editTeamDesc" placeholder="Расскажите о команде..."></textarea></div>
+    <div class="edit-field"><label class="edit-label">Ссылка на канал</label><input class="edit-input" id="editChannel" placeholder="@akiry_dub"></div>
+    <div class="edit-field"><label class="edit-label">Ссылка на чат</label><input class="edit-input" id="editChat" placeholder="@akiry_chat"></div>
+    <div class="edit-field"><label class="edit-label">Email для связи</label><input class="edit-input" id="editEmail" placeholder="akiry@mail.ru"></div>
+    <button class="save-btn" onclick="saveAbout()">Сохранить</button>
+  </div>
+</div>
+
 <!-- NOTIFICATIONS -->
 <div class="notif-panel" id="notifPanel">
   <div class="notif-hdr">
@@ -741,6 +829,15 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg>
     <span>О нас</span>
   </button>
+  <button class="bnav-btn" id="navStats" onclick="showTab('stats')" style="display:none">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    <span>Статистика</span>
+  </button>
+  <button class="bnav-btn" id="navApps" onclick="showTab('applications')" style="display:none">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    <span>Заявки</span>
+    <div class="nbadge" id="appsBadge"></div>
+  </button>
 </nav>
 
 <div id="toast"></div>
@@ -750,8 +847,8 @@ const tg = window.Telegram?.WebApp;
 if(tg){tg.expand();tg.setHeaderColor('#000000');tg.setBackgroundColor('#000000')}
 
 // ── CONFIG ────────────────────────────────────────────
-const COMMENTS_API = 'http://108.165.32.150:8001';
-const ADMIN_TOKEN  = 'mya'; // тот же что в сервере
+// COMMENTS_API теперь использует SERVER_URL
+const ADMIN_TOKEN  = 'СЕКРЕТНЫЙ_ТОКЕН_ЗАМЕНИ_МЕНЯ'; // тот же что в сервере
 const MY_USER_ID   = tg?.initDataUnsafe?.user?.id || 0;
 const MY_NAME      = tg?.initDataUnsafe?.user?.first_name || 'Зритель';
 const MY_USERNAME  = tg?.initDataUnsafe?.user?.username || '';
@@ -774,13 +871,24 @@ const isBM=id=>getBM().includes(id);
 const getRat=()=>{try{return JSON.parse(localStorage.getItem('rat')||'{}')}catch{return{}}};
 const saveRat=r=>{try{localStorage.setItem('rat',JSON.stringify(r))}catch{}};
 const getViews=()=>{try{return JSON.parse(localStorage.getItem('views')||'{}')}catch{return{}}};
-const addView=k=>{let v=getViews();v[k]=(v[k]||0)+1;try{localStorage.setItem('views',JSON.stringify(v))}catch{}};
+const getViewedEps=()=>{try{return JSON.parse(localStorage.getItem('viewed')||'[]')}catch{return[]}};
+const addView=k=>{
+  const viewed=getViewedEps();
+  if(viewed.includes(k))return false; // уже смотрел
+  viewed.push(k);
+  try{localStorage.setItem('viewed',JSON.stringify(viewed.slice(-200)))}catch{}
+  let v=getViews();v[k]=(v[k]||0)+1;
+  try{localStorage.setItem('views',JSON.stringify(v))}catch{}
+  return true; // новый просмотр
+};
 const getCW=()=>{try{return JSON.parse(localStorage.getItem('cw')||'[]')}catch{return[]}};
 const saveCW=(aid,idx,p)=>{let d=getCW().filter(x=>x.a!==aid);d.unshift({a:aid,i:idx,p});try{localStorage.setItem('cw',JSON.stringify(d.slice(0,5)))}catch{}};
 
 // ── LOAD ──────────────────────────────────────────────
+const SERVER_URL = 'http://108.165.32.150:8000';
+
 async function loadDB(){
-  try{const r=await fetch('./db.json?t='+Date.now());DB=await r.json()}
+  try{const r=await fetch(SERVER_URL+'/db?t='+Date.now());DB=await r.json()}
   catch{DB={anime:{"1":{id:"1",title:"Jujutsu Kaisen",title_jp:"呪術廻戦",description:"Юдзи Итадори — сосуд для сильнейшего проклятого духа. Теперь его ждёт путь экзорциста.",genre:"Сёнен",year:2020,status:"ongoing",cover_file_id:"",episodes:[{num:1,title:"Рёмэн Сукуна",duration:"23:40",video_url:"",video_url_vk:"",cast:[{actor_id:"1",character:"Юдзи"}]}]}},actors:{"1":{id:"1",name:"Иван Петров",photo:"",role:"lead",bio:"Ведущий актёр команды.",telegram:"",vk:"",email:"",roles:[{anime_id:"1",character:"Юдзи Итадори"}]}},schedule:[],notifications:[],news:[]}}
   renderAll();
 }
@@ -795,6 +903,7 @@ function renderAll(){
   renderCW();
   renderNews();
   updateAbout();
+  initAdmin();
 }
 
 // ── SEARCH ────────────────────────────────────────────
@@ -830,7 +939,17 @@ function renderFeatured(){
 }
 
 // ── CATALOG ───────────────────────────────────────────
-function getAvgR(id,r){const v=r[id];if(!v||!Object.keys(v).length)return null;const vals=Object.values(v);return(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1)}
+function getAvgR(id,r){
+  // Сначала проверяем синхронизированные рейтинги из db.json
+  if(DB.ratings&&DB.ratings[id]){
+    const epRatings=Object.values(DB.ratings[id]);
+    const avgs=epRatings.map(e=>e._avg).filter(Boolean);
+    if(avgs.length) return (avgs.reduce((a,b)=>a+b,0)/avgs.length).toFixed(1);
+  }
+  // Иначе локальные
+  const v=r[id];if(!v||!Object.keys(v).length)return null;
+  const vals=Object.values(v);return(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1);
+}
 
 function renderCatalog(list){
   const g=document.getElementById('catalogGrid');
@@ -935,7 +1054,7 @@ function openAnime(id){
     }).join('');
     document.getElementById('actPreWrap').style.display='';
   } else document.getElementById('actPreWrap').style.display='none';
-  document.getElementById('cmtWrap').style.display='none';
+  const cw=document.getElementById('cmtWrap');if(cw)cw.style.display='none';
   renderEpList();
   document.getElementById('detSb').scrollTop=0;
   document.getElementById('detOv').classList.add('open');
@@ -951,7 +1070,11 @@ function renderEpList(){
     const key=a.id+'_'+ep.num, myR=r[a.id]?.[ep.num]||0, vC=views[key]||0;
     const castAvas=(ep.cast||[]).slice(0,3).map(c=>{const ac=DB.actors?.[c.actor_id];return`<div class="ep-av">${ac?.photo?`<img src="${ac.photo}">`:`${aem(c.actor_id)}`}</div>`}).join('');
     const castTxt=(ep.cast||[]).slice(0,2).map(c=>{const ac=DB.actors?.[c.actor_id];return ac?`${ac.name.split(' ')[0]} — ${c.character}`:''}).filter(Boolean).join(', ');
+    const serverR=DB.ratings?.[a.id]?.[ep.num];
+    const serverAvg=serverR?._avg;
+    const serverCount=serverR?._count||0;
     const stars=[1,2,3,4,5].map(s=>`<span class="ep-star" onclick="event.stopPropagation();rateEp(${ep.num},${s})" style="opacity:${s<=myR?1:.3}">${s<=myR?'★':'☆'}</span>`).join('');
+    const ratingInfo=serverAvg?`<span style="font-size:10px;color:var(--gold);margin-left:4px">${serverAvg} (${serverCount})</span>`:'';
     return `<div class="ep" onclick="openPlayer(${i})">
       <div class="ep-top">
         <div class="ep-n">${ep.num}</div>
@@ -965,7 +1088,7 @@ function renderEpList(){
         <div class="ep-play"><svg fill="currentColor" viewBox="0 0 24 24" width="12" height="12"><path d="M5 3l14 9-14 9V3z"/></svg></div>
       </div>
       <div class="ep-bottom">
-        <div class="ep-stars" onclick="event.stopPropagation()">${stars}</div>
+        <div class="ep-stars" onclick="event.stopPropagation()">${stars}${ratingInfo}</div>
         <div style="display:flex;align-items:center;gap:8px">
           ${castTxt?`<div class="ep-cast-row"><div class="ep-avs">${castAvas}</div><div class="ep-ctxt">${castTxt}</div></div>`:''}
           <div class="ep-cmt-btn" onclick="event.stopPropagation();openComments(${ep.num},'${ep.title.replace(/'/g,"\\'")}')">
@@ -976,106 +1099,25 @@ function renderEpList(){
       </div>
     </div>`;
   }).join('');
-  // Load comment counts
-  a.episodes.forEach(ep => loadCommentCount(ep.num));
+
 }
 
-async function loadCommentCount(epNum){
-  const a=curAnime;if(!a)return;
-  try{
-    const r=await fetch(`${COMMENTS_API}/comments/${a.id}/${epNum}`);
-    const d=await r.json();
-    const el=document.getElementById(`cmtCount_${epNum}`);
-    if(el) el.textContent=d.total>0?d.total:'💬';
-  }catch{}
-}
 
 function rateEp(epNum,stars){
   const a=curAnime;if(!a)return;
   const r=getRat(); if(!r[a.id])r[a.id]={};
+  if(r[a.id][epNum]===stars){showToast('Уже оценено');return}
   r[a.id][epNum]=stars; saveRat(r); renderEpList();
   showToast(`⭐ ${stars}/5`);
+  // Отправляем оценку боту для синхронизации
+  if(tg) tg.sendData(JSON.stringify({action:'rate',anime_id:a.id,ep_num:epNum,stars,user_id:MY_USER_ID}));
 }
 
 // ── COMMENTS ──────────────────────────────────────────
-function openComments(epNum,epTitle){
-  curCommentEp=epNum;
-  const cw=document.getElementById('cmtWrap');
-  document.getElementById('cmtTitle').textContent=`Комментарии — ${epTitle}`;
-  cw.style.display='';
-  loadComments();
-  setTimeout(()=>cw.scrollIntoView({behavior:'smooth'}),100);
-}
 
-async function loadComments(){
-  const a=curAnime;if(!a||!curCommentEp)return;
-  const el=document.getElementById('cmtList');
-  el.innerHTML=`<div class="cmt-loading">Загрузка...</div>`;
-  try{
-    const r=await fetch(`${COMMENTS_API}/comments/${a.id}/${curCommentEp}`);
-    const d=await r.json();
-    const comments=d.comments||[];
-    if(!comments.length){el.innerHTML=`<div style="color:var(--muted2);font-size:13px;padding:10px 0">Будь первым кто оставит комментарий!</div>`;return}
-    el.innerHTML=comments.map(c=>{
-      const ts=new Date(c.ts*1000).toLocaleDateString('ru',{day:'numeric',month:'short'});
-      const liked=c.likes.includes(MY_USER_ID);
-      const isOwn=c.user_id===MY_USER_ID;
-      return `<div class="cmt" id="cmt_${c.id}">
-        <div class="c-av">${c.first_name?c.first_name[0]:'?'}</div>
-        <div class="c-body">
-          <div class="c-name">${c.first_name}${c.username?' @'+c.username:''}</div>
-          <div class="c-text">${c.text}</div>
-          <div class="c-meta">
-            <div class="c-time">${ts}</div>
-            <div class="c-like ${liked?'liked':''}" onclick="likeComment('${c.id}',this)">
-              <svg fill="${liked?'currentColor':'none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-              ${c.likes.length}
-            </div>
-            ${IS_ADMIN?`<div class="c-del show" onclick="deleteComment('${c.id}')">Удалить</div>`:''}
-          </div>
-        </div>
-      </div>`;
-    }).join('');
-  }catch{
-    el.innerHTML=`<div style="color:var(--muted2);font-size:13px;padding:10px 0">Ошибка загрузки комментариев</div>`;
-  }
-}
 
-async function sendComment(){
-  const a=curAnime;if(!a||!curCommentEp)return;
-  const inp=document.getElementById('cmtInput');
-  const text=inp.value.trim();if(!text)return;
-  inp.value='';
-  try{
-    await fetch(`${COMMENTS_API}/comments`,{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({anime_id:a.id,ep_num:curCommentEp,text,user_id:MY_USER_ID,username:MY_USERNAME,first_name:MY_NAME})
-    });
-    loadComments(); loadCommentCount(curCommentEp);
-    showToast('💬 Комментарий добавлен!');
-  }catch{showToast('❌ Ошибка отправки')}
-}
 
-async function likeComment(id, el){
-  const a=curAnime;if(!a)return;
-  try{
-    const r=await fetch(`${COMMENTS_API}/like?comment_id=${id}&user_id=${MY_USER_ID}&anime_id=${a.id}&ep_num=${curCommentEp}`,{method:'POST'});
-    const d=await r.json();
-    el.classList.toggle('liked',d.liked);
-    el.querySelector('svg').setAttribute('fill',d.liked?'currentColor':'none');
-    el.lastChild.textContent=' '+d.likes;
-  }catch{}
-}
 
-async function deleteComment(id){
-  const a=curAnime;if(!a)return;
-  if(!confirm('Удалить комментарий?'))return;
-  try{
-    await fetch(`${COMMENTS_API}/comment?comment_id=${id}&anime_id=${a.id}&ep_num=${curCommentEp}&token=${ADMIN_TOKEN}`,{method:'DELETE'});
-    document.getElementById('cmt_'+id)?.remove();
-    showToast('🗑 Удалено');
-  }catch{}
-}
 
 function watchFirst(){if(curAnime?.episodes?.length)openPlayer(0)}
 function toggleBookmark(){
@@ -1104,7 +1146,8 @@ function openPlayer(idx){
   document.getElementById('plSources').style.display=hasBoth?'flex':'none';
   if(hasBoth){document.getElementById('srcBtn1').classList.add('active');document.getElementById('srcBtn2').classList.remove('active')}
   document.getElementById('plIframe').src=ep.video_url||ep.video_url_vk;
-  addView(a.id+'_'+ep.num);
+  const isNew = addView(a.id+'_'+ep.num);
+  if(isNew && tg) tg.sendData(JSON.stringify({action:'view',anime_id:a.id,ep_num:ep.num}));
   // cast
   document.getElementById('plCast').innerHTML=(ep.cast||[]).map(c=>{
     const ac=DB.actors?.[c.actor_id];
@@ -1290,15 +1333,20 @@ document.addEventListener('click',e=>{
 
 // ── TABS ──────────────────────────────────────────────
 function showTab(tab){
-  ['catalog','bookmarks','actors','news','calendar','apply','about'].forEach(t=>{
+  ['catalog','bookmarks','actors','news','calendar','apply','about','stats','applications','editAbout'].forEach(t=>{
     const el=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
     if(el) el.classList.toggle('hidden',t!==tab);
   });
-  document.querySelectorAll('.bnav-btn').forEach((el,i)=>el.classList.toggle('active',
-    ['catalog','bookmarks','actors','news','calendar','apply','about'][i]===tab));
+  document.querySelectorAll('.bnav-btn').forEach(el=>{
+    const onclick=el.getAttribute('onclick')||'';
+    el.classList.toggle('active', onclick.includes("'"+tab+"'"));
+  });
   if(tab==='calendar')renderCalendar();
   if(tab==='bookmarks')renderBookmarks();
   if(tab==='news')renderNews();
+  if(tab==='stats')renderStats('all');
+  if(tab==='applications')renderApplications();
+  if(tab==='editAbout')loadAboutForm();
 }
 
 // ── CLOSE OVERLAYS ────────────────────────────────────
@@ -1322,7 +1370,155 @@ function updateAbout(){
 // ── TOAST ─────────────────────────────────────────────
 let toastT;
 function showToast(msg){clearTimeout(toastT);const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');toastT=setTimeout(()=>t.classList.remove('show'),2400)}
-const COMMENTS_API = 'https://api.akiry.ru';
+
+
+// ── ADMIN CHECK ───────────────────────────────────────
+function initAdmin(){
+  const adminIds = DB.admin_ids || [];
+  const isAdm = adminIds.includes(MY_USER_ID) || IS_ADMIN;
+  if(isAdm){
+    document.getElementById('navStats').style.display='';
+    document.getElementById('navApps').style.display='';
+  }
+  // Show edit button in about
+  const editBtn=document.getElementById('editAboutBtn');
+  if(editBtn) editBtn.style.display=isAdm?'':'none';
+}
+
+// ── STATS ─────────────────────────────────────────────
+let currentPeriod='all';
+function setPeriod(period, el){
+  currentPeriod=period;
+  document.querySelectorAll('.period-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  renderStats(period);
+}
+
+function getViewsForPeriod(period){
+  const stored = JSON.parse(localStorage.getItem('viewsTimestamp')||'{}');
+  const now = Date.now();
+  const periods = {day:86400000, week:604800000, month:2592000000, all:Infinity};
+  const limit = periods[period]||Infinity;
+  const views = getViews();
+  if(period==='all') return views;
+  // Filter by timestamp
+  const filtered={};
+  Object.keys(stored).forEach(k=>{
+    if(now - stored[k] <= limit) filtered[k]=(views[k]||0);
+  });
+  return filtered;
+}
+
+function renderStats(period){
+  const views = getViewsForPeriod(period);
+  let totalViews=0;
+  const animeStats={};
+  Object.entries(views).forEach(([k,v])=>{
+    const [animeId,epNum]=k.split('_');
+    if(!animeId||!epNum) return;
+    totalViews+=v;
+    if(!animeStats[animeId]) animeStats[animeId]={total:0,eps:{}};
+    animeStats[animeId].total+=v;
+    animeStats[animeId].eps[epNum]=v;
+  });
+  document.getElementById('statsTotalViews').textContent=totalViews;
+  document.getElementById('statsTotalAnime').textContent=Object.keys(DB.anime||{}).length;
+  document.getElementById('statsTotalEps').textContent=Object.values(DB.anime||{}).reduce((s,a)=>s+(a.episodes?.length||0),0);
+  const sorted=Object.entries(animeStats).sort((a,b)=>b[1].total-a[1].total);
+  const maxV=sorted[0]?.[1]?.total||1;
+  const el=document.getElementById('statsContent');
+  if(!sorted.length){el.innerHTML='<div class="empty"><div class="empty-icon">📊</div><p>Нет данных за этот период</p></div>';return}
+  el.innerHTML=sorted.map(([aid,data])=>{
+    const a=DB.anime?.[aid]; if(!a) return '';
+    const eps=Object.entries(data.eps).sort((a,b)=>b[1]-a[1]).slice(0,5);
+    return `<div class="stats-card">
+      <div class="stats-anime-title">${a.title} <span style="color:var(--gold);font-size:12px">${data.total} просм.</span></div>
+      ${eps.map(([epN,v])=>{
+        const ep=a.episodes?.find(e=>e.num==epN);
+        const pct=Math.round(v/maxV*100);
+        return `<div class="stats-row">
+          <div class="stats-ep">Серия ${epN}${ep?' — '+ep.title.slice(0,20):''}</div>
+          <div class="stats-bar-wrap"><div class="stats-bar" style="width:${pct}%"></div></div>
+          <div class="stats-count">${v}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }).join('');
+}
+
+// Сохраняем timestamp просмотра
+const origAddView = addView;
+
+// ── APPLICATIONS ──────────────────────────────────────
+function renderApplications(){
+  const apps = DB.applications || [];
+  const el = document.getElementById('appsList');
+  const cnt = document.getElementById('appCount');
+  if(cnt) cnt.textContent = apps.length + ' шт.';
+  const badge=document.getElementById('appsBadge');
+  const newApps=apps.filter(a=>!a.read).length;
+  if(badge&&newApps>0){badge.textContent=newApps;badge.classList.add('show')}
+  if(!apps.length){el.innerHTML='<div class="empty"><div class="empty-icon">📋</div><p>Заявок пока нет</p></div>';return}
+  const roleNames={actor:'🎙 Актёр',sound:'🎚 Звукорежиссёр',admin:'⚙️ Администратор',other:'✨ Другое'};
+  el.innerHTML=[...apps].reverse().map((app,i)=>`
+    <div class="app-card" style="animation-delay:${i*.05}s">
+      <div class="app-card-top">
+        <div class="app-name">${app.fio||'—'}</div>
+        <div class="app-role">${roleNames[app.role]||app.role||'—'}</div>
+      </div>
+      <div class="app-field">Возраст: <span>${app.age||'—'}</span></div>
+      <div class="app-field">Часовой пояс: <span>${app.tz||'—'}</span></div>
+      ${app.exp?`<div class="app-field">Опыт: <span>${app.exp.slice(0,80)}${app.exp.length>80?'...':''}</span></div>`:''}
+      ${app.edu?`<div class="app-field">Образование: <span>${app.edu.slice(0,80)}</span></div>`:''}
+      ${app.demo?`<div class="app-field">Демо: <span>${app.demo}</span></div>`:''}
+      ${app.tg?`<div class="app-tg">${app.tg}</div>`:''}
+      <div class="app-date">${app.date||''}</div>
+    </div>`).join('');
+}
+
+// ── ABOUT EDITOR ──────────────────────────────────────
+function loadAboutForm(){
+  const info = DB.team_info || {};
+  document.getElementById('editTeamName').value = info.name || 'Команда Акиру';
+  document.getElementById('editTeamDesc').value = info.desc || '';
+  document.getElementById('editChannel').value = info.channel || '';
+  document.getElementById('editChat').value = info.chat || '';
+  document.getElementById('editEmail').value = info.email || '';
+}
+
+function saveAbout(){
+  const info = {
+    name: document.getElementById('editTeamName').value.trim(),
+    desc: document.getElementById('editTeamDesc').value.trim(),
+    channel: document.getElementById('editChannel').value.trim(),
+    chat: document.getElementById('editChat').value.trim(),
+    email: document.getElementById('editEmail').value.trim(),
+  };
+  if(tg) tg.sendData(JSON.stringify({action:'save_about', info}));
+  showToast('✅ Сохранено! Не забудь /export');
+  updateAbout();
+}
+
+function updateAbout(){
+  const info = DB.team_info || {};
+  document.getElementById('abEps').textContent=Object.values(DB.anime||{}).reduce((s,a)=>s+(a.episodes?.length||0),0);
+  document.getElementById('abAnime').textContent=Object.keys(DB.anime||{}).length;
+  document.getElementById('abActors').textContent=Object.keys(DB.actors||{}).length;
+  const nameEl=document.getElementById('aboutTeamName');
+  const descEl=document.getElementById('aboutTeamDesc');
+  if(nameEl&&info.name) nameEl.textContent=info.name;
+  if(descEl&&info.desc) descEl.textContent=info.desc;
+  const linksEl=document.getElementById('aboutLinks');
+  if(linksEl){
+    const links=[];
+    if(info.channel) links.push(`<a href="https://t.me/${info.channel.replace('@','')}" style="display:flex;align-items:center;gap:5px;background:var(--s2);border:1px solid var(--border);border-radius:20px;padding:6px 12px;text-decoration:none;font-size:12px;font-weight:600;color:#fff">✈️ Канал</a>`);
+    if(info.chat) links.push(`<a href="https://t.me/${info.chat.replace('@','')}" style="display:flex;align-items:center;gap:5px;background:var(--s2);border:1px solid var(--border);border-radius:20px;padding:6px 12px;text-decoration:none;font-size:12px;font-weight:600;color:#fff">💬 Чат</a>`);
+    if(info.email) links.push(`<a href="mailto:${info.email}" style="display:flex;align-items:center;gap:5px;background:var(--s2);border:1px solid var(--border);border-radius:20px;padding:6px 12px;text-decoration:none;font-size:12px;font-weight:600;color:#fff">✉️ Почта</a>`);
+    linksEl.innerHTML=links.join('');
+  }
+}
+
+
 loadDB();
 </script>
 </body>
