@@ -606,7 +606,7 @@ document.getElementById('searchInput').addEventListener('input',debounce(e=>{
   const q=e.target.value.toLowerCase();
   const list=getFilteredAnime().filter(a=>a.title.toLowerCase().includes(q)||(a.title_jp||'').toLowerCase().includes(q));
   renderCatalog(list);
-},200));
+  },200));
 function setFilter(val,el){
   currentFilter=val;
   document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
@@ -815,7 +815,7 @@ function renderComment(c,animeId,epNum,isAdm){
             ${c.likes.length}
           </div>
           <div class="c-reply-btn" onclick="showReplyInput('${c.id}','${animeId}',${epNum},'${c.first_name}')">Ответить</div>
-          <div class="react-pick" onclick="showReactPicker('${c.id}','${animeId}',${epNum}',this)">😊</div>
+          <div class="react-pick" onclick="showReactPicker('${c.id}','${animeId}',${epNum},this)">😊</div>
           ${isAdm?`<div class="c-del" onclick="deleteCmt('${c.id}','${animeId}',${epNum})">Удалить</div>`:''}
         </div>
         <div id="reactPicker_${c.id}" style="display:none">
