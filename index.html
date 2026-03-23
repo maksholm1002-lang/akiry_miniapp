@@ -518,6 +518,68 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
   font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;margin-top:6px}
 .save-btn:active{opacity:.85}
 
+
+/* ══ ADMIN PANEL ══ */
+.admin-panel{position:fixed;inset:0;z-index:400;background:#000;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s cubic-bezier(.2,1.05,.4,1)}
+.admin-panel.open{transform:none}
+.admin-hdr{display:flex;align-items:center;gap:10px;padding:14px 16px;background:rgba(0,0,0,.95);border-bottom:1px solid var(--border);flex-shrink:0}
+.admin-back{width:34px;height:34px;background:var(--s2);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.admin-back svg{width:15px;height:15px}
+.admin-title{font-size:16px;font-weight:700;flex:1}
+.admin-tabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--border);background:var(--s1);flex-shrink:0;scrollbar-width:none}
+.admin-tabs::-webkit-scrollbar{display:none}
+.admin-tab{flex:0 0 auto;font-size:12px;font-weight:600;color:var(--muted2);padding:10px 16px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s}
+.admin-tab.active{color:#fff;border-bottom-color:#fff}
+.admin-body{flex:1;overflow-y:auto;padding:16px;scrollbar-width:none}
+.admin-body::-webkit-scrollbar{display:none}
+.admin-section{margin-bottom:20px}
+.admin-sec-title{font-size:13px;font-weight:700;color:var(--muted2);letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px}
+.afield{margin-bottom:10px}
+.afield label{font-size:11px;font-weight:600;color:var(--muted2);display:block;margin-bottom:4px}
+.afield input,.afield textarea,.afield select{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:#fff;font-family:'Inter',sans-serif;font-size:13px;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.afield input:focus,.afield textarea:focus{border-color:var(--border2)}
+.afield textarea{min-height:70px;resize:none;line-height:1.5}
+.afield select{cursor:pointer}
+.abtn{width:100%;padding:12px;border:none;border-radius:10px;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:8px;transition:opacity .15s}
+.abtn:active{opacity:.8}
+.abtn.primary{background:#fff;color:#000}
+.abtn.danger{background:rgba(255,69,58,.15);color:var(--red);border:1px solid rgba(255,69,58,.25)}
+.abtn.secondary{background:var(--s2);color:var(--muted2);border:1px solid var(--border)}
+.admin-list-item{display:flex;align-items:center;justify-content:space-between;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:6px;cursor:pointer;transition:background .15s}
+.admin-list-item:active{background:var(--s3)}
+.ali-title{font-size:13px;font-weight:600}
+.ali-sub{font-size:10px;color:var(--muted2);margin-top:2px}
+.ali-arr{color:var(--muted);font-size:16px}
+.admin-btn-fab{position:fixed;bottom:90px;right:16px;width:48px;height:48px;background:#fff;border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(255,255,255,.2);z-index:50;border:none;transition:transform .15s}
+.admin-btn-fab.show{display:flex}
+.admin-btn-fab:active{transform:scale(.92)}
+.admin-btn-fab svg{width:20px;height:20px;color:#000}
+
+/* ══ COMMENTS ══ */
+.cmt-section{padding:0 16px 20px}
+.cmt-hdr-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cmt-title{font-size:15px;font-weight:700}
+.cmt-input-row{display:flex;gap:8px;margin-bottom:12px;align-items:flex-end}
+.cmt-av{width:30px;height:30px;border-radius:50%;background:var(--s3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;border:1px solid var(--border)}
+.cmt-inp{flex:1;background:var(--s2);border:1px solid var(--border);border-radius:16px;padding:8px 13px;font-family:'Inter',sans-serif;font-size:13px;color:#fff;outline:none;transition:border-color .2s;resize:none;min-height:38px}
+.cmt-inp:focus{border-color:var(--border2)}
+.cmt-inp::placeholder{color:var(--muted)}
+.cmt-send{width:32px;height:32px;background:#fff;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cmt-send svg{width:13px;height:13px;color:#000;margin-left:1px}
+.cmt{display:flex;gap:8px;margin-bottom:12px}
+.c-av{width:28px;height:28px;border-radius:50%;background:var(--s3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;border:1px solid var(--border)}
+.c-body{flex:1}
+.c-name{font-size:12px;font-weight:700;margin-bottom:2px}
+.c-text{font-size:13px;color:#aeaeb2;line-height:1.5}
+.c-meta{display:flex;align-items:center;gap:10px;margin-top:4px}
+.c-time{font-size:10px;color:var(--muted)}
+.c-like{display:flex;align-items:center;gap:3px;font-size:10px;color:var(--muted);cursor:pointer}
+.c-like svg{width:10px;height:10px}
+.c-like.liked{color:var(--red)}
+.c-like.liked svg{fill:var(--red)}
+.c-del{font-size:10px;color:var(--red);cursor:pointer}
+.cmt-loading{color:var(--muted);font-size:13px;text-align:center;padding:16px}
+
 </style>
 </head>
 <body>
@@ -889,6 +951,7 @@ const saveCW=(aid,idx,p)=>{let d=getCW().filter(x=>x.a!==aid);d.unshift({a:aid,i
 
 // ── LOAD ──────────────────────────────────────────────
 const SERVER_URL  = 'https://akiry.ru';
+const SERVER_TOKEN = 'mya'; // тот же что в data_server.py
 
 async function loadDB(){
   try{const r=await fetch(SERVER_URL+'/db?t='+Date.now());DB=await r.json()}
@@ -1357,6 +1420,7 @@ function closeOv(id){document.getElementById(id).classList.remove('open')}
 document.getElementById('detOv').addEventListener('click',e=>{if(e.target===document.getElementById('detOv'))closeOv('detOv')});
 document.getElementById('actOv').addEventListener('click',e=>{if(e.target===document.getElementById('actOv'))closeOv('actOv')});
 if(tg)tg.BackButton.onClick(()=>{
+  if(document.getElementById('adminPanel').classList.contains('open')){closeAdmin();return}
   if(document.getElementById('playerOv').classList.contains('open')){closePlayer();return}
   if(document.getElementById('actOv').classList.contains('open')){closeOv('actOv');return}
   if(document.getElementById('detOv').classList.contains('open')){closeOv('detOv');tg.BackButton.hide();return}
@@ -1380,10 +1444,13 @@ function initAdmin(){
   const adminIds = DB.admin_ids || [];
   const isAdm = adminIds.includes(MY_USER_ID) || IS_ADMIN;
   if(isAdm){
-    document.getElementById('navStats').style.display='';
-    document.getElementById('navApps').style.display='';
+    const navStats=document.getElementById('navStats');
+    const navApps=document.getElementById('navApps');
+    const fab=document.getElementById('adminFab');
+    if(navStats) navStats.style.display='';
+    if(navApps) navApps.style.display='';
+    if(fab) fab.classList.add('show');
   }
-  // Show edit button in about
   const editBtn=document.getElementById('editAboutBtn');
   if(editBtn) editBtn.style.display=isAdm?'':'none';
 }
@@ -1522,7 +1589,452 @@ function updateAbout(){
 }
 
 
+
+// ══ ADMIN PANEL ══════════════════════════════════════
+let currentAdminTab = 'anime';
+let editingAnime = null;
+let editingActor = null;
+
+function openAdmin(){
+  document.getElementById('adminPanel').classList.add('open');
+  adminTab('anime');
+  if(tg) tg.BackButton.show();
+}
+
+function closeAdmin(){
+  document.getElementById('adminPanel').classList.remove('open');
+  if(tg) tg.BackButton.hide();
+}
+
+function adminTab(tab){
+  currentAdminTab = tab;
+  document.querySelectorAll('.admin-tab').forEach((el,i)=>{
+    el.classList.toggle('active',['anime','episodes','actors','schedule','push'][i]===tab);
+  });
+  const body = document.getElementById('adminBody');
+  if(tab==='anime') renderAdminAnime(body);
+  else if(tab==='episodes') renderAdminEpisodes(body);
+  else if(tab==='actors') renderAdminActors(body);
+  else if(tab==='schedule') renderAdminSchedule(body);
+  else if(tab==='push') renderAdminPush(body);
+}
+
+// ── ADMIN: АНИМЕ ─────────────────────────────────────
+function renderAdminAnime(body){
+  editingAnime = null;
+  body.innerHTML = `
+    <div class="admin-section">
+      <div class="admin-sec-title">Добавить / редактировать аниме</div>
+      <div class="afield"><label>ID *</label><input id="aId" placeholder="1, 2, 3..."></div>
+      <div class="afield"><label>Название *</label><input id="aTitle" placeholder="Наруто"></div>
+      <div class="afield"><label>Японское название</label><input id="aJp" placeholder="NARUTO -ナルト-"></div>
+      <div class="afield"><label>Жанр</label><input id="aGenre" placeholder="Сёнен, Экшен..."></div>
+      <div class="afield"><label>Год</label><input id="aYear" type="number" placeholder="2024"></div>
+      <div class="afield"><label>Описание</label><textarea id="aDesc" placeholder="Описание аниме..."></textarea></div>
+      <div class="afield"><label>Статус</label>
+        <select id="aStatus"><option value="ongoing">Озвучивается</option><option value="ended">Озвучено</option></select>
+      </div>
+      <button class="abtn primary" onclick="saveAnime()">💾 Сохранить аниме</button>
+    </div>
+    <div class="admin-section">
+      <div class="admin-sec-title">Список аниме</div>
+      ${Object.values(DB.anime||{}).map(a=>`
+        <div class="admin-list-item" onclick="loadAnimeEdit('${a.id}')">
+          <div><div class="ali-title">${a.title}</div><div class="ali-sub">ID: ${a.id} · ${a.episodes?.length||0} серий</div></div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="font-size:10px;font-weight:700;color:${a.status==='ongoing'?'var(--teal)':'var(--muted2)'}">${a.status==='ongoing'?'В эфире':'Завершено'}</div>
+            <div class="ali-arr">›</div>
+          </div>
+        </div>`).join('') || '<div style="color:var(--muted);font-size:13px">Аниме не добавлено</div>'}
+    </div>`;
+}
+
+function loadAnimeEdit(id){
+  const a = DB.anime[id]; if(!a) return;
+  document.getElementById('aId').value = a.id;
+  document.getElementById('aTitle').value = a.title;
+  document.getElementById('aJp').value = a.title_jp||'';
+  document.getElementById('aGenre').value = a.genre||'';
+  document.getElementById('aYear').value = a.year||'';
+  document.getElementById('aDesc').value = a.description||'';
+  document.getElementById('aStatus').value = a.status||'ongoing';
+  document.getElementById('adminBody').scrollTop = 0;
+  showToast('📝 Редактирование: ' + a.title);
+}
+
+async function saveAnime(){
+  const id = document.getElementById('aId').value.trim();
+  const title = document.getElementById('aTitle').value.trim();
+  if(!id||!title){showToast('⚠️ Заполни ID и название');return}
+  const anime = {
+    id, title,
+    title_jp: document.getElementById('aJp').value.trim(),
+    genre: document.getElementById('aGenre').value.trim()||'Аниме',
+    year: parseInt(document.getElementById('aYear').value)||2024,
+    description: document.getElementById('aDesc').value.trim()||'Описание не добавлено.',
+    status: document.getElementById('aStatus').value,
+    cover_file_id: DB.anime[id]?.cover_file_id||'',
+    episodes: DB.anime[id]?.episodes||[]
+  };
+  if(!DB.anime) DB.anime={};
+  DB.anime[id] = anime;
+  await pushDB();
+  showToast('✅ Аниме сохранено!');
+  renderAdminAnime(document.getElementById('adminBody'));
+  renderAll();
+}
+
+async function deleteAnime(id){
+  if(!confirm('Удалить аниме?')) return;
+  delete DB.anime[id];
+  await pushDB();
+  showToast('🗑 Удалено');
+  adminTab('anime');
+  renderAll();
+}
+
+// ── ADMIN: СЕРИИ ─────────────────────────────────────
+function renderAdminEpisodes(body){
+  const animeOptions = Object.values(DB.anime||{}).map(a=>`<option value="${a.id}">${a.title}</option>`).join('');
+  body.innerHTML = `
+    <div class="admin-section">
+      <div class="admin-sec-title">Добавить серию</div>
+      <div class="afield"><label>Аниме *</label><select id="epAnime" onchange="loadEpList()">${animeOptions}</select></div>
+      <div class="afield"><label>Номер серии *</label><input id="epNum" type="number" placeholder="1"></div>
+      <div class="afield"><label>Название серии *</label><input id="epTitle" placeholder="Название эпизода"></div>
+      <div class="afield"><label>Длительность</label><input id="epDur" placeholder="23:40"></div>
+      <div class="afield"><label>Sibnet URL</label><input id="epUrl" placeholder="https://video.sibnet.ru/shell.php?videoid=..."></div>
+      <div class="afield"><label>VK URL (необязательно)</label><input id="epVkUrl" placeholder="https://vk.com/video..."></div>
+      <button class="abtn primary" onclick="saveEpisode()">💾 Сохранить серию</button>
+    </div>
+    <div class="admin-section">
+      <div class="admin-sec-title">Серии выбранного аниме</div>
+      <div id="epListAdmin"></div>
+    </div>`;
+  if(Object.keys(DB.anime||{}).length) loadEpList();
+}
+
+function loadEpList(){
+  const id = document.getElementById('epAnime').value;
+  const a = DB.anime[id]; 
+  const el = document.getElementById('epListAdmin');
+  if(!el) return;
+  if(!a?.episodes?.length){el.innerHTML='<div style="color:var(--muted);font-size:13px">Серий нет</div>';return}
+  el.innerHTML = a.episodes.map(ep=>`
+    <div class="admin-list-item">
+      <div><div class="ali-title">Серия ${ep.num}: ${ep.title}</div>
+      <div class="ali-sub">${ep.duration} · ${ep.video_url?'Sibnet ✓':'нет URL'} ${ep.video_url_vk?'· VK ✓':''}</div></div>
+      <div style="color:var(--red);font-size:12px;font-weight:600;cursor:pointer" onclick="deleteEpisode('${id}',${ep.num})">✕</div>
+    </div>`).join('');
+}
+
+async function saveEpisode(){
+  const animeId = document.getElementById('epAnime').value;
+  const num = parseInt(document.getElementById('epNum').value);
+  const title = document.getElementById('epTitle').value.trim();
+  if(!animeId||!num||!title){showToast('⚠️ Заполни обязательные поля');return}
+  const ep = {
+    num, title,
+    duration: document.getElementById('epDur').value.trim()||'—',
+    video_url: document.getElementById('epUrl').value.trim(),
+    video_url_vk: document.getElementById('epVkUrl').value.trim(),
+    cast: []
+  };
+  const eps = DB.anime[animeId].episodes.filter(e=>e.num!==num);
+  eps.push(ep); eps.sort((a,b)=>a.num-b.num);
+  DB.anime[animeId].episodes = eps;
+  await pushDB();
+  showToast('✅ Серия сохранена!');
+  loadEpList();
+  document.getElementById('epNum').value='';
+  document.getElementById('epTitle').value='';
+  document.getElementById('epUrl').value='';
+  document.getElementById('epVkUrl').value='';
+}
+
+async function deleteEpisode(animeId, num){
+  if(!confirm('Удалить серию?')) return;
+  DB.anime[animeId].episodes = DB.anime[animeId].episodes.filter(e=>e.num!==num);
+  await pushDB();
+  showToast('🗑 Серия удалена');
+  loadEpList();
+}
+
+// ── ADMIN: АКТЁРЫ ─────────────────────────────────────
+function renderAdminActors(body){
+  body.innerHTML = `
+    <div class="admin-section">
+      <div class="admin-sec-title">Добавить / редактировать актёра</div>
+      <div class="afield"><label>ID *</label><input id="actId" placeholder="1, 2, 3..."></div>
+      <div class="afield"><label>Имя *</label><input id="actName" placeholder="Иван Петров"></div>
+      <div class="afield"><label>Роль</label>
+        <select id="actRole">
+          <option value="lead">Ведущий актёр</option>
+          <option value="support">Второй план</option>
+          <option value="sound">Звукорежиссёр</option>
+          <option value="director">Режиссёр</option>
+          <option value="admin">Администратор</option>
+        </select>
+      </div>
+      <div class="afield"><label>Биография</label><textarea id="actBio" placeholder="Расскажите об актёре..."></textarea></div>
+      <div class="afield"><label>Telegram</label><input id="actTg" placeholder="@username"></div>
+      <div class="afield"><label>ВКонтакте</label><input id="actVk" placeholder="@vkusername или ссылка"></div>
+      <div class="afield"><label>Email</label><input id="actEmail" placeholder="mail@example.com"></div>
+      <button class="abtn primary" onclick="saveActor()">💾 Сохранить актёра</button>
+    </div>
+    <div class="admin-section">
+      <div class="admin-sec-title">Список актёров</div>
+      ${Object.values(DB.actors||{}).map(a=>`
+        <div class="admin-list-item" onclick="loadActorEdit('${a.id}')">
+          <div><div class="ali-title">${a.name}</div><div class="ali-sub">ID: ${a.id} · ${a.role||'—'}</div></div>
+          <div class="ali-arr">›</div>
+        </div>`).join('') || '<div style="color:var(--muted);font-size:13px">Актёры не добавлены</div>'}
+    </div>`;
+}
+
+function loadActorEdit(id){
+  const a = DB.actors[id]; if(!a) return;
+  document.getElementById('actId').value = a.id;
+  document.getElementById('actName').value = a.name;
+  document.getElementById('actRole').value = a.role||'support';
+  document.getElementById('actBio').value = a.bio||'';
+  document.getElementById('actTg').value = a.telegram||'';
+  document.getElementById('actVk').value = a.vk||'';
+  document.getElementById('actEmail').value = a.email||'';
+  document.getElementById('adminBody').scrollTop = 0;
+  showToast('📝 Редактирование: ' + a.name);
+}
+
+async function saveActor(){
+  const id = document.getElementById('actId').value.trim();
+  const name = document.getElementById('actName').value.trim();
+  if(!id||!name){showToast('⚠️ Заполни ID и имя');return}
+  if(!DB.actors) DB.actors={};
+  DB.actors[id] = {
+    id, name,
+    role: document.getElementById('actRole').value,
+    bio: document.getElementById('actBio').value.trim(),
+    telegram: document.getElementById('actTg').value.trim(),
+    vk: document.getElementById('actVk').value.trim(),
+    email: document.getElementById('actEmail').value.trim(),
+    photo: DB.actors[id]?.photo||'',
+    roles: DB.actors[id]?.roles||[]
+  };
+  await pushDB();
+  showToast('✅ Актёр сохранён!');
+  renderAdminActors(document.getElementById('adminBody'));
+  renderActors();
+}
+
+// ── ADMIN: РАСПИСАНИЕ ─────────────────────────────────
+function renderAdminSchedule(body){
+  const animeOptions = Object.values(DB.anime||{}).map(a=>`<option value="${a.id}">${a.title}</option>`).join('');
+  const schedule = DB.schedule||[];
+  body.innerHTML = `
+    <div class="admin-section">
+      <div class="admin-sec-title">Добавить в расписание</div>
+      <div class="afield"><label>Аниме *</label><select id="schAnime">${animeOptions}</select></div>
+      <div class="afield"><label>Номер серии *</label><input id="schNum" type="number" placeholder="5"></div>
+      <div class="afield"><label>Название серии</label><input id="schTitle" placeholder="Название эпизода"></div>
+      <div class="afield"><label>Дата выхода *</label><input id="schDate" type="date"></div>
+      <button class="abtn primary" onclick="saveSchedule()">💾 Добавить</button>
+    </div>
+    <div class="admin-section">
+      <div class="admin-sec-title">Расписание</div>
+      ${schedule.length ? schedule.map(s=>{
+        const a=DB.anime[s.anime_id];
+        return `<div class="admin-list-item">
+          <div><div class="ali-title">${a?.title||s.anime_id} — Серия ${s.episode_num}</div>
+          <div class="ali-sub">${s.title} · ${s.date}</div></div>
+          <div style="color:var(--red);font-size:12px;font-weight:600;cursor:pointer" onclick="deleteSchedule('${s.anime_id}',${s.episode_num})">✕</div>
+        </div>`;
+      }).join('') : '<div style="color:var(--muted);font-size:13px">Расписание пусто</div>'}
+    </div>`;
+}
+
+async function saveSchedule(){
+  const animeId = document.getElementById('schAnime').value;
+  const epNum = parseInt(document.getElementById('schNum').value);
+  const title = document.getElementById('schTitle').value.trim()||'Новая серия';
+  const date = document.getElementById('schDate').value;
+  if(!animeId||!epNum||!date){showToast('⚠️ Заполни обязательные поля');return}
+  if(!DB.schedule) DB.schedule=[];
+  DB.schedule = DB.schedule.filter(s=>!(s.anime_id===animeId&&s.episode_num===epNum));
+  DB.schedule.push({date,anime_id:animeId,episode_num:epNum,title});
+  DB.schedule.sort((a,b)=>a.date.localeCompare(b.date));
+  await pushDB();
+  showToast('✅ Добавлено в расписание!');
+  renderAdminSchedule(document.getElementById('adminBody'));
+  renderCalendar();
+}
+
+async function deleteSchedule(animeId, epNum){
+  DB.schedule = (DB.schedule||[]).filter(s=>!(s.anime_id===animeId&&s.episode_num===epNum));
+  await pushDB();
+  showToast('🗑 Удалено');
+  renderAdminSchedule(document.getElementById('adminBody'));
+}
+
+// ── ADMIN: РАССЫЛКА ───────────────────────────────────
+function renderAdminPush(body){
+  body.innerHTML = `
+    <div class="admin-section">
+      <div class="admin-sec-title">Рассылка уведомления</div>
+      <div class="afield"><label>Текст сообщения *</label><textarea id="pushText" placeholder="Вышла новая серия..."></textarea></div>
+      <button class="abtn primary" onclick="sendPush()">📢 Разослать всем</button>
+    </div>
+    <div class="admin-section">
+      <div class="admin-sec-title">Уведомление о серии</div>
+      <div class="afield"><label>Аниме</label><select id="pushAnime">${Object.values(DB.anime||{}).map(a=>`<option value="${a.id}">${a.title}</option>`).join('')}</select></div>
+      <div class="afield"><label>Номер серии</label><input id="pushEpNum" type="number" placeholder="5"></div>
+      <button class="abtn secondary" onclick="sendEpPush()">🎌 Уведомить о серии</button>
+    </div>`;
+}
+
+function sendPush(){
+  const text = document.getElementById('pushText').value.trim();
+  if(!text){showToast('⚠️ Введи текст');return}
+  if(tg) tg.sendData(JSON.stringify({action:'push',text}));
+  showToast('📢 Рассылка отправлена боту!');
+}
+
+function sendEpPush(){
+  const animeId = document.getElementById('pushAnime').value;
+  const epNum = parseInt(document.getElementById('pushEpNum').value);
+  if(!animeId||!epNum){showToast('⚠️ Выбери аниме и серию');return}
+  if(tg) tg.sendData(JSON.stringify({action:'push_ep',anime_id:animeId,ep_num:epNum}));
+  showToast('🎌 Уведомление о серии отправлено!');
+}
+
+// ── PUSH DB ───────────────────────────────────────────
+async function pushDB(){
+  try{
+    const r = await fetch(SERVER_URL+'/db?token='+SERVER_TOKEN, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(DB)
+    });
+    if(!r.ok) throw new Error('Server error');
+  } catch(e){
+    showToast('❌ Ошибка сохранения: ' + e.message);
+    throw e;
+  }
+}
+
+// ── COMMENTS ──────────────────────────────────────────
+let curCmtAnime = null, curCmtEp = null;
+
+function openComments(animeId, epNum, epTitle){
+  curCmtAnime = animeId;
+  curCmtEp = epNum;
+  const wrap = document.getElementById('cmtWrap_'+animeId+'_'+epNum);
+  if(!wrap) return;
+  if(wrap.style.display==='none'||!wrap.style.display){
+    wrap.style.display='';
+    loadComments(animeId, epNum);
+  } else {
+    wrap.style.display='none';
+  }
+}
+
+async function loadComments(animeId, epNum){
+  const el = document.getElementById('cmtList_'+animeId+'_'+epNum);
+  if(!el) return;
+  el.innerHTML = '<div class="cmt-loading">Загрузка...</div>';
+  try{
+    const r = await fetch(SERVER_URL+'/comments/'+animeId+'/'+epNum);
+    const d = await r.json();
+    // Update count
+    const cnt = document.getElementById('cmtCnt_'+animeId+'_'+epNum);
+    if(cnt) cnt.textContent = d.total||'';
+    if(!d.comments?.length){
+      el.innerHTML='<div style="color:var(--muted2);font-size:13px;padding:8px 0">Будь первым кто оставит комментарий!</div>';
+      return;
+    }
+    const isAdm = (DB.admin_ids||[]).includes(MY_USER_ID);
+    el.innerHTML = d.comments.map(c=>{
+      const ts = new Date(c.ts*1000).toLocaleDateString('ru',{day:'numeric',month:'short'});
+      const liked = c.likes.includes(MY_USER_ID);
+      return `<div class="cmt" id="cmt_${c.id}">
+        <div class="c-av">${c.first_name?c.first_name[0]:'?'}</div>
+        <div class="c-body">
+          <div class="c-name">${c.first_name}${c.username?' · @'+c.username:''}</div>
+          <div class="c-text">${c.text}</div>
+          <div class="c-meta">
+            <div class="c-time">${ts}</div>
+            <div class="c-like ${liked?'liked':''}" onclick="likeComment('${c.id}','${animeId}',${epNum},this)">
+              <svg fill="${liked?'currentColor':'none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              ${c.likes.length}
+            </div>
+            ${isAdm?`<div class="c-del" onclick="deleteCmt('${c.id}','${animeId}',${epNum})">Удалить</div>`:''}
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  } catch(e){
+    el.innerHTML='<div style="color:var(--muted2);font-size:13px">Ошибка загрузки</div>';
+  }
+}
+
+async function sendComment(animeId, epNum){
+  const inp = document.getElementById('cmtInp_'+animeId+'_'+epNum);
+  const text = inp.value.trim(); if(!text) return;
+  inp.value='';
+  try{
+    await fetch(SERVER_URL+'/comments',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({anime_id:animeId,ep_num:epNum,text,
+        user_id:MY_USER_ID,username:MY_USERNAME,first_name:MY_NAME})
+    });
+    loadComments(animeId, epNum);
+  }catch{showToast('❌ Ошибка отправки')}
+}
+
+async function likeComment(id, animeId, epNum, el){
+  try{
+    const r=await fetch(SERVER_URL+'/like?comment_id='+id+'&user_id='+MY_USER_ID+'&anime_id='+animeId+'&ep_num='+epNum,{method:'POST'});
+    const d=await r.json();
+    el.classList.toggle('liked',d.liked);
+    el.querySelector('svg').setAttribute('fill',d.liked?'currentColor':'none');
+    el.lastChild.textContent=' '+d.likes;
+  }catch{}
+}
+
+async function deleteCmt(id, animeId, epNum){
+  if(!confirm('Удалить комментарий?')) return;
+  try{
+    await fetch(SERVER_URL+'/comment?comment_id='+id+'&anime_id='+animeId+'&ep_num='+epNum+'&token='+SERVER_TOKEN,{method:'DELETE'});
+    document.getElementById('cmt_'+id)?.remove();
+    showToast('🗑 Удалено');
+  }catch{}
+}
+
+
 loadDB();
 </script>
+
+<!-- ADMIN FAB -->
+<button class="admin-btn-fab" id="adminFab" onclick="openAdmin()">
+  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+</button>
+
+<!-- ADMIN PANEL -->
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-hdr">
+    <div class="admin-back" onclick="closeAdmin()">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5m0 0l7 7m-7-7 7-7"/></svg>
+    </div>
+    <div class="admin-title">Панель управления</div>
+  </div>
+  <div class="admin-tabs">
+    <div class="admin-tab active" onclick="adminTab('anime')">Аниме</div>
+    <div class="admin-tab" onclick="adminTab('episodes')">Серии</div>
+    <div class="admin-tab" onclick="adminTab('actors')">Актёры</div>
+    <div class="admin-tab" onclick="adminTab('schedule')">Расписание</div>
+    <div class="admin-tab" onclick="adminTab('push')">Рассылка</div>
+  </div>
+  <div class="admin-body" id="adminBody"></div>
+</div>
+
 </body>
 </html>
