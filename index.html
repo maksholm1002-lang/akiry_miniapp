@@ -380,6 +380,48 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
 .notif-time{font-size:10px;color:var(--muted);margin-top:2px}
 .npip{width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:4px}
 
+/* ══ NEWS ══ */
+.news-card{background:var(--s1);border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;margin-bottom:12px;cursor:pointer;transition:background .15s;animation:cin .4s both}
+.news-card:active{background:var(--s2)}
+.news-img{width:100%;height:180px;object-fit:cover;display:block;background:var(--s2)}
+.news-body{padding:14px}
+.news-date{font-size:10px;font-weight:600;color:var(--muted2);margin-bottom:5px;letter-spacing:.3px}
+.news-text{font-size:14px;font-weight:600;line-height:1.6;color:#fff}
+.news-footer{display:flex;align-items:center;gap:6px;margin-top:8px}
+.news-src{font-size:10px;color:var(--muted);font-weight:500}
+.news-dot{width:3px;height:3px;border-radius:50%;background:var(--muted)}
+
+/* ══ APPLY FORM ══ */
+.apply-hero{text-align:center;padding:24px 16px 16px}
+.apply-icon{font-size:48px;margin-bottom:12px}
+.apply-title{font-size:22px;font-weight:800;letter-spacing:-.4px;margin-bottom:6px}
+.apply-desc{font-size:13px;color:var(--muted2);line-height:1.65;max-width:270px;margin:0 auto}
+.form-wrap{padding:0 16px 100px}
+.form-group{margin-bottom:14px}
+.form-label{font-size:11px;font-weight:700;color:var(--muted2);letter-spacing:.8px;
+  text-transform:uppercase;margin-bottom:6px;display:block}
+.form-input{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:12px;
+  padding:12px 14px;color:#fff;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;
+  outline:none;transition:border-color .2s;-webkit-appearance:none}
+.form-input:focus{border-color:var(--border2)}
+.form-input::placeholder{color:var(--muted)}
+.form-textarea{min-height:80px;resize:none;line-height:1.5}
+.form-select{cursor:pointer}
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.role-btn{background:var(--s2);border:1.5px solid var(--border);border-radius:12px;
+  padding:11px 10px;text-align:center;cursor:pointer;transition:all .15s}
+.role-btn.selected{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4)}
+.role-btn-icon{font-size:20px;margin-bottom:4px}
+.role-btn-name{font-size:12px;font-weight:700}
+.role-btn-desc{font-size:10px;color:var(--muted2);margin-top:1px}
+.submit-btn{width:100%;padding:15px;background:#fff;color:#000;border:none;border-radius:14px;
+  font-family:'Inter',sans-serif;font-size:15px;font-weight:700;cursor:pointer;
+  margin-top:8px;transition:opacity .15s;letter-spacing:-.2px}
+.submit-btn:active{opacity:.85}
+.submit-btn:disabled{opacity:.4;cursor:not-allowed}
+.form-divider{height:1px;background:var(--border);margin:18px 0}
+
 /* ══ ABOUT ══ */
 .about-wrap{display:flex;flex-direction:column;align-items:center;padding:30px 16px 20px}
 .about-icon{font-size:54px;margin-bottom:14px}
@@ -437,9 +479,11 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
 <!-- TABS -->
 <div class="tabs" id="tabsEl">
   <div class="tab active" onclick="showTab('catalog')">Каталог</div>
+  <div class="tab" onclick="showTab('news')">Новости</div>
   <div class="tab" onclick="showTab('bookmarks')">Закладки</div>
   <div class="tab" onclick="showTab('actors')">Актёры</div>
   <div class="tab" onclick="showTab('calendar')">Календарь</div>
+  <div class="tab" onclick="showTab('apply')">В команду</div>
   <div class="tab" onclick="showTab('about')">О нас</div>
 </div>
 
@@ -454,6 +498,77 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
     <div class="feat-scroll" id="featScroll" style="display:none"></div>
     <div class="sec" style="margin-top:4px"><div class="sec-t">Все тайтлы</div></div>
     <div class="grid" id="catalogGrid"><div class="empty" style="grid-column:1/-1"><div class="empty-icon">🌀</div><p>Загрузка...</p></div></div>
+  </div>
+</div>
+
+<!-- NEWS -->
+<div class="view hidden" id="viewNews">
+  <div class="vpad">
+    <div class="sec"><div class="sec-t">Новости</div><div class="sec-m" id="newsChannelLink"></div></div>
+    <div id="newsList"><div class="empty"><div class="empty-icon">📰</div><p>Новости загружаются...</p></div></div>
+  </div>
+</div>
+
+<!-- APPLY -->
+<div class="view hidden" id="viewApply">
+  <div class="apply-hero">
+    <div class="apply-icon">🎙</div>
+    <div class="apply-title">Вступить в команду</div>
+    <div class="apply-desc">Мы всегда ищем талантливых людей! Заполни заявку и мы свяжемся с тобой.</div>
+  </div>
+  <div class="form-wrap">
+    <div class="form-group">
+      <label class="form-label">ФИО *</label>
+      <input class="form-input" id="applyFio" placeholder="Иванов Иван Иванович" maxlength="80">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Возраст *</label>
+      <input class="form-input" id="applyAge" type="number" placeholder="18" min="14" max="99">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Часовой пояс *</label>
+      <select class="form-input form-select" id="applyTz">
+        <option value="">Выберите...</option>
+        <option>UTC+2 (Калининград)</option>
+        <option>UTC+3 (Москва)</option>
+        <option>UTC+4 (Самара)</option>
+        <option>UTC+5 (Екатеринбург)</option>
+        <option>UTC+6 (Омск)</option>
+        <option>UTC+7 (Красноярск)</option>
+        <option>UTC+8 (Иркутск)</option>
+        <option>UTC+9 (Якутск)</option>
+        <option>UTC+10 (Владивосток)</option>
+        <option>UTC+11 (Магадан)</option>
+        <option>UTC+12 (Камчатка)</option>
+        <option>UTC+0 (Лондон)</option>
+        <option>UTC+1 (Берлин/Варшава)</option>
+        <option>Другой</option>
+      </select>
+    </div>
+    <div class="form-divider"></div>
+    <div class="form-group">
+      <label class="form-label">На кого претендуете *</label>
+      <div class="role-grid" id="applyRoleGrid">
+        <div class="role-btn" onclick="selectRole(this,'actor')"><div class="role-btn-icon">🎙</div><div class="role-btn-name">Актёр</div><div class="role-btn-desc">Озвучка персонажей</div></div>
+        <div class="role-btn" onclick="selectRole(this,'sound')"><div class="role-btn-icon">🎚</div><div class="role-btn-name">Звукорежиссёр</div><div class="role-btn-desc">Монтаж и сведение</div></div>
+        <div class="role-btn" onclick="selectRole(this,'admin')"><div class="role-btn-icon">⚙️</div><div class="role-btn-name">Администратор</div><div class="role-btn-desc">Организация команды</div></div>
+        <div class="role-btn" onclick="selectRole(this,'other')"><div class="role-btn-icon">✨</div><div class="role-btn-name">Другое</div><div class="role-btn-desc">Предложу сам</div></div>
+      </div>
+    </div>
+    <div class="form-divider"></div>
+    <div class="form-group">
+      <label class="form-label">Опыт работы в командах</label>
+      <textarea class="form-input form-textarea" id="applyExp" placeholder="Расскажи о своём опыте в озвучке, дубляже или других проектах..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Образование / курсы</label>
+      <textarea class="form-input form-textarea" id="applyEdu" placeholder="Актёрские курсы, школа вокала, звукорежиссура и т.д..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Ссылка на демо / портфолио</label>
+      <input class="form-input" id="applyDemo" placeholder="https://... или @username">
+    </div>
+    <button class="submit-btn" id="applyBtn" onclick="submitApply()">Отправить заявку</button>
   </div>
 </div>
 
@@ -681,6 +796,7 @@ function renderAll(){
   renderNotifs();
   renderCW();
   updateAbout();
+  renderNews();
 }
 
 // ── FEATURED ──────────────────────────────────────────
@@ -1102,6 +1218,83 @@ function updateAbout(){
 // ── TOAST ─────────────────────────────────────────────
 let toastT;
 function showToast(msg){clearTimeout(toastT);const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');toastT=setTimeout(()=>t.classList.remove('show'),2400)}
+
+
+// ── NEWS ──────────────────────────────────────────────
+function renderNews(){
+  const news=DB.news||[];
+  const el=document.getElementById('newsList');
+  if(!news.length){el.innerHTML='<div class="empty"><div class="empty-icon">📰</div><p>Новостей пока нет</p></div>';return}
+  el.innerHTML=news.map((n,i)=>{
+    const img=n.photo?'<img class="news-img" src="'+n.photo+'">':'';
+    return '<div class="news-card" style="animation-delay:'+i*.05+'s" onclick="openNewsLink("'+n.link+'")">'+img+
+      '<div class="news-body">'+
+      '<div class="news-date">'+n.date+'</div>'+
+      '<div class="news-text">'+n.text+'</div>'+
+      '<div class="news-footer"><span class="news-src">Акиру — Дубляж Аниме</span></div>'+
+      '</div></div>';
+  }).join('');
+  const ch=DB.news_channel;
+  if(ch)document.getElementById('newsChannelLink').innerHTML='<a href="https://t.me/'+ch.replace('@','')+
+    '" style="color:var(--muted2);text-decoration:none;font-size:12px;font-weight:600">Открыть канал →</a>';
+}
+function openNewsLink(url){if(url&&tg)tg.openLink(url);else if(url)window.open(url,'_blank')}
+
+// ── APPLY ─────────────────────────────────────────────
+let selectedRole='';
+function selectRole(el,role){
+  selectedRole=role;
+  document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function submitApply(){
+  const fio=document.getElementById('applyFio').value.trim();
+  const age=document.getElementById('applyAge').value.trim();
+  const tz=document.getElementById('applyTz').value;
+  const exp=document.getElementById('applyExp').value.trim();
+  const edu=document.getElementById('applyEdu').value.trim();
+  const demo=document.getElementById('applyDemo').value.trim();
+  if(!fio){showToast('⚠️ Введи ФИО');return}
+  if(!age){showToast('⚠️ Введи возраст');return}
+  if(!tz){showToast('⚠️ Выбери часовой пояс');return}
+  if(!selectedRole){showToast('⚠️ Выбери роль');return}
+  const roleNames={actor:'Актёр',sound:'Звукорежиссёр',admin:'Администратор',other:'Другое'};
+  const text='📋 Новая заявка в команду
+
+'+
+    '👤 ФИО: '+fio+'
+'+
+    '🎂 Возраст: '+age+'
+'+
+    '🌍 Часовой пояс: '+tz+'
+'+
+    '🎭 Претендует на: '+roleNames[selectedRole]+'
+'+
+    (exp?'💼 Опыт: '+exp+'
+':'')+
+    (edu?'🎓 Образование: '+edu+'
+':'')+
+    (demo?'🔗 Демо: '+demo+'
+':'')+
+    '
+🆔 Telegram: '+(tg?.initDataUnsafe?.user?.username?'@'+tg.initDataUnsafe.user.username:'не указан');
+  if(tg){tg.sendData(JSON.stringify({action:'apply',text}))}
+  document.getElementById('applyBtn').disabled=true;
+  document.getElementById('applyBtn').textContent='✅ Заявка отправлена!';
+  showToast('🎉 Заявка отправлена! Мы свяжемся с тобой.');
+  setTimeout(()=>{
+    document.getElementById('applyFio').value='';
+    document.getElementById('applyAge').value='';
+    document.getElementById('applyTz').value='';
+    document.getElementById('applyExp').value='';
+    document.getElementById('applyEdu').value='';
+    document.getElementById('applyDemo').value='';
+    selectedRole='';
+    document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('selected'));
+    document.getElementById('applyBtn').disabled=false;
+    document.getElementById('applyBtn').textContent='Отправить заявку';
+  },3000);
+}
 
 loadDB();
 </script>
