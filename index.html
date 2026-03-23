@@ -319,6 +319,18 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
 .ad-em{font-size:20px;flex-shrink:0}
 .ad-an{font-size:13px;font-weight:600}
 .ad-ch{font-size:11px;color:var(--muted2);font-weight:400;margin-top:1px}
+/* contacts */
+.ad-contacts{display:flex;flex-direction:column;gap:8px;padding:0 16px 16px}
+.ad-contact-btn{display:flex;align-items:center;gap:12px;background:var(--s2);border:1px solid var(--border);
+  border-radius:12px;padding:12px 14px;cursor:pointer;text-decoration:none;transition:background .15s}
+.ad-contact-btn:active{background:var(--s3)}
+.ad-contact-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.ad-contact-tg{background:rgba(10,132,255,.15);border:1px solid rgba(10,132,255,.2)}
+.ad-contact-vk{background:rgba(0,119,255,.15);border:1px solid rgba(0,119,255,.2)}
+.ad-contact-mail{background:rgba(255,159,10,.15);border:1px solid rgba(255,159,10,.2)}
+.ad-contact-info{flex:1}
+.ad-contact-label{font-size:11px;color:var(--muted2);font-weight:500;margin-bottom:1px}
+.ad-contact-value{font-size:13px;font-weight:600;color:#fff}
 
 /* ══ CALENDAR ══ */
 .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
@@ -405,7 +417,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;display:flex;flex
 
 <!-- HEADER -->
 <header class="hdr">
-  <div class="hdr-logo">Акиры<span>.ани</span></div>
+  <div class="hdr-logo">Акиру<span style="-webkit-text-fill-color:transparent;background:linear-gradient(90deg,#aeaeb2,#fff);-webkit-background-clip:text;background-clip:text;font-weight:700"> — Дубляж Аниме</span></div>
   <div class="hdr-btns">
     <div class="hdr-btn" onclick="toggleNotif()">
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
@@ -991,12 +1003,17 @@ function openActor(id){
   document.getElementById('adName').textContent=a.name;
   document.getElementById('adRole').innerHTML=`<span class="act-badge ${rc}" style="display:inline-block">${rl}</span>`;
   document.getElementById('adBio').textContent=a.bio||'Биография не добавлена.';
+  const contacts=[];
+  if(a.telegram)contacts.push(`<a class="ad-contact-btn" href="https://t.me/${a.telegram.replace('@','')}"><div class="ad-contact-icon ad-contact-tg">✈️</div><div class="ad-contact-info"><div class="ad-contact-label">Telegram</div><div class="ad-contact-value">${a.telegram}</div></div></a>`);
+  if(a.vk)contacts.push(`<a class="ad-contact-btn" href="${a.vk.startsWith('http')?a.vk:'https://vk.com/'+a.vk}"><div class="ad-contact-icon ad-contact-vk">💙</div><div class="ad-contact-info"><div class="ad-contact-label">ВКонтакте</div><div class="ad-contact-value">${a.vk}</div></div></a>`);
+  if(a.email)contacts.push(`<a class="ad-contact-btn" href="mailto:${a.email}"><div class="ad-contact-icon ad-contact-mail">✉️</div><div class="ad-contact-info"><div class="ad-contact-label">Почта</div><div class="ad-contact-value">${a.email}</div></div></a>`);
   document.getElementById('adRoles').innerHTML=`
+    ${contacts.length?`<div style="padding:0 16px;margin-bottom:8px;font-size:15px;font-weight:700">Контакты</div><div class="ad-contacts">${contacts.join('')}</div>`:''}
     <div style="padding:0 16px;margin-bottom:8px;font-size:15px;font-weight:700">Роли</div>
     ${(a.roles||[]).map(r=>{const an=DB.anime?.[r.anime_id];return`<div class="ad-role-item">
       <div class="ad-em">${em(r.anime_id)}</div>
       <div><div class="ad-an">${an?.title||'—'}</div><div class="ad-ch">${r.character}</div></div>
-    </div>`;}).join('')||`<div style="color:var(--muted2);font-size:13px;padding:0 16px">Роли не указаны</div>`}`;
+    </div>`;}).join('')||`<div style="color:var(--muted2);font-size:13px;padding:0 16px 16px">Роли не указаны</div>`}`;
   document.getElementById('actOv').classList.add('open');
   if(tg)tg.BackButton.show();
 }
