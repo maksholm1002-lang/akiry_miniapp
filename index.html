@@ -888,7 +888,7 @@ const getCW=()=>{try{return JSON.parse(localStorage.getItem('cw')||'[]')}catch{r
 const saveCW=(aid,idx,p)=>{let d=getCW().filter(x=>x.a!==aid);d.unshift({a:aid,i:idx,p});try{localStorage.setItem('cw',JSON.stringify(d.slice(0,5)))}catch{}};
 
 // ── LOAD ──────────────────────────────────────────────
-const SERVER_URL = 'const SERVER_URL = 'https://akiry.ru';
+const SERVER_URL  = 'https://akiry.ru';
 
 async function loadDB(){
   try{const r=await fetch(SERVER_URL+'/db?t='+Date.now());DB=await r.json()}
