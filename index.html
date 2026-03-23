@@ -4,6 +4,81 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>Акиру</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap');
+
+/* ══ DESIGN POLISH ══ */
+/* Better typography */
+.sec-t{font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.3px}
+.det-title{font-family:'Montserrat',sans-serif}
+.hdr-logo{font-family:'Montserrat',sans-serif}
+.about-nm{font-family:'Montserrat',sans-serif}
+.prof-nm{font-family:'Montserrat',sans-serif}
+
+/* Better nav */
+.bnav{padding-bottom:max(10px,env(safe-area-inset-bottom))}
+.nb{flex:0 0 58px;gap:3px;padding:5px 2px 2px}
+.nb.on svg{filter:drop-shadow(0 0 6px currentColor)}
+
+/* Better sheets */
+.sheet{border-radius:28px 28px 0 0}
+.drag{width:40px;height:5px;margin:12px auto 0;background:var(--s3);border-radius:3px}
+
+/* Better buttons */
+.watch-btn{border-radius:14px;letter-spacing:.3px;font-family:'Montserrat',sans-serif}
+.sub-btn{border-radius:14px;letter-spacing:.3px;font-family:'Montserrat',sans-serif}
+.abtn.pri{font-family:'Montserrat',sans-serif;letter-spacing:.3px}
+
+/* Better status badges */
+.c-st{letter-spacing:.5px;font-size:9px;backdrop-filter:blur(8px)}
+.feat-b{letter-spacing:1px}
+
+/* Better overlay background */
+.ov{background:rgba(0,0,0,.8);backdrop-filter:blur(12px)}
+
+/* Better episode list */
+.ep{border-radius:14px;padding:12px 14px}
+.ep:active{background:var(--s3)}
+
+/* Better chips */
+.chip{border-radius:8px}
+.fchip{border-radius:10px}
+
+/* Anime history icon via before pseudo */
+.nb[onclick*="vHistory"] svg{display:none}
+.nb[onclick*="vHistory"]::before{content:'📺';font-size:19px}
+
+/* Better hit cards */
+.hit-c{border-radius:14px}
+.hit-c:active{transform:scale(.97)}
+
+/* Better profile */
+.prof-av{box-shadow:0 4px 20px rgba(0,0,0,.4)}
+
+/* Better admin panel */
+.admin-ov{background:var(--bg)}
+.atab{font-size:11px;padding:10px 13px}
+.af label{font-size:10px;letter-spacing:.8px}
+.af input,.af textarea,.af select{border-radius:10px}
+
+/* Smooth scroll */
+.view,.sb,.msgs{scroll-behavior:smooth}
+
+/* Better card body */
+.c-body{padding:10px 12px 12px}
+.c-title{font-size:13px;font-weight:700;line-height:1.35}
+
+/* News cards */
+.news-c{border-radius:18px}
+.news-bd{padding:14px}
+
+/* Better leaderboard */
+.user-i{border-radius:14px}
+
+/* Gradient accent on ongoing status */
+.c-st.on,.feat-b.on-b{background:linear-gradient(135deg,rgba(48,209,88,.25),rgba(48,209,88,.1));border-color:rgba(48,209,88,.4)}
+
+</style>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{
@@ -19,18 +94,26 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column}
 
 /* SPLASH */
-#splash{position:fixed;inset:0;z-index:999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .4s}
+#splash{position:fixed;inset:0;z-index:999;background:linear-gradient(160deg,#0a0a0f 0%,#0f0f1a 50%,#0a0a0f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s}
 #splash.out{opacity:0;pointer-events:none}
-.sp-icon{font-size:64px;margin-bottom:12px;animation:spulse 1.4s ease-in-out infinite}
-@keyframes spulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
-.sp-title{font-size:26px;font-weight:800;color:#fff;margin-bottom:4px}
-.sp-sub{font-size:13px;color:rgba(255,255,255,.5)}
-.sp-bar{width:140px;height:3px;background:rgba(255,255,255,.15);border-radius:2px;margin-top:28px;overflow:hidden}
-.sp-fill{height:100%;background:#fff;border-radius:2px;animation:spload 1.2s ease forwards}
+.sp-kunai{margin-bottom:20px;filter:drop-shadow(0 0 20px rgba(255,255,255,.3))}
+.sp-svg{animation:kunaiSpin 2s cubic-bezier(.2,1,.4,1) both}
+@keyframes kunaiSpin{0%{transform:rotate(-180deg) scale(.5);opacity:0}60%{transform:rotate(10deg) scale(1.05)}100%{transform:rotate(0deg) scale(1);opacity:1}}
+.sp-title{font-family:'Montserrat',sans-serif;font-size:32px;font-weight:900;color:#fff;letter-spacing:6px;margin-bottom:4px;animation:spFadeUp .6s .4s both}
+.sp-sub{font-size:12px;color:rgba(255,255,255,.45);letter-spacing:3px;text-transform:uppercase;animation:spFadeUp .6s .6s both}
+@keyframes spFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.sp-bar{width:120px;height:2px;background:rgba(255,255,255,.1);border-radius:1px;margin-top:32px;overflow:hidden;animation:spFadeUp .6s .8s both}
+.sp-fill{height:100%;background:linear-gradient(90deg,transparent,#fff,transparent);border-radius:1px;animation:spload 1.4s .8s ease forwards}
 @keyframes spload{from{width:0}to{width:100%}}
+.sp-dots{display:flex;gap:6px;margin-top:14px;animation:spFadeUp .6s 1s both}
+.sp-dots span{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3)}
+.sp-dots span:nth-child(1){animation:spDot .8s 1.2s ease-in-out infinite}
+.sp-dots span:nth-child(2){animation:spDot .8s 1.4s ease-in-out infinite}
+.sp-dots span:nth-child(3){animation:spDot .8s 1.6s ease-in-out infinite}
+@keyframes spDot{0%,100%{background:rgba(255,255,255,.3)}50%{background:rgba(255,255,255,.9)}}
 
 /* SKELETON */
 .skel{background:linear-gradient(90deg,var(--s2) 25%,var(--s3) 50%,var(--s2) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:12px}
@@ -86,9 +169,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 /* GRID */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-.card{background:var(--s1);border-radius:13px;overflow:hidden;cursor:pointer;border:1px solid var(--border);transition:transform .15s;animation:cin .4s both}
+.card{background:var(--s1);border-radius:16px;overflow:hidden;cursor:pointer;border:1px solid var(--border);transition:transform .18s,box-shadow .18s;animation:cin .4s both}
 @keyframes cin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .card:active{transform:scale(.96)}
+.card:hover{box-shadow:0 8px 24px rgba(0,0,0,.4);border-color:var(--border2)}
 .c-img-w{position:relative}
 .c-img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block}
 .c-ph{width:100%;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;font-size:38px;background:linear-gradient(160deg,var(--s2),var(--s3));position:relative}
@@ -506,14 +590,108 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .ptr{position:fixed;top:0;left:50%;transform:translateX(-50%) translateY(-44px);background:var(--s2);border:1px solid var(--border);border-radius:18px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--muted2);z-index:200;transition:transform .25s;display:flex;align-items:center;gap:5px}
 .ptr.on{transform:translateX(-50%) translateY(8px)}
 .ptr.ready{color:var(--teal)}
+
+/* ══ DESIGN POLISH ══ */
+/* Better typography */
+.sec-t{font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.3px}
+.det-title{font-family:'Montserrat',sans-serif}
+.hdr-logo{font-family:'Montserrat',sans-serif}
+.about-nm{font-family:'Montserrat',sans-serif}
+.prof-nm{font-family:'Montserrat',sans-serif}
+
+/* Better nav */
+.bnav{padding-bottom:max(10px,env(safe-area-inset-bottom))}
+.nb{flex:0 0 58px;gap:3px;padding:5px 2px 2px}
+.nb.on svg{filter:drop-shadow(0 0 6px currentColor)}
+
+/* Better sheets */
+.sheet{border-radius:28px 28px 0 0}
+.drag{width:40px;height:5px;margin:12px auto 0;background:var(--s3);border-radius:3px}
+
+/* Better buttons */
+.watch-btn{border-radius:14px;letter-spacing:.3px;font-family:'Montserrat',sans-serif}
+.sub-btn{border-radius:14px;letter-spacing:.3px;font-family:'Montserrat',sans-serif}
+.abtn.pri{font-family:'Montserrat',sans-serif;letter-spacing:.3px}
+
+/* Better status badges */
+.c-st{letter-spacing:.5px;font-size:9px;backdrop-filter:blur(8px)}
+.feat-b{letter-spacing:1px}
+
+/* Better overlay background */
+.ov{background:rgba(0,0,0,.8);backdrop-filter:blur(12px)}
+
+/* Better episode list */
+.ep{border-radius:14px;padding:12px 14px}
+.ep:active{background:var(--s3)}
+
+/* Better chips */
+.chip{border-radius:8px}
+.fchip{border-radius:10px}
+
+/* Anime history icon via before pseudo */
+.nb[onclick*="vHistory"] svg{display:none}
+.nb[onclick*="vHistory"]::before{content:'📺';font-size:19px}
+
+/* Better hit cards */
+.hit-c{border-radius:14px}
+.hit-c:active{transform:scale(.97)}
+
+/* Better profile */
+.prof-av{box-shadow:0 4px 20px rgba(0,0,0,.4)}
+
+/* Better admin panel */
+.admin-ov{background:var(--bg)}
+.atab{font-size:11px;padding:10px 13px}
+.af label{font-size:10px;letter-spacing:.8px}
+.af input,.af textarea,.af select{border-radius:10px}
+
+/* Smooth scroll */
+.view,.sb,.msgs{scroll-behavior:smooth}
+
+/* Better card body */
+.c-body{padding:10px 12px 12px}
+.c-title{font-size:13px;font-weight:700;line-height:1.35}
+
+/* News cards */
+.news-c{border-radius:18px}
+.news-bd{padding:14px}
+
+/* Better leaderboard */
+.user-i{border-radius:14px}
+
+/* Gradient accent on ongoing status */
+.c-st.on,.feat-b.on-b{background:linear-gradient(135deg,rgba(48,209,88,.25),rgba(48,209,88,.1));border-color:rgba(48,209,88,.4)}
+
 </style>
 </head>
 <body>
 
-<div id="splash"><div class="sp-icon">🎌</div><div class="sp-title">Акиру</div><div class="sp-sub">Дубляж Аниме</div><div class="sp-bar"><div class="sp-fill"></div></div></div>
+<div id="splash">
+  <div class="sp-kunai">
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="sp-svg">
+      <!-- Kunai blade -->
+      <path d="M40 8 L46 34 L40 38 L34 34 Z" fill="white" opacity="0.95"/>
+      <!-- Ring at top -->
+      <circle cx="40" cy="6" r="4" stroke="white" stroke-width="2.5" fill="none"/>
+      <!-- Handle -->
+      <rect x="37" y="38" width="6" height="22" rx="2" fill="white" opacity="0.85"/>
+      <!-- Handle wrap lines -->
+      <line x1="36" y1="42" x2="44" y2="42" stroke="rgba(0,0,0,0.3)" stroke-width="1.5"/>
+      <line x1="36" y1="46" x2="44" y2="46" stroke="rgba(0,0,0,0.3)" stroke-width="1.5"/>
+      <line x1="36" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.3)" stroke-width="1.5"/>
+      <line x1="36" y1="54" x2="44" y2="54" stroke="rgba(0,0,0,0.3)" stroke-width="1.5"/>
+      <!-- Pommel -->
+      <path d="M35 60 L40 68 L45 60 Z" fill="white" opacity="0.85"/>
+    </svg>
+  </div>
+  <div class="sp-title">АКИРУ</div>
+  <div class="sp-sub">Дубляж Аниме</div>
+  <div class="sp-bar"><div class="sp-fill"></div></div>
+  <div class="sp-dots"><span></span><span></span><span></span></div>
+</div>
 
 <header class="hdr">
-  <div class="hdr-logo">Акиру<span> — Дубляж</span></div>
+  <div class="hdr-logo" style="font-family:'Montserrat',sans-serif;letter-spacing:1px">АКИРУ<span style="font-family:'Inter',sans-serif;font-weight:500;letter-spacing:0"> — Дубляж</span></div>
   <div class="hdr-ico" onclick="toggleFilter()" id="filterBtn"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></div>
   <div class="hdr-ico" onclick="toggleSearch()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
   <div class="hdr-ico" onclick="toggleTheme()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
@@ -794,7 +972,7 @@ function renderCatalog(list){
     const img=document.createElement('img');img.className='c-img';img.src=SRV+'/covers/'+a.id;img.loading='lazy';
     img.onerror=function(){imgErr(this);};
     const ph=document.createElement('div');ph.className='c-ph';ph.style.display='none';ph.textContent=em(a.id);
-    const st=document.createElement('div');st.className='c-st '+(on?'on':'off');st.textContent=on?'Озвучивается':'Завершено';
+    const st=document.createElement('div');st.className='c-st '+(on?'on':'off');st.textContent=getStatusLabel(on?'ongoing':'ended');
     // Bookmark btn
     const bmBtn=document.createElement('div');bmBtn.className='c-bm'+(bm?' on':'');
     bmBtn.innerHTML='<svg fill="'+(bm?'#fff':'none')+'" viewBox="0 0 24 24" stroke="white" stroke-width="2" width="13" height="13"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>';
@@ -820,7 +998,7 @@ function qBM(id,el){let b=getBM();const s=b.includes(id);if(s)b=b.filter(x=>x!==
 function qWL(id,el){let w=getWL();const s=w.includes(id);if(s)w=w.filter(x=>x!==id);else w.push(id);saveWL(w);el.classList.toggle('on',!s);el.querySelector('svg').setAttribute('fill',!s?'var(--purple)':'none');el.querySelector('svg').setAttribute('stroke',!s?'var(--purple)':'white');renderWatchlist();showToast(s?'Убрано':'🔮 В список');}
 
 // WATCHLIST
-function renderWatchlist(){const list=getWL().map(id=>DB.anime[id]).filter(Boolean);const g=document.getElementById('wlGrid');if(!list.length){g.innerHTML='<div class="empty" style="grid-column:1/-1"><div class="e-ico">🔮</div><p>Список пуст</p></div>';return;}g.innerHTML=list.map((a,i)=>{const src=`${SRV}/covers/${a.id}`;return`<div class="card" style="animation-delay:${i*.05}s" onclick="openAnime('${a.id}')"><div class="c-img-w"><img class="c-img" src="${src}" onerror="imgErr(this)"><div class="c-ph" style="display:none">${em(a.id)}</div><div class="c-st ${a.status==='ongoing'?'on':'off'}">${a.status==='ongoing'?'Озвучивается':'Завершено'}</div></div><div class="c-body"><div class="c-title">${a.title}</div><div class="c-eps">${a.episodes?.length??0} серий</div></div></div>`;}).join('');}
+function renderWatchlist(){const list=getWL().map(id=>DB.anime[id]).filter(Boolean);const g=document.getElementById('wlGrid');if(!list.length){g.innerHTML='<div class="empty" style="grid-column:1/-1"><div class="e-ico">🔮</div><p>Список пуст</p></div>';return;}g.innerHTML=list.map((a,i)=>{const src=`${SRV}/covers/${a.id}`;return`<div class="card" style="animation-delay:${i*.05}s" onclick="openAnime('${a.id}')"><div class="c-img-w"><img class="c-img" src="${src}" onerror="imgErr(this)"><div class="c-ph" style="display:none">${em(a.id)}</div><div class="c-st ${a.status==='ongoing'?'on':'off'}">${getStatusLabel(a.status)}</div></div><div class="c-body"><div class="c-title">${a.title}</div><div class="c-eps">${a.episodes?.length??0} серий</div></div></div>`;}).join('');}
 
 // HISTORY
 function renderHistory(){const h=getHist();const el=document.getElementById('histList');if(!h.length){el.innerHTML='<div class="empty"><div class="e-ico">📺</div><p>История пуста</p></div>';return;}el.innerHTML=h.map(x=>{const a=DB.anime[x.a];if(!a)return'';const ep=a.episodes?.[x.i];if(!ep)return'';const d=new Date(x.ts).toLocaleDateString('ru',{day:'numeric',month:'short'});return`<div class="cw-c" style="flex:1;max-width:100%;margin-bottom:7px" onclick="openAnimePlay('${x.a}',${x.i})"><div class="cw-th">${em(a.id)}</div><div class="cw-inf"><div class="cw-t">${a.title}</div><div class="cw-e">Серия ${ep.num} — ${ep.title}</div><div class="cw-bar"><div class="cw-fill" style="width:${x.p||30}%"></div></div><div style="font-size:9px;color:var(--muted);margin-top:3px">${d}</div></div><div class="cw-btn"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></div></div>`;}).join('');}
@@ -832,13 +1010,20 @@ function renderCW(){const d=getCW();if(!d.length){document.getElementById('cwWra
 // ANIME DETAIL
 function openAnime(id){const a=DB.anime[id];if(!a)return;curAnime=a;
   const src=`${SRV}/covers/${a.id}`;
-  document.getElementById('detHero').innerHTML=`<div style="position:relative"><img src="${src}" onerror="this.outerHTML='<div class=\\'det-ph\\'>${em(a.id)}</div>'" class="det-img"><div class="det-fade"></div></div>`;
-  document.getElementById('dChips').innerHTML=`<span class="chip g">${a.genre}</span><span class="chip ${a.status==='ongoing'?'on':''}">${a.status==='ongoing'?'Озвучивается':'Завершено'}</span><span class="chip">${a.year}</span>`;
+  const heroEl=document.getElementById('detHero');
+  heroEl.innerHTML='';
+  const heroWrap=document.createElement('div');heroWrap.style.position='relative';
+  const heroImg=document.createElement('img');heroImg.className='det-img';heroImg.src=src;
+  heroImg.onerror=function(){this.parentNode.innerHTML='<div class="det-ph">'+em(a.id)+'</div>';};
+  const heroFade=document.createElement('div');heroFade.className='det-fade';
+  heroWrap.append(heroImg,heroFade);heroEl.appendChild(heroWrap);
+  const status=DB.status_labels?.[a.status]||(getStatusLabel(a.status));
+  document.getElementById('dChips').innerHTML='<span class="chip g">'+a.genre+'</span><span class="chip '+(a.status==='ongoing'?'on':'')+'">'+status+'</span><span class="chip">'+a.year+'</span>';
   document.getElementById('dTitle').textContent=a.title;
   document.getElementById('dJp').textContent=a.title_jp||'';
   document.getElementById('dDesc').textContent=a.description;
   const eps=a.episodes?.length??0,vws=getViews(),tv=Object.keys(vws).filter(k=>k.startsWith(a.id+'_')).reduce((s,k)=>s+vws[k],0),avg=getAvgR(a.id);
-  document.getElementById('dStats').innerHTML=`<div class="dst"><div class="dst-v">${eps}</div><div class="dst-l">Серий</div></div><div class="dst"><div class="dst-v">${tv||0}</div><div class="dst-l">Просмотров</div></div><div class="dst"><div class="dst-v">${avg||'—'}</div><div class="dst-l">Рейтинг</div></div><div class="dst"><div class="dst-v">${a.year}</div><div class="dst-l">Год</div></div>`;
+  document.getElementById('dStats').innerHTML='<div class="dst"><div class="dst-v">'+eps+'</div><div class="dst-l">Серий</div></div><div class="dst"><div class="dst-v">'+(tv||0)+'</div><div class="dst-l">Просмотров</div></div><div class="dst"><div class="dst-v">'+(avg||'—')+'</div><div class="dst-l">Рейтинг</div></div><div class="dst"><div class="dst-v">'+a.year+'</div><div class="dst-l">Год</div></div>';
   const bm=isBM(a.id),wl=isWL(a.id);
   const bb=document.getElementById('bmBtn');bb.classList.toggle('on',bm);bb.querySelector('svg').setAttribute('fill',bm?'var(--text)':'none');
   const wb=document.getElementById('wlBtn');wb.classList.toggle('on',wl);wb.querySelector('svg').setAttribute('fill',wl?'var(--purple)':'none');
@@ -1200,7 +1385,7 @@ function atab(t){document.querySelectorAll('.atab').forEach((el,i)=>el.classList
   else if(t==='news')aNews(b);}
 
 // ADMIN: ANIME
-function aAnime(b){b.innerHTML=`<div class="ast">Добавить / редактировать</div><div class="af"><label>ID *</label><input id="aId" placeholder="1, 2..."></div><div style="position:relative"><div class="photo-area" id="aPhotoArea" onclick="uploadAnimePoster()"><div style="font-size:28px;margin-bottom:6px">🖼</div><div style="font-size:13px;font-weight:600;color:var(--muted2)">Загрузить постер</div><div style="font-size:11px;color:var(--muted);margin-top:2px">JPG/PNG · до 5MB</div><img class="photo-prev" id="aPhotoPrev"></div></div><div class="af"><label>Название *</label><input id="aTitle" placeholder="Наруто"></div><div class="af"><label>Японское</label><input id="aJp" placeholder="NARUTO"></div><div class="af"><label>Жанр</label><input id="aGenre" placeholder="Сёнен"></div><div class="af"><label>Год</label><input id="aYear" type="number" placeholder="2024"></div><div class="af"><label>Описание</label><textarea id="aDesc"></textarea></div><div class="af"><label>Статус</label><select id="aStatus"><option value="ongoing">Озвучивается</option><option value="ended">Озвучено</option></select></div><button class="abtn pri" onclick="saveAnime()">💾 Сохранить</button><div class="ast" style="margin-top:14px">Список аниме</div>${Object.values(DB.anime||{}).map(a=>`<div class="ali" onclick="loadAnimeEdit('${a.id}')"><div><div class="ali-t">${a.title}</div><div class="ali-s">ID: ${a.id} · ${a.episodes?.length||0} серий</div></div><div style="display:flex;gap:8px;align-items:center"><div style="font-size:9px;font-weight:700;color:${a.status==='ongoing'?'var(--teal)':'var(--muted2)'}">${a.status==='ongoing'?'Озвучивается':'Завершено'}</div><div class="ali-d" onclick="event.stopPropagation();delAnime('${a.id}')">✕</div></div></div>`).join('')||'<div style="color:var(--muted);font-size:13px">Пусто</div>'}`;}
+function aAnime(b){b.innerHTML=`<div class="ast">Добавить / редактировать</div><div class="af"><label>ID *</label><input id="aId" placeholder="1, 2..."></div><div style="position:relative"><div class="photo-area" id="aPhotoArea" onclick="uploadAnimePoster()"><div style="font-size:28px;margin-bottom:6px">🖼</div><div style="font-size:13px;font-weight:600;color:var(--muted2)">Загрузить постер</div><div style="font-size:11px;color:var(--muted);margin-top:2px">JPG/PNG · до 5MB</div><img class="photo-prev" id="aPhotoPrev"></div></div><div class="af"><label>Название *</label><input id="aTitle" placeholder="Наруто"></div><div class="af"><label>Японское</label><input id="aJp" placeholder="NARUTO"></div><div class="af"><label>Жанр</label><input id="aGenre" placeholder="Сёнен"></div><div class="af"><label>Год</label><input id="aYear" type="number" placeholder="2024"></div><div class="af"><label>Описание</label><textarea id="aDesc"></textarea></div><div class="af"><label>Статус</label><select id="aStatus"><option value="ongoing">Озвучивается</option><option value="ended">Озвучено</option></select></div><button class="abtn pri" onclick="saveAnime()">💾 Сохранить</button><div class="ast" style="margin-top:14px">Список аниме</div>${Object.values(DB.anime||{}).map(a=>`<div class="ali" onclick="loadAnimeEdit('${a.id}')"><div><div class="ali-t">${a.title}</div><div class="ali-s">ID: ${a.id} · ${a.episodes?.length||0} серий</div></div><div style="display:flex;gap:8px;align-items:center"><div style="font-size:9px;font-weight:700;color:${a.status==='ongoing'?'var(--teal)':'var(--muted2)'}">${getStatusLabel(a.status)}</div><div class="ali-d" onclick="event.stopPropagation();delAnime('${a.id}')">✕</div></div></div>`).join('')||'<div style="color:var(--muted);font-size:13px">Пусто</div>'}`;}
 function loadAnimeEdit(id){const a=DB.anime[id];if(!a)return;document.getElementById('aId').value=a.id;document.getElementById('aTitle').value=a.title;document.getElementById('aJp').value=a.title_jp||'';document.getElementById('aGenre').value=a.genre||'';document.getElementById('aYear').value=a.year||'';document.getElementById('aDesc').value=a.description||'';document.getElementById('aStatus').value=a.status||'ongoing';const prev=document.getElementById('aPhotoPrev');const area=document.getElementById('aPhotoArea');if(prev&&a.cover_file_id){prev.src=`${SRV}/covers/${a.id}`;prev.classList.add('on');area?.classList.add('has');}document.getElementById('adminBody').scrollTop=0;showToast('📝 '+a.title);}
 async function saveAnime(){const id=document.getElementById('aId').value.trim();const title=document.getElementById('aTitle').value.trim();if(!id||!title)return showToast('⚠️ ID и название обязательны');if(!DB.anime)DB.anime={};DB.anime[id]={id,title,title_jp:document.getElementById('aJp').value.trim(),genre:document.getElementById('aGenre').value.trim()||'Аниме',year:parseInt(document.getElementById('aYear').value)||2024,description:document.getElementById('aDesc').value.trim()||'Описание не добавлено.',status:document.getElementById('aStatus').value,cover_file_id:DB.anime[id]?.cover_file_id||'',episodes:DB.anime[id]?.episodes||[]};await pushDB();showToast('✅ Аниме сохранено!');aAnime(document.getElementById('adminBody'));renderAll();}
 async function delAnime(id){if(!confirm('Удалить?'))return;delete DB.anime[id];await pushDB();showToast('🗑 Удалено');aAnime(document.getElementById('adminBody'));renderAll();}
@@ -1289,7 +1474,30 @@ async function toggleBan(uid,name,btn){const bn=btn.textContent.trim()==='Бан
 
 // ADMIN: ABOUT
 function aAbout(b){const info=DB.team_info||{};b.innerHTML=`<div class="ast">Редактировать «О нас»</div><div class="af"><label>Название</label><input id="abtNm" value="${info.name||'Команда Акиру'}"></div><div class="af"><label>Описание</label><textarea id="abtDs">${info.desc||''}</textarea></div><div class="af"><label>Telegram канал</label><input id="abtCh" value="${info.channel||''}" placeholder="@akiry_dub"></div><div class="af"><label>Telegram чат</label><input id="abtCt" value="${info.chat||''}" placeholder="@akiry_chat"></div><div class="af"><label>Email</label><input id="abtEm" value="${info.email||''}" placeholder="akiry@mail.ru"></div><button class="abtn pri" onclick="saveAbout()">💾 Сохранить</button>`;}
-async function saveAbout(){DB.team_info={name:document.getElementById('abtNm').value.trim(),desc:document.getElementById('abtDs').value.trim(),channel:document.getElementById('abtCh').value.trim(),chat:document.getElementById('abtCt').value.trim(),email:document.getElementById('abtEm').value.trim()};await pushDB();showToast('✅ Сохранено!');updateAbout();}
+
+// ── STATUS LABELS ─────────────────────────────────────
+function getStatusLabel(status){
+  return DB.status_labels?.[status]||(status==='ongoing'?'Озвучивается':'Завершено');
+}
+
+// Update aAbout to include status labels
+async function saveAbout(){
+  DB.team_info={
+    name:document.getElementById('abtNm').value.trim(),
+    desc:document.getElementById('abtDs').value.trim(),
+    channel:document.getElementById('abtCh').value.trim(),
+    chat:document.getElementById('abtCt').value.trim(),
+    email:document.getElementById('abtEm').value.trim()
+  };
+  const onV=document.getElementById('abtOngoing')?.value.trim();
+  const offV=document.getElementById('abtEnded')?.value.trim();
+  if(onV||offV){
+    DB.status_labels=DB.status_labels||{};
+    if(onV)DB.status_labels.ongoing=onV;
+    if(offV)DB.status_labels.ended=offV;
+  }
+  await pushDB();showToast('✅ Сохранено!');updateAbout();
+}
 
 // PUSH DB
 async function pushDB(){try{const r=await fetch(`${SRV}/db?token=${TOK}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(DB)});if(!r.ok)throw new Error('Ошибка '+r.status);lss('dbCache',DB);}catch(e){showToast('❌ Ошибка: '+e.message);throw e;}}
@@ -1334,7 +1542,7 @@ function renderFavorites(){
       '<div class="c-img-w">'+
         '<img class="c-img" src="'+src+'" onerror="imgErr(this)">'+
         '<div class="c-ph" style="display:none">'+em(a.id)+'</div>'+
-        '<div class="c-st '+(on?'on':'off')+'">'+(on?'Озвучивается':'Завершено')+'</div>'+
+        '<div class="c-st '+(on?'on':'off')+'">'+(getStatusLabel(on?'ongoing':'ended'))+'</div>'+
       '</div>'+
       '<div class="c-body"><div class="c-title">'+a.title+'</div><div class="c-eps">'+(a.episodes?.length||0)+' серий</div></div>'+
     '</div>';
