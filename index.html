@@ -53,8 +53,6 @@
 /* Better profile */
 .prof-av{box-shadow:0 4px 20px rgba(0,0,0,.4)}
 
-/* Better admin panel */
-.admin-ov{background:var(--bg)}
 .atab{font-size:11px;padding:10px 13px}
 .af label{font-size:10px;letter-spacing:.8px}
 .af input,.af textarea,.af select{border-radius:10px}
@@ -283,7 +281,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 
 /* OVERLAYS */
 .ov{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.7);backdrop-filter:blur(8px)}
-.ov.on{display:block;animation:fov .18s}
+.ov.on{display:block!important;animation:fov .18s}
 @keyframes fov{from{opacity:0}to{opacity:1}}
 .sheet{position:absolute;bottom:0;left:0;right:0;background:var(--s1);border-radius:22px 22px 0 0;max-height:93vh;display:flex;flex-direction:column;animation:sup .3s cubic-bezier(.2,1.05,.4,1)}
 @keyframes sup{from{transform:translateY(100%)}to{transform:none}}
@@ -710,8 +708,6 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 /* Better profile */
 .prof-av{box-shadow:0 4px 20px rgba(0,0,0,.4)}
 
-/* Better admin panel */
-.admin-ov{background:var(--bg)}
 .atab{font-size:11px;padding:10px 13px}
 .af label{font-size:10px;letter-spacing:.8px}
 .af input,.af textarea,.af select{border-radius:10px}
