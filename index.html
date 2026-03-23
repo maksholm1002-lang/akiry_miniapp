@@ -78,6 +78,81 @@
 /* Gradient accent on ongoing status */
 .c-st.on,.feat-b.on-b{background:linear-gradient(135deg,rgba(48,209,88,.25),rgba(48,209,88,.1));border-color:rgba(48,209,88,.4)}
 
+
+/* ══ ALIGNMENT FIXES ══ */
+/* Center all flex items properly */
+.hdr{align-items:center}
+.bnav{align-items:center}
+.nb{align-items:center;justify-content:center}
+.hdr-ico{align-items:center;justify-content:center}
+
+/* Fix card grid - equal columns */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
+
+/* Fix feat scroll items */
+.feat-c{display:flex;flex-direction:column}
+.feat-img,.feat-ph{flex-shrink:0}
+
+/* Fix actor card centering */
+.act-c{display:flex;flex-direction:column;align-items:center;text-align:center}
+.act-av-w{display:flex;align-items:center;justify-content:center}
+.act-av{display:flex;align-items:center;justify-content:center}
+
+/* Fix achip */
+.achip{display:flex;flex-direction:column;align-items:center}
+.achip-av{display:flex;align-items:center;justify-content:center;overflow:hidden}
+.achip-av img{width:100%;height:100%;object-fit:cover}
+
+/* Fix adAv */
+.ad-av{display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ad-av img{width:100%;height:100%;object-fit:cover}
+
+/* Fix profile avatar */
+.prof-av{display:flex;align-items:center;justify-content:center;overflow:hidden}
+
+/* Fix det-stats equal width */
+.dst{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 6px}
+
+/* Fix ep list */
+.ep-top{display:flex;align-items:center}
+.ep-btm{display:flex;align-items:center;justify-content:space-between}
+
+/* Fix feat info */
+.feat-i{display:flex;flex-direction:column;align-items:flex-start}
+
+/* Fix support messages */
+.msg{display:flex;align-items:flex-end;gap:7px}
+.msg.own{flex-direction:row-reverse}
+
+/* Fix hit card */
+.hit-c{display:flex;align-items:center}
+.hit-th{display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hit-th img{width:100%;height:100%;object-fit:cover}
+
+/* Fix cal grid */
+.cal-d{display:flex;flex-direction:column;align-items:center;justify-content:center}
+
+/* Fix badges */
+.bg-i{display:flex;flex-direction:column;align-items:center}
+.ach-i{display:flex;align-items:center}
+
+/* Fix cw card */
+.cw-c{display:flex;align-items:center}
+.cw-btn{display:flex;align-items:center;justify-content:center}
+
+/* Fix sub-row */
+.sub-row{display:flex;align-items:center;justify-content:space-between}
+
+/* Fix news card body */
+.news-bd{display:flex;flex-direction:column}
+
+/* Make sure photo-area text is centered */
+.photo-area{display:flex;flex-direction:column;align-items:center;justify-content:center}
+
+/* Fix user-i */
+.user-i{display:flex;align-items:center}
+.user-av{display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
 </style>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
@@ -662,6 +737,81 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 /* Gradient accent on ongoing status */
 .c-st.on,.feat-b.on-b{background:linear-gradient(135deg,rgba(48,209,88,.25),rgba(48,209,88,.1));border-color:rgba(48,209,88,.4)}
 
+
+/* ══ ALIGNMENT FIXES ══ */
+/* Center all flex items properly */
+.hdr{align-items:center}
+.bnav{align-items:center}
+.nb{align-items:center;justify-content:center}
+.hdr-ico{align-items:center;justify-content:center}
+
+/* Fix card grid - equal columns */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
+
+/* Fix feat scroll items */
+.feat-c{display:flex;flex-direction:column}
+.feat-img,.feat-ph{flex-shrink:0}
+
+/* Fix actor card centering */
+.act-c{display:flex;flex-direction:column;align-items:center;text-align:center}
+.act-av-w{display:flex;align-items:center;justify-content:center}
+.act-av{display:flex;align-items:center;justify-content:center}
+
+/* Fix achip */
+.achip{display:flex;flex-direction:column;align-items:center}
+.achip-av{display:flex;align-items:center;justify-content:center;overflow:hidden}
+.achip-av img{width:100%;height:100%;object-fit:cover}
+
+/* Fix adAv */
+.ad-av{display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ad-av img{width:100%;height:100%;object-fit:cover}
+
+/* Fix profile avatar */
+.prof-av{display:flex;align-items:center;justify-content:center;overflow:hidden}
+
+/* Fix det-stats equal width */
+.dst{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 6px}
+
+/* Fix ep list */
+.ep-top{display:flex;align-items:center}
+.ep-btm{display:flex;align-items:center;justify-content:space-between}
+
+/* Fix feat info */
+.feat-i{display:flex;flex-direction:column;align-items:flex-start}
+
+/* Fix support messages */
+.msg{display:flex;align-items:flex-end;gap:7px}
+.msg.own{flex-direction:row-reverse}
+
+/* Fix hit card */
+.hit-c{display:flex;align-items:center}
+.hit-th{display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hit-th img{width:100%;height:100%;object-fit:cover}
+
+/* Fix cal grid */
+.cal-d{display:flex;flex-direction:column;align-items:center;justify-content:center}
+
+/* Fix badges */
+.bg-i{display:flex;flex-direction:column;align-items:center}
+.ach-i{display:flex;align-items:center}
+
+/* Fix cw card */
+.cw-c{display:flex;align-items:center}
+.cw-btn{display:flex;align-items:center;justify-content:center}
+
+/* Fix sub-row */
+.sub-row{display:flex;align-items:center;justify-content:space-between}
+
+/* Fix news card body */
+.news-bd{display:flex;flex-direction:column}
+
+/* Make sure photo-area text is centered */
+.photo-area{display:flex;flex-direction:column;align-items:center;justify-content:center}
+
+/* Fix user-i */
+.user-i{display:flex;align-items:center}
+.user-av{display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
 </style>
 </head>
 <body>
@@ -1008,41 +1158,66 @@ function clearHist(){if(confirm('Очистить историю?')){localStorag
 function renderCW(){const d=getCW();if(!d.length){document.getElementById('cwWrap').style.display='none';return;}document.getElementById('cwWrap').style.display='';document.getElementById('cwScroll').innerHTML=d.map(x=>{const a=DB.anime[x.a];if(!a)return'';const ep=a.episodes?.[x.i];if(!ep)return'';return`<div class="cw-c" onclick="openAnimePlay('${x.a}',${x.i})"><div class="cw-th">${em(a.id)}</div><div class="cw-inf"><div class="cw-t">${a.title}</div><div class="cw-e">Серия ${ep.num}</div><div class="cw-bar"><div class="cw-fill" style="width:${x.p||30}%"></div></div></div><div class="cw-btn"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></div></div>`;}).join('');}
 
 // ANIME DETAIL
-function openAnime(id){const a=DB.anime[id];if(!a)return;curAnime=a;
-  const src=`${SRV}/covers/${a.id}`;
+function openAnime(id){
+  const a=DB.anime[id]; if(!a) return;
+  curAnime=a;
+  // Hero image
   const heroEl=document.getElementById('detHero');
-  heroEl.innerHTML='';
-  const heroWrap=document.createElement('div');heroWrap.style.position='relative';
-  const heroImg=document.createElement('img');heroImg.className='det-img';heroImg.src=src;
-  heroImg.onerror=function(){this.parentNode.innerHTML='<div class="det-ph">'+em(a.id)+'</div>';};
-  const heroFade=document.createElement('div');heroFade.className='det-fade';
-  heroWrap.append(heroImg,heroFade);heroEl.appendChild(heroWrap);
-  const status=DB.status_labels?.[a.status]||(getStatusLabel(a.status));
-  document.getElementById('dChips').innerHTML='<span class="chip g">'+a.genre+'</span><span class="chip '+(a.status==='ongoing'?'on':'')+'">'+status+'</span><span class="chip">'+a.year+'</span>';
-  document.getElementById('dTitle').textContent=a.title;
-  document.getElementById('dJp').textContent=a.title_jp||'';
-  document.getElementById('dDesc').textContent=a.description;
-  const eps=a.episodes?.length??0,vws=getViews(),tv=Object.keys(vws).filter(k=>k.startsWith(a.id+'_')).reduce((s,k)=>s+vws[k],0),avg=getAvgR(a.id);
-  document.getElementById('dStats').innerHTML='<div class="dst"><div class="dst-v">'+eps+'</div><div class="dst-l">Серий</div></div><div class="dst"><div class="dst-v">'+(tv||0)+'</div><div class="dst-l">Просмотров</div></div><div class="dst"><div class="dst-v">'+(avg||'—')+'</div><div class="dst-l">Рейтинг</div></div><div class="dst"><div class="dst-v">'+a.year+'</div><div class="dst-l">Год</div></div>';
-  const bm=isBM(a.id),wl=isWL(a.id);
-  const bb=document.getElementById('bmBtn');bb.classList.toggle('on',bm);bb.querySelector('svg').setAttribute('fill',bm?'var(--text)':'none');
-  const wb=document.getElementById('wlBtn');wb.classList.toggle('on',wl);wb.querySelector('svg').setAttribute('fill',wl?'var(--purple)':'none');
+  if(heroEl){
+    heroEl.innerHTML='';
+    const hw=document.createElement('div'); hw.style.position='relative';
+    const hi=document.createElement('img'); hi.className='det-img'; hi.src=SRV+'/covers/'+a.id;
+    hi.onerror=function(){hw.innerHTML='<div class="det-ph">'+em(a.id)+'</div>';};
+    const hf=document.createElement('div'); hf.className='det-fade';
+    hw.append(hi,hf); heroEl.appendChild(hw);
+  }
+  // Chips
+  const sl=DB.status_labels||{};
+  const stLbl=sl[a.status]||(a.status==='ongoing'?'Озвучивается':'Завершено');
+  const stCls=a.status==='ongoing'?'on':'';
+  const dc=document.getElementById('dChips');
+  if(dc) dc.innerHTML='<span class="chip g">'+a.genre+'</span><span class="chip '+stCls+'">'+stLbl+'</span><span class="chip">'+a.year+'</span>';
+  // Text
+  const dt=document.getElementById('dTitle'); if(dt) dt.textContent=a.title;
+  const dj=document.getElementById('dJp'); if(dj) dj.textContent=a.title_jp||'';
+  const dd=document.getElementById('dDesc'); if(dd) dd.textContent=a.description||'';
+  // Stats
+  const eps=a.episodes?.length??0;
+  const vws=getViews();
+  const tv=Object.keys(vws).filter(k=>k.startsWith(a.id+'_')).reduce((s,k)=>s+vws[k],0);
+  const avg=getAvgR(a.id);
+  const dst=document.getElementById('dStats');
+  if(dst) dst.innerHTML='<div class="dst"><div class="dst-v">'+eps+'</div><div class="dst-l">Серий</div></div><div class="dst"><div class="dst-v">'+(tv||0)+'</div><div class="dst-l">Просмотров</div></div><div class="dst"><div class="dst-v">'+(avg||'—')+'</div><div class="dst-l">Рейтинг</div></div><div class="dst"><div class="dst-v">'+a.year+'</div><div class="dst-l">Год</div></div>';
+  // Bookmark / watchlist buttons
+  const bm=isBM(a.id), wl=isWL(a.id);
+  const bb=document.getElementById('bmBtn');
+  if(bb){bb.classList.toggle('on',bm); const svg=bb.querySelector('svg'); if(svg)svg.setAttribute('fill',bm?'var(--text)':'none');}
+  const wb=document.getElementById('wlBtn');
+  if(wb){wb.classList.toggle('on',wl); const svg=wb.querySelector('svg'); if(svg)svg.setAttribute('fill',wl?'var(--purple)':'none');}
+  // Actors preview
   const actIds=[...new Set((a.episodes||[]).flatMap(e=>(e.cast||[]).map(c=>c.actor_id)))];
   const ap=document.getElementById('actPre');
-  if(actIds.length){let actHtml='';
+  const apw=document.getElementById('actPreW');
+  if(ap && actIds.length){
+    let html='';
     actIds.slice(0,6).forEach(aid=>{
       const ac=DB.actors?.[aid]; if(!ac) return;
-      const ch=(a.episodes||[]).flatMap(e=>(e.cast||[]).filter(cc=>cc.actor_id===aid).map(cc=>cc.character))[0]||'';
-      actHtml+='<div class="achip" data-id="'+aid+'" onclick="openActor(this.dataset.id)"><div class="achip-av">';
-      actHtml+=ac.photo?('<img src="'+SRV+'/actor_photos/'+aid+'" onerror="imgErr(this)">'):''; if(!ac.photo)actHtml+='<span>'+aem(aid)+'</span>';
-      actHtml+='</div><div class="achip-n">'+ac.name.split(' ')[0]+'</div></div>';
+      html+='<div class="achip" data-id="'+aid+'" onclick="openActor(this.dataset.id)">';
+      html+='<div class="achip-av">';
+      html+=ac.photo?('<img src="'+SRV+'/actor_photos/'+aid+'" onerror="imgErr(this)">'):'<span>'+aem(aid)+'</span>';
+      html+='</div><div class="achip-n">'+ac.name.split(' ')[0]+'</div></div>';
     });
-    ap.innerHTML=actHtml;document.getElementById('actPreW').style.display='';}else document.getElementById('actPreW').style.display='none';
+    ap.innerHTML=html;
+    if(apw) apw.style.display='';
+  } else if(apw) apw.style.display='none';
+  // Render episodes and rating
   renderEpList();
   renderAnimeRating(a.id);
-  document.getElementById('detSb').scrollTop=0;
-  document.getElementById('detOv').classList.add('on');
-  if(tg)tg.BackButton.show();}
+  // Show overlay
+  const ov=document.getElementById('detOv');
+  if(ov){ov.classList.add('on'); const sb=document.getElementById('detSb'); if(sb)sb.scrollTop=0;}
+  if(tg) tg.BackButton.show();
+}
 
 function renderEpList(){
   const a=curAnime; if(!a) return;
@@ -1218,7 +1393,7 @@ function renderActors(q=''){
     html+='<div class="act-c" style="animation-delay:'+i*.05+'s" data-id="'+a.id+'" onclick="openActor(this.dataset.id)">';
     if(a.role==='lead') html+='<div class="act-star">⭐</div>';
     html+='<div class="act-av-w"><div class="act-av">';
-    html+=a.photo?('<img src="'+SRV+'/actor_photos/'+a.id+'" onerror="imgErr(this)">'):'<span>'+aem(a.id)+'</span>';
+    if(a.photo){html+='<img src="'+SRV+'/actor_photos/'+a.id+'" onerror="imgErr(this)" style="width:100%;height:100%;object-fit:cover">';}else{html+='<span>'+aem(a.id)+'</span>';}
     html+='</div></div>';
     html+='<div class="act-nm">'+a.name+'</div>';
     html+='<span class="abadge '+rb+'">'+rl+'</span>';
