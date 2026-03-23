@@ -1,0 +1,2460 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://akiry.ru">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Акиру</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<style>[data-theme="dark"]{--bg:#000;--s1:#0d0d0d;--s2:#1a1a1a;--s3:#242424;--s4:#2e2e2e;--acc:#fff;--acc2:rgba(255,255,255,.65);--acc3:rgba(255,255,255,.3);--gold:#ffd60a;--teal:#30d158;--red:#ff453a;--blue:#0a84ff;--purple:#bf5af2;--text:#fff;--muted:#636366;--muted2:#aeaeb2;--border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.15);--card-bg:#0d0d0d;--input-bg:#1a1a1a;}[data-theme="light"]{--bg:#f2f2f7;--s1:#fff;--s2:#f2f2f7;--s3:#e5e5ea;--s4:#d1d1d6;--acc:#000;--acc2:rgba(0,0,0,.65);--acc3:rgba(0,0,0,.3);--gold:#ff9500;--teal:#34c759;--red:#ff3b30;--blue:#007aff;--purple:#af52de;--text:#000;--muted:#8e8e93;--muted2:#3c3c43;--border:rgba(0,0,0,.08);--border2:rgba(0,0,0,.15);--card-bg:#fff;--input-bg:#fff;}*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{height:100%;overflow:hidden}body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;transition:background .3s,color .3s}.splash{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s,transform .5s}.splash.hide{opacity:0;transform:scale(1.05);pointer-events:none}.splash-logo{font-size:72px;margin-bottom:16px;animation:splashPulse 1.5s ease-in-out infinite}@keyframes splashPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}.splash-title{font-size:28px;font-weight:900;letter-spacing:-.5px;color:#fff;margin-bottom:6px}.splash-sub{font-size:14px;color:rgba(255,255,255,.5);font-weight:500}.splash-bar{width:160px;height:3px;background:rgba(255,255,255,.15);border-radius:2px;margin-top:32px;overflow:hidden}.splash-fill{height:100%;background:#fff;border-radius:2px;animation:splashLoad 1.8s ease-in-out forwards}@keyframes splashLoad{from{width:0}to{width:100%}}.hdr{flex-shrink:0;display:flex;align-items:center;padding:14px 16px 10px;gap:8px;background:rgba(0,0,0,.94);backdrop-filter:blur(30px);border-bottom:1px solid var(--border);z-index:50}[data-theme="light"] .hdr{background:rgba(242,242,247,.94)}.hdr-logo{flex:1;font-size:18px;font-weight:800;letter-spacing:-.4px}.hdr-logo span{background:linear-gradient(90deg,#aeaeb2,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}[data-theme="light"] .hdr-logo span{background:linear-gradient(90deg,#636366,#000);-webkit-background-clip:text;background-clip:text}.hdr-btn{width:32px;height:32px;background:var(--s2);border:1px solid var(--border);border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;flex-shrink:0;transition:background .2s}.hdr-btn svg{width:15px;height:15px;color:var(--muted2)}.pip{position:absolute;top:5px;right:5px;width:6px;height:6px;border-radius:50%;background:var(--teal);border:1.5px solid var(--bg);display:none}.pip.show{display:block}.srch{flex-shrink:0;padding:6px 16px 8px;background:rgba(0,0,0,.94);backdrop-filter:blur(30px);display:none}[data-theme="light"] .srch{background:rgba(242,242,247,.94)}.srch.show{display:block}.srch-box{display:flex;align-items:center;gap:8px;background:var(--s2);border-radius:11px;padding:8px 12px;border:1px solid var(--border)}.srch-box:focus-within{border-color:var(--border2)}.srch-box svg{width:14px;height:14px;color:var(--muted);flex-shrink:0}.srch-box input{background:none;border:none;outline:none;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;font-size:14px;font-weight:500;width:100%}.srch-box input::placeholder{color:var(--muted)}.filter-bar{flex-shrink:0;display:none;gap:6px;padding:6px 16px 8px;overflow-x:auto;scrollbar-width:none;background:rgba(0,0,0,.94);backdrop-filter:blur(30px)}[data-theme="light"] .filter-bar{background:rgba(242,242,247,.94)}.filter-bar.show{display:flex}.filter-bar::-webkit-scrollbar{display:none}.filter-chip{flex:0 0 auto;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer;border:1px solid var(--border);color:var(--muted2);background:none;white-space:nowrap;transition:all .15s}.filter-chip.active{background:var(--acc);color:var(--bg);border-color:var(--acc)}.view{flex:1;overflow-y:auto;scrollbar-width:none}.view::-webkit-scrollbar{display:none}.view.hidden{display:none}.vpad{padding:14px 16px 90px}.sec{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.sec-t{font-size:17px;font-weight:700;letter-spacing:-.3px}.sec-m{font-size:12px;font-weight:600;color:var(--muted2);cursor:pointer}.feat-scroll{display:flex;gap:10px;overflow-x:auto;margin:0 -16px;padding:0 16px 4px;scrollbar-width:none;margin-bottom:20px}.feat-scroll::-webkit-scrollbar{display:none}.feat-card{flex:0 0 150px;border-radius:16px;overflow:hidden;cursor:pointer;position:relative;background:var(--s1);transition:transform .18s;flex-shrink:0}.feat-card:active{transform:scale(.96)}.feat-img{width:100%;height:200px;object-fit:cover;display:block}.feat-ph{width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(160deg,var(--s2),var(--s3))}.feat-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,rgba(0,0,0,.2) 55%,transparent 100%)}.feat-info{position:absolute;bottom:0;left:0;right:0;padding:10px}.feat-badge{display:inline-block;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 7px;border-radius:20px;margin-bottom:4px}.feat-badge.on{background:rgba(48,209,88,.18);color:var(--teal);border:1px solid rgba(48,209,88,.3)}.feat-badge.off{background:rgba(255,255,255,.08);color:var(--muted2);border:1px solid var(--border)}.feat-title{font-size:12px;font-weight:700;line-height:1.25;color:#fff}.feat-sub{font-size:9px;color:rgba(255,255,255,.6);margin-top:2px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{background:var(--card-bg);border-radius:14px;overflow:hidden;cursor:pointer;border:1px solid var(--border);transition:transform .16s;animation:cin .45s both}@keyframes cin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}.card:nth-child(2){animation-delay:.05s}.card:nth-child(3){animation-delay:.1s}.card:nth-child(4){animation-delay:.15s}.card:nth-child(5){animation-delay:.2s}.card:active{transform:scale(.96)}.card-img-w{position:relative}.card-img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:var(--s2)}.card-ph{width:100%;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;font-size:40px;background:linear-gradient(160deg,var(--s2),var(--s3));position:relative}.card-st{position:absolute;top:7px;left:7px;font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:20px}.card-st.on{background:rgba(48,209,88,.18);color:var(--teal);border:1px solid rgba(48,209,88,.25)}.card-st.off{background:rgba(255,255,255,.07);color:var(--muted2);border:1px solid var(--border)}.card-bm{position:absolute;top:7px;right:7px;width:26px;height:26px;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}.card-bm svg{width:13px;height:13px}.card-bm.saved svg{fill:#fff}.card-wl{position:absolute;bottom:7px;right:7px;width:26px;height:26px;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}.card-wl svg{width:13px;height:13px}.card-wl.added svg{fill:var(--purple)}.card-body{padding:9px 11px 11px}.card-title{font-size:13px;font-weight:700;line-height:1.3;margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.card-row{display:flex;align-items:center;justify-content:space-between}.card-eps{font-size:10px;color:var(--muted2);font-weight:500}.card-rat{display:flex;align-items:center;gap:2px;font-size:10px;font-weight:700;color:var(--gold)}.card-rat svg{width:10px;height:10px;fill:var(--gold)}.card-preview{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);padding:8px 10px;transform:translateY(100%);transition:transform .2s;pointer-events:none}.card:hover .card-preview{transform:translateY(0)}.card-preview-title{font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.card-preview-desc{font-size:9px;color:rgba(255,255,255,.6);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.cw-scroll{display:flex;gap:10px;overflow-x:auto;margin:0 -16px;padding:0 16px 4px;scrollbar-width:none;margin-bottom:20px}.cw-scroll::-webkit-scrollbar{display:none}.cw-card{flex:0 0 220px;background:var(--s1);border:1px solid var(--border);border-radius:13px;display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;transition:background .15s}.cw-card:active{background:var(--s2)}.cw-thumb{width:42px;height:42px;border-radius:9px;background:var(--s2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden}.cw-thumb img{width:100%;height:100%;object-fit:cover}.cw-info{flex:1;min-width:0}.cw-ttl{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cw-ep{font-size:10px;color:var(--muted2);margin-top:1px}.cw-bar{height:3px;background:var(--s3);border-radius:2px;margin-top:5px;overflow:hidden}.cw-fill{height:100%;background:var(--acc);border-radius:2px;transition:width .3s}.cw-btn{width:28px;height:28px;background:var(--acc);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}.cw-btn svg{width:11px;height:11px;color:var(--bg);margin-left:1px}.empty{text-align:center;padding:50px 20px;color:var(--muted)}.empty-icon{font-size:42px;margin-bottom:10px;opacity:.6}.empty p{font-size:13px;font-weight:500}.ov{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.75);backdrop-filter:blur(10px)}.ov.open{display:block;animation:fov .2s}@keyframes fov{from{opacity:0}to{opacity:1}}.sheet{position:absolute;bottom:0;left:0;right:0;background:var(--s1);border-radius:24px 24px 0 0;max-height:94vh;display:flex;flex-direction:column;animation:sup .32s cubic-bezier(.2,1.05,.4,1)}@keyframes sup{from{transform:translateY(100%)}to{transform:none}}.drag{width:34px;height:4px;background:var(--s3);border-radius:2px;margin:10px auto 0;flex-shrink:0}.sb{flex:1;overflow-y:auto;scrollbar-width:none}.sb::-webkit-scrollbar{display:none}.det-hero{position:relative}.det-img{width:100%;height:220px;object-fit:cover;display:block}.det-ph{width:100%;height:175px;display:flex;align-items:center;justify-content:center;font-size:66px;background:linear-gradient(160deg,var(--s2),var(--s3))}.det-fade{position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(transparent,var(--s1))}.det-body{padding:14px 16px}.det-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}.chip{font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;color:var(--muted2);border:1px solid var(--border2)}.chip.g{background:rgba(255,255,255,.06);color:var(--text)}.chip.on{background:rgba(48,209,88,.1);color:var(--teal);border-color:rgba(48,209,88,.25)}.chip.off{background:rgba(255,255,255,.04);color:var(--muted2)}.det-title{font-size:22px;font-weight:800;letter-spacing:-.4px;line-height:1.15;margin-bottom:3px}.det-jp{font-size:12px;color:var(--muted2);margin-bottom:12px;font-family:-apple-system,BlinkMacSystemFont,sans-serif}.det-desc{font-size:13px;line-height:1.75;color:var(--muted2);margin-bottom:14px}.det-stats{display:flex;background:var(--s2);border-radius:13px;overflow:hidden;border:1px solid var(--border);margin-bottom:13px}.dst{flex:1;padding:11px 6px;text-align:center;border-right:1px solid var(--border)}.dst:last-child{border:none}.dst-v{font-size:16px;font-weight:800;color:var(--gold);line-height:1}.dst-l{font-size:8px;font-weight:600;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;margin-top:2px}.det-acts{display:flex;gap:8px;margin-bottom:12px}.watch-btn{flex:1;padding:13px;background:var(--acc);color:var(--bg);border:none;border-radius:12px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:opacity .15s}.watch-btn:active{opacity:.85}.bm-btn,.wl-btn{width:46px;height:46px;background:var(--s2);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}.bm-btn svg,.wl-btn svg{width:18px;height:18px}.bm-btn.saved{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25)}.bm-btn.saved svg{fill:var(--acc)}.wl-btn.added{background:rgba(191,90,242,.15);border-color:rgba(191,90,242,.3)}.wl-btn.added svg{fill:var(--purple)}.share-row{display:flex;gap:6px;margin-bottom:12px}.share-btn-sm{flex:1;padding:9px;background:var(--s2);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;gap:5px;cursor:pointer;font-size:11px;font-weight:600;color:var(--muted2);transition:background .15s}.share-btn-sm:active{background:var(--s3)}.share-btn-sm svg{width:14px;height:14px}.act-pre{display:flex;gap:12px;overflow-x:auto;margin:0 -16px;padding:0 16px 4px;scrollbar-width:none;margin-bottom:12px}.act-pre::-webkit-scrollbar{display:none}.achip{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}.achip-av{width:50px;height:50px;border-radius:50%;background:var(--s2);border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden}.achip-av img{width:100%;height:100%;object-fit:cover}.achip-name{font-size:10px;font-weight:600;max-width:58px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.achip-char{font-size:9px;color:var(--muted2);max-width:58px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sub-row{display:flex;align-items:center;justify-content:space-between;background:var(--s2);border-radius:12px;padding:11px 13px;margin-bottom:14px;border:1px solid var(--border)}.sub-label{font-size:13px;font-weight:600}.sub-sub{font-size:10px;color:var(--muted2);margin-top:1px}.tgl{width:44px;height:26px;border-radius:13px;background:var(--s3);position:relative;cursor:pointer;transition:background .25s;flex-shrink:0}.tgl.on{background:#30d158}.tgl-k{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .22s;box-shadow:0 1px 4px rgba(0,0,0,.3)}.tgl.on .tgl-k{left:21px}.eps-wrap{padding:0 16px 8px}.eps-hdr{font-size:16px;font-weight:700;margin-bottom:10px}.ep{background:var(--s2);border:1px solid var(--border);border-radius:13px;padding:12px 13px;margin-bottom:7px;transition:border-color .15s}.ep-top{display:flex;align-items:center;gap:11px;cursor:pointer}.ep-n{font-size:20px;font-weight:800;color:var(--muted2);min-width:22px;line-height:1}.ep-inf{flex:1;min-width:0}.ep-ttl{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}.ep-meta2{display:flex;align-items:center;gap:8px}.ep-dur{font-size:10px;color:var(--muted2)}.ep-views{display:flex;align-items:center;gap:3px;font-size:10px;color:var(--muted2)}.ep-views svg{width:10px;height:10px}.ep-play{width:36px;height:36px;background:var(--acc);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}.ep-play svg{width:12px;height:12px;color:var(--bg);margin-left:1px}.ep-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:8px}.ep-stars{display:flex;gap:2px}.ep-star{font-size:11px;cursor:pointer;transition:transform .1s}.ep-star:active{transform:scale(1.3)}.ep-cast-row{display:flex;align-items:center;gap:6px}.ep-avs{display:flex}.ep-av{width:18px;height:18px;border-radius:50%;background:var(--s3);border:1.5px solid var(--s1);margin-left:-4px;font-size:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}.ep-av:first-child{margin-left:0}.ep-av img{width:100%;height:100%;object-fit:cover}.ep-ctxt{font-size:9px;color:var(--muted2)}.ep-cmt-btn{display:flex;align-items:center;gap:3px;cursor:pointer;padding:3px 0}.ep-cmt-btn svg{width:12px;height:12px;color:var(--muted)}.ep-cmt-cnt{font-size:10px;color:var(--muted)}.cmt-section{padding:10px 0 0;border-top:1px solid var(--border);margin-top:8px}.cmt-input-row{display:flex;gap:8px;margin-bottom:10px;align-items:flex-end}.cmt-av-sm{width:28px;height:28px;border-radius:50%;background:var(--s3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;border:1px solid var(--border)}.cmt-inp{flex:1;background:var(--s2);border:1px solid var(--border);border-radius:16px;padding:7px 12px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;font-size:13px;color:var(--text);outline:none;transition:border-color .2s;resize:none;min-height:36px}.cmt-inp:focus{border-color:var(--border2)}.cmt-inp::placeholder{color:var(--muted)}.cmt-send{width:30px;height:30px;background:var(--acc);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}.cmt-send svg{width:12px;height:12px;color:var(--bg);margin-left:1px}.cmt{margin-bottom:10px}.cmt-main{display:flex;gap:8px}.c-av{width:28px;height:28px;border-radius:50%;background:var(--s3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;border:1px solid var(--border)}.c-body{flex:1}.c-name{font-size:11px;font-weight:700;margin-bottom:1px}.c-text{font-size:13px;color:var(--muted2);line-height:1.5}.c-mention{color:var(--blue);font-weight:600}.c-meta{display:flex;align-items:center;gap:8px;margin-top:4px;flex-wrap:wrap}.c-time{font-size:10px;color:var(--muted)}.c-like{display:flex;align-items:center;gap:2px;font-size:10px;color:var(--muted);cursor:pointer}.c-like svg{width:10px;height:10px}.c-like.liked{color:var(--red)}.c-like.liked svg{fill:var(--red)}.c-reply-btn{font-size:10px;color:var(--blue);cursor:pointer;font-weight:600}.c-del{font-size:10px;color:var(--red);cursor:pointer}.c-reactions{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap}.c-react{display:flex;align-items:center;gap:2px;font-size:11px;background:var(--s3);border-radius:20px;padding:2px 7px;cursor:pointer;border:1px solid transparent;transition:all .15s}.c-react.active{background:rgba(10,132,255,.15);border-color:rgba(10,132,255,.3)}.c-react-count{font-size:10px;color:var(--muted2)}.react-picker{display:flex;gap:6px;background:var(--s1);border:1px solid var(--border);border-radius:20px;padding:6px 10px;margin-top:5px}.react-pick{font-size:18px;cursor:pointer;transition:transform .15s}.react-pick:active{transform:scale(1.3)}.c-replies{padding-left:36px;margin-top:6px}.reply-input-row{display:flex;gap:6px;margin-top:6px;padding-left:36px}.reply-inp{flex:1;background:var(--s2);border:1px solid var(--border);border-radius:14px;padding:6px 11px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;font-size:12px;color:var(--text);outline:none}.reply-inp::placeholder{color:var(--muted)}.reply-send{width:26px;height:26px;background:var(--acc);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}.reply-send svg{width:11px;height:11px;color:var(--bg);margin-left:1px}.cmt-load-more{text-align:center;padding:8px;font-size:12px;font-weight:600;color:var(--blue);cursor:pointer}.player-ov{display:none;position:fixed;inset:0;z-index:200;background:#000;flex-direction:column}.player-ov.open{display:flex;animation:fov .18s}.player-top{display:flex;align-items:center;gap:9px;padding:11px 16px;background:rgba(0,0,0,.9);backdrop-filter:blur(20px);flex-shrink:0}.pl-back{width:34px;height:34px;background:var(--s2);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}.pl-back svg{width:15px;height:15px}.pl-hdr{flex:1;min-width:0}.pl-ep{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pl-anime{font-size:10px;color:var(--muted2);margin-top:1px}.pl-share{display:flex;align-items:center;gap:4px;background:var(--s2);border:1px solid var(--border);border-radius:9px;padding:6px 10px;cursor:pointer;font-size:11px;font-weight:600;color:var(--text);flex-shrink:0}.pl-share svg{width:12px;height:12px}.pl-sources{display:flex;gap:6px;padding:8px 16px;background:var(--s1);flex-shrink:0;border-bottom:1px solid var(--border)}.pl-src-btn{flex:1;padding:7px;background:var(--s2);border:1px solid var(--border);border-radius:9px;font-size:11px;font-weight:700;text-align:center;cursor:pointer;transition:all .15s;color:var(--muted2)}.pl-src-btn.active{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3);color:#fff}.pl-screen{flex:0 0 210px;position:relative;background:#000}.pl-screen iframe{position:absolute;inset:0;width:100%;height:100%;border:none}.pl-body{flex:1;overflow-y:auto;scrollbar-width:none}.pl-body::-webkit-scrollbar{display:none}.pl-sec{padding:12px 16px;border-bottom:1px solid var(--border)}.pl-sec-t{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);margin-bottom:8px}.pl-cast-item{display:flex;align-items:center;gap:9px;margin-bottom:7px}.pl-cast-item:last-child{margin:0}.plav{width:28px;height:28px;border-radius:50%;background:var(--s2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;overflow:hidden;flex-shrink:0}.plav img{width:100%;height:100%;object-fit:cover}.pl-aname{font-size:12px;font-weight:600}.pl-achar{font-size:10px;color:var(--muted2)}.pl-ep-row{display:flex;align-items:center;gap:9px;padding:10px 16px;cursor:pointer;border-bottom:1px solid var(--border);transition:background .15s}.pl-ep-row:active{background:var(--s2)}.pl-ep-row.active{background:rgba(255,255,255,.04);border-left:2px solid #fff}.pl-epn{font-size:17px;font-weight:800;color:var(--muted);min-width:22px}.pl-ep-row.active .pl-epn{color:#fff}.pl-ep-inf{flex:1;min-width:0}.pl-ep-ttl{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pl-ep-dur{font-size:10px;color:var(--muted2);margin-top:1px}.act-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.act-card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:16px 12px;cursor:pointer;transition:transform .15s;animation:cin .45s both;position:relative}.act-card:active{transform:scale(.96)}.act-av-w{position:relative;width:62px;height:62px;margin:0 auto 10px}.act-av{width:62px;height:62px;border-radius:50%;background:var(--s2);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:24px;overflow:hidden}.act-av img{width:100%;height:100%;object-fit:cover}.act-star{position:absolute;bottom:-2px;right:-2px;width:20px;height:20px;background:var(--gold);border-radius:50%;border:2px solid var(--s1);display:flex;align-items:center;justify-content:center;font-size:9px}.act-name{font-size:13px;font-weight:700;text-align:center;margin-bottom:4px;letter-spacing:-.2px}.act-badge{display:block;width:fit-content;margin:0 auto 8px;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:20px}.ab-lead{background:rgba(255,214,10,.12);color:var(--gold);border:1px solid rgba(255,214,10,.25)}.ab-sup{background:rgba(255,255,255,.05);color:var(--muted2);border:1px solid var(--border)}.ab-dir{background:rgba(10,132,255,.12);color:var(--blue);border:1px solid rgba(10,132,255,.25)}.ab-sound{background:rgba(48,209,88,.1);color:var(--teal);border:1px solid rgba(48,209,88,.25)}.ab-admin{background:rgba(255,69,58,.1);color:var(--red);border:1px solid rgba(255,69,58,.25)}.act-chars{font-size:10px;color:var(--muted2);text-align:center;line-height:1.6}.act-srch{display:flex;align-items:center;gap:8px;background:var(--s2);border-radius:10px;padding:8px 12px;border:1px solid var(--border);margin-bottom:12px}.act-srch svg{width:14px;height:14px;color:var(--muted);flex-shrink:0}.act-srch input{background:none;border:none;outline:none;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;font-size:13px;width:100%}.act-srch input::placeholder{color:var(--muted)}.ad-av{width:86px;height:86px;border-radius:50%;background:var(--s2);border:2.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:32px;margin:18px auto 10px;overflow:hidden}.ad-av img{width:100%;height:100%;object-fit:cover}.ad-name{font-size:23px;font-weight:800;text-align:center;letter-spacing:-.4px;margin-bottom:5px}.ad-role{text-align:center;margin-bottom:14px}.ad-bio{font-size:13px;line-height:1.75;color:var(--muted2);padding:0 16px;margin-bottom:14px}.ad-contacts{display:flex;flex-direction:column;gap:8px;padding:0 16px 14px}.ad-ct-btn{display:flex;align-items:center;gap:11px;background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:11px 13px;cursor:pointer;text-decoration:none;transition:background .15s}.ad-ct-btn:active{background:var(--s3)}.ad-ct-icon{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}.ct-tg{background:rgba(10,132,255,.15);border:1px solid rgba(10,132,255,.2)}.ct-vk{background:rgba(0,119,255,.15);border:1px solid rgba(0,119,255,.2)}.ct-mail{background:rgba(255,159,10,.15);border:1px solid rgba(255,159,10,.2)}.ad-ct-lbl{font-size:10px;color:var(--muted2);font-weight:500}.ad-ct-val{font-size:13px;font-weight:600}.ad-roles-sec{padding:0 16px 30px}.ad-role-item{display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid var(--border)}.ad-role-item:last-child{border:none}.ad-em{font-size:19px;flex-shrink:0}.ad-an{font-size:13px;font-weight:600}.ad-ch{font-size:11px;color:var(--muted2);margin-top:1px}.news-card{background:var(--s1);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:12px;cursor:pointer;transition:background .15s;animation:cin .4s both}.news-card:active{background:var(--s2)}.news-img{width:100%;height:170px;object-fit:cover;display:block}.news-body{padding:13px}.news-date{font-size:10px;font-weight:600;color:var(--muted2);margin-bottom:5px}.news-text{font-size:14px;font-weight:600;line-height:1.55}.news-link{font-size:11px;color:var(--blue);margin-top:6px;display:block}.cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.cal-m{font-size:17px;font-weight:700;letter-spacing:-.3px}.cal-btns{display:flex;gap:8px}.cal-btn{width:32px;height:32px;background:var(--s2);border:1px solid var(--border);border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer}.cal-btn svg{width:13px;height:13px}.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:18px}.cal-dow{font-size:9px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);text-align:center;padding:4px 0}.cal-day{aspect-ratio:1;border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center}.cal-day.today{background:var(--s2);outline:1.5px solid rgba(255,255,255,.18);outline-offset:-1px}.cal-day.today .cdn{color:var(--acc);font-weight:700}.cal-day.dim .cdn{color:var(--s4)}.cdn{font-size:12px;font-weight:500;line-height:1}.cdot{width:4px;height:4px;border-radius:50%;background:var(--teal);margin-top:2px}.cal-ep-item{display:flex;align-items:center;gap:11px;background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:11px 13px;margin-bottom:7px;cursor:pointer;transition:background .15s}.cal-ep-item:active{background:var(--s2)}.cal-ep-thumb{width:40px;height:40px;border-radius:9px;background:var(--s2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:17px;overflow:hidden}.cal-ep-an{font-size:13px;font-weight:600;margin-bottom:2px}.cal-ep-ep{font-size:10px;color:var(--muted2)}.cal-ep-date{font-size:10px;font-weight:700;color:var(--teal);flex-shrink:0}.stats-period{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}.stats-period::-webkit-scrollbar{display:none}.period-btn{flex:0 0 auto;font-size:11px;font-weight:700;padding:6px 14px;border-radius:20px;cursor:pointer;border:1px solid var(--border);color:var(--muted2);background:none;transition:all .15s}.period-btn.active{background:var(--acc);color:var(--bg);border-color:var(--acc)}.stats-total{display:flex;gap:8px;margin-bottom:16px}.stats-total-card{flex:1;background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:12px 8px;text-align:center}.stv{font-size:20px;font-weight:800;color:var(--gold);line-height:1}.stl{font-size:9px;font-weight:600;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;margin-top:2px}.stats-card{background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:13px;margin-bottom:10px}.stats-anime-title{font-size:14px;font-weight:700;margin-bottom:10px}.stats-row{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)}.stats-row:last-child{border:none}.stats-ep{font-size:11px;color:var(--muted2)}.stats-bar-wrap{flex:1;margin:0 10px;height:4px;background:var(--s3);border-radius:2px;overflow:hidden}.stats-bar{height:100%;background:var(--gold);border-radius:2px;transition:width .4s}.stats-count{font-size:12px;font-weight:700;color:var(--gold)}.lb-item{display:flex;align-items:center;gap:12px;background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:12px 14px;margin-bottom:8px;animation:cin .4s both}.lb-rank{font-size:18px;font-weight:800;min-width:28px;text-align:center}.lb-rank.gold{color:var(--gold)}.lb-rank.silver{color:#c0c0c0}.lb-rank.bronze{color:#cd7f32}.lb-info{flex:1}.lb-name{font-size:13px;font-weight:700}.lb-pts{font-size:10px;color:var(--muted2);margin-top:2px}.lb-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:rgba(255,214,10,.12);color:var(--gold);border:1px solid rgba(255,214,10,.25)}.act-chart{background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:14px;margin-bottom:16px}.act-chart-title{font-size:13px;font-weight:700;margin-bottom:12px}.act-bars{display:flex;gap:4px;align-items:flex-end;height:60px}.act-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}.act-bar{width:100%;border-radius:3px 3px 0 0;background:var(--purple);min-height:3px;transition:height .4s}.act-bar-lbl{font-size:8px;color:var(--muted);font-weight:600}.apply-hero{text-align:center;padding:24px 16px 16px}.apply-icon{font-size:46px;margin-bottom:12px}.apply-title{font-size:21px;font-weight:800;letter-spacing:-.4px;margin-bottom:6px}.apply-desc{font-size:13px;color:var(--muted2);line-height:1.65;max-width:270px;margin:0 auto}.form-wrap{padding:0 16px 100px}.form-group{margin-bottom:13px}.form-label{font-size:11px;font-weight:700;color:var(--muted2);letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px;display:block}.form-input{width:100%;background:var(--input-bg);border:1px solid var(--border);border-radius:12px;padding:11px 13px;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;font-size:14px;font-weight:500;outline:none;transition:border-color .2s;-webkit-appearance:none}.form-input:focus{border-color:var(--border2)}.form-input::placeholder{color:var(--muted)}.form-textarea{min-height:76px;resize:none;line-height:1.5}.form-select{cursor:pointer}.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.role-btn{background:var(--s2);border:1.5px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center;cursor:pointer;transition:all .15s}.role-btn.selected{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.35)}.role-btn-icon{font-size:19px;margin-bottom:3px}.role-btn-name{font-size:12px;font-weight:700}.role-btn-desc{font-size:9px;color:var(--muted2);margin-top:1px}.form-div{height:1px;background:var(--border);margin:16px 0}.submit-btn{width:100%;padding:14px;background:var(--acc);color:var(--bg);border:none;border-radius:13px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;font-size:14px;font-weight:700;cursor:pointer;margin-top:6px;transition:opacity .15s}.submit-btn:active{opacity:.85}.submit-btn:disabled{opacity:.4;cursor:not-allowed}.about-wrap{display:flex;flex-direction:column;align-items:center;padding:28px 16px 18px}.about-icon{font-size:52px;margin-bottom:13px}.about-name{font-size:25px;font-weight:800;letter-spacing:-.5px;margin-bottom:5px}.about-desc{font-size:13px;color:var(--muted2);text-align:center;line-height:1.7;max-width:260px;margin-bottom:20px}.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;margin-bottom:20px}.about-stat{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:12px 8px;text-align:center}.abst-v{font-size:21px;font-weight:800;color:var(--gold);line-height:1}.abst-l{font-size:9px;font-weight:600;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;margin-top:2px}.about-links{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:16px}.about-link-btn{display:flex;align-items:center;gap:5px;background:var(--s2);border:1px solid var(--border);border-radius:20px;padding:7px 14px;text-decoration:none;font-size:12px;font-weight:600;color:var(--text)}.about-note{font-size:11px;color:var(--muted);text-align:center;line-height:1.7;padding:0 16px}.notif-panel{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--s1);border-radius:0 0 20px 20px;max-height:60vh;display:flex;flex-direction:column;transform:translateY(-110%);transition:transform .3s cubic-bezier(.2,1.05,.4,1);border-bottom:1px solid var(--border);box-shadow:0 8px 40px rgba(0,0,0,.8)}.notif-panel.open{transform:translateY(0)}.notif-hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 10px}.notif-title{font-size:16px;font-weight:700;letter-spacing:-.3px}.notif-mark{font-size:11px;font-weight:600;color:var(--muted2);cursor:pointer}.notif-list{flex:1;overflow-y:auto;padding:0 16px 14px;scrollbar-width:none}.notif-list::-webkit-scrollbar{display:none}.notif-row{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}.notif-row:last-child{border:none}.notif-icon{width:38px;height:38px;border-radius:10px;background:var(--s2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}.notif-body{flex:1;min-width:0}.notif-txt{font-size:12px;font-weight:500;line-height:1.5;color:var(--muted2)}.notif-row.unread .notif-txt{color:var(--text);font-weight:600}.notif-time{font-size:10px;color:var(--muted);margin-top:2px}.npip{width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:4px}.admin-panel{position:fixed;inset:0;z-index:400;background:var(--bg);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s cubic-bezier(.2,1.05,.4,1)}.admin-panel.open{transform:none}.admin-hdr{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--bg);border-bottom:1px solid var(--border);flex-shrink:0}.admin-back{width:34px;height:34px;background:var(--s2);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}.admin-back svg{width:15px;height:15px}.admin-title{font-size:16px;font-weight:700;flex:1}.admin-tabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--border);background:var(--s1);flex-shrink:0;scrollbar-width:none}.admin-tabs::-webkit-scrollbar{display:none}.admin-tab{flex:0 0 auto;font-size:12px;font-weight:600;color:var(--muted2);padding:10px 16px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s}.admin-tab.active{color:var(--text);border-bottom-color:var(--acc)}.admin-body{flex:1;overflow-y:auto;padding:16px;scrollbar-width:none}.admin-body::-webkit-scrollbar{display:none}.admin-sec-title{font-size:12px;font-weight:700;color:var(--muted2);letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px}.afield{margin-bottom:10px}.afield label{font-size:11px;font-weight:600;color:var(--muted2);display:block;margin-bottom:4px}.afield input,.afield textarea,.afield select{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;font-size:13px;outline:none;transition:border-color .2s;-webkit-appearance:none}.afield input:focus,.afield textarea:focus{border-color:var(--border2)}.afield textarea{min-height:70px;resize:none;line-height:1.5}.afield select{cursor:pointer}.abtn{width:100%;padding:12px;border:none;border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:8px;transition:opacity .15s}.abtn:active{opacity:.8}.abtn.primary{background:var(--acc);color:var(--bg)}.abtn.danger{background:rgba(255,69,58,.15);color:var(--red);border:1px solid rgba(255,69,58,.25)}.abtn.secondary{background:var(--s2);color:var(--muted2);border:1px solid var(--border)}.admin-list-item{display:flex;align-items:center;justify-content:space-between;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:6px;cursor:pointer;transition:background .15s}.admin-list-item:active{background:var(--s3)}.ali-title{font-size:13px;font-weight:600}.ali-sub{font-size:10px;color:var(--muted2);margin-top:2px}.ali-arr{color:var(--muted);font-size:16px}.admin-btn-fab{position:fixed;bottom:90px;right:16px;width:48px;height:48px;background:var(--acc);border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(255,255,255,.2);z-index:50;border:none;transition:transform .15s}.admin-btn-fab.show{display:flex}.admin-btn-fab:active{transform:scale(.92)}.admin-btn-fab svg{width:20px;height:20px;color:var(--bg)}.bnav{flex-shrink:0;display:flex;background:rgba(0,0,0,.96);backdrop-filter:blur(30px);border-top:1px solid var(--border);padding:7px 0 max(8px,env(safe-area-inset-bottom));z-index:50;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}[data-theme="light"] .bnav{background:rgba(242,242,247,.96)}.bnav::-webkit-scrollbar{display:none}.bnav-btn{flex:0 0 56px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 2px;cursor:pointer;color:var(--muted);transition:color .18s;border:none;background:none;position:relative}.bnav-btn.active{color:var(--acc)}.bnav-btn svg{width:20px;height:20px}.bnav-btn span{font-size:9px;font-weight:600;letter-spacing:.1px}.nbadge{position:absolute;top:2px;right:calc(50% - 14px);min-width:14px;height:14px;background:var(--teal);color:#000;font-size:8px;font-weight:800;padding:0 3px;border-radius:7px;display:none;align-items:center;justify-content:center}.nbadge.show{display:flex}#toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(6px);background:rgba(28,28,30,.96);backdrop-filter:blur(20px);color:#fff;font-size:12px;font-weight:600;padding:9px 16px;border-radius:20px;z-index:500;white-space:nowrap;border:1px solid var(--border2);transition:opacity .25s,transform .25s;opacity:0;pointer-events:none}#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.profile-hero{display:flex;flex-direction:column;align-items:center;padding:28px 16px 20px;position:relative}.profile-av{width:88px;height:88px;border-radius:50%;background:var(--s2);border:3px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:36px;overflow:hidden;margin-bottom:12px;position:relative}.profile-av img{width:100%;height:100%;object-fit:cover}.profile-level{position:absolute;bottom:-4px;right:-4px;background:var(--gold);border-radius:20px;font-size:9px;font-weight:800;padding:2px 7px;border:2px solid var(--s1);color:#000;white-space:nowrap}.profile-name{font-size:22px;font-weight:800;letter-spacing:-.4px;margin-bottom:2px}.profile-username{font-size:13px;color:var(--muted2);margin-bottom:4px}.profile-since{font-size:11px;color:var(--muted);margin-bottom:16px}.profile-genre{display:flex;align-items:center;gap:6px;background:var(--s2);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;margin-bottom:20px}.profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;margin-bottom:20px}.pstat{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:12px 8px;text-align:center}.pstat-v{font-size:20px;font-weight:800;color:var(--gold);line-height:1}.pstat-l{font-size:9px;font-weight:600;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;margin-top:2px}.badges-section{width:100%;margin-bottom:20px}.badges-title{font-size:15px;font-weight:700;margin-bottom:10px}.badges-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.badge-item{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:12px 8px;text-align:center;transition:border-color .2s}.badge-item.unlocked{border-color:var(--gold)}.badge-item.locked{opacity:.4}.badge-icon{font-size:28px;margin-bottom:4px}.badge-name{font-size:10px;font-weight:700;margin-bottom:2px}.badge-desc{font-size:9px;color:var(--muted2)}.badge-item.unlocked .badge-name{color:var(--gold)}.achiev-item{display:flex;align-items:center;gap:12px;background:var(--s2);border:1px solid var(--border);border-radius:13px;padding:12px 14px;margin-bottom:8px;transition:border-color .2s}.achiev-item.unlocked{border-color:rgba(255,214,10,.3);background:rgba(255,214,10,.04)}.achiev-item.locked{opacity:.5}.achiev-icon{font-size:28px;flex-shrink:0}.achiev-info{flex:1}.achiev-name{font-size:13px;font-weight:700;margin-bottom:2px}.achiev-desc{font-size:11px;color:var(--muted2)}.achiev-progress{margin-top:5px}.achiev-bar{height:3px;background:var(--s3);border-radius:2px;overflow:hidden}.achiev-fill{height:100%;background:var(--gold);border-radius:2px}.achiev-pct{font-size:9px;color:var(--muted2);margin-top:2px}.achiev-check{font-size:18px;flex-shrink:0}.user-item{display:flex;align-items:center;gap:12px;background:var(--s2);border:1px solid var(--border);border-radius:13px;padding:12px 14px;margin-bottom:8px}.user-av{width:36px;height:36px;border-radius:50%;background:var(--s3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px;border:1px solid var(--border)}.user-info{flex:1;min-width:0}.user-name{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.user-meta{font-size:10px;color:var(--muted2);margin-top:1px}.user-ban-btn{font-size:11px;font-weight:700;padding:5px 10px;border-radius:8px;cursor:pointer;border:none;flex-shrink:0}.user-ban-btn.ban{background:rgba(255,69,58,.15);color:var(--red);border:1px solid rgba(255,69,58,.25)}.user-ban-btn.unban{background:rgba(48,209,88,.15);color:var(--teal);border:1px solid rgba(48,209,88,.25)}.actor-cmts-section{padding:14px 16px;border-top:1px solid var(--border)}.actor-cmts-title{font-size:14px;font-weight:700;margin-bottom:10px}.view{transition:opacity .25s ease,transform .25s ease}.view.slide-out-left{opacity:0;transform:translateX(-20px);pointer-events:none}.view.slide-in-right{animation:slideInRight .3s cubic-bezier(.2,1.05,.4,1) both}.view.slide-in-left{animation:slideInLeft .3s cubic-bezier(.2,1.05,.4,1) both}@keyframes slideInRight{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}@keyframes slideInLeft{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}.sheet{animation:sheetUp .35s cubic-bezier(.2,1.05,.4,1) both}@keyframes sheetUp{from{transform:translateY(100%);opacity:.7}to{transform:none;opacity:1}}.card{transition:transform .2s cubic-bezier(.2,1,.4,1),box-shadow .2s,border-color .2s}.card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.4);border-color:var(--border2)}.feat-card{transition:transform .2s cubic-bezier(.2,1,.4,1)}.feat-card:hover{transform:scale(1.03)}.ep{transition:all .2s ease}.ep:hover{border-color:var(--border2)}.bnav-btn.active svg{animation:navPop .3s cubic-bezier(.2,1.05,.4,1)}@keyframes navPop{0%{transform:scale(.7)}60%{transform:scale(1.15)}100%{transform:scale(1)}}#toast{transition:opacity .3s cubic-bezier(.2,1,.4,1),transform .3s cubic-bezier(.2,1.05,.4,1)}.ov{animation:fadeIn .2s ease}@keyframes fadeIn{from{opacity:0}to{opacity:1}}.badge-item.unlocked{animation:badgePulse .6s cubic-bezier(.2,1.05,.4,1)}@keyframes badgePulse{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}.achiev-item.unlocked{animation:achievIn .5s cubic-bezier(.2,1.05,.4,1)}@keyframes achievIn{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:none}}.watch-btn,.submit-btn,.abtn,.period-btn{transition:transform .12s,opacity .12s}.watch-btn:active,.submit-btn:active,.abtn:active{transform:scale(.97)}#confettiCanvas{position:fixed;inset:0;pointer-events:none;z-index:9998;display:none}.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.25);transform:scale(0);animation:rippleAnim .5s ease-out forwards;pointer-events:none}@keyframes rippleAnim{to{transform:scale(4);opacity:0}}@keyframes countUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.pstat-v,.stv,.abst-v{animation:countUp .5s ease both}.photo-upload-area{border:2px dashed var(--border2);border-radius:14px;padding:20px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:10px}.photo-upload-area:hover{border-color:var(--acc);background:rgba(255,255,255,.03)}.photo-upload-area.has-photo{border-style:solid;border-color:var(--teal)}.photo-preview{width:100%;max-height:200px;object-fit:cover;border-radius:10px;margin-top:8px;display:none}.photo-preview.show{display:block}.photo-upload-icon{font-size:32px;margin-bottom:8px}.photo-upload-label{font-size:13px;font-weight:600;color:var(--muted2)}.photo-upload-sub{font-size:11px;color:var(--muted);margin-top:3px}.cast-editor{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:10px}.cast-editor-title{font-size:12px;font-weight:700;color:var(--muted2);margin-bottom:8px;letter-spacing:.5px;text-transform:uppercase}.cast-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;animation:cin .3s both}.cast-row input{flex:1;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:7px 10px;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;font-size:12px;outline:none}.cast-row-del{width:26px;height:26px;border-radius:8px;background:rgba(255,69,58,.15);color:var(--red);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}.cast-add-btn{width:100%;padding:8px;background:rgba(255,255,255,.05);border:1px dashed var(--border2);border-radius:8px;color:var(--muted2);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s}.cast-add-btn:hover{background:rgba(255,255,255,.08);color:var(--text)}.tg-parse-btn{width:100%;padding:8px;background:rgba(10,132,255,.1);border:1px solid rgba(10,132,255,.2);border-radius:8px;color:var(--blue);font-size:12px;font-weight:600;cursor:pointer;margin-bottom:8px}.c-tg-link{display:inline-flex;align-items:center;gap:4px;font-size:10px;color:var(--blue);cursor:pointer;font-weight:600;text-decoration:none}.c-tg-link svg{width:10px;height:10px}.lb-tg-btn{font-size:11px;color:var(--blue);cursor:pointer;font-weight:600;text-decoration:none;padding:4px 8px;border-radius:8px;background:rgba(10,132,255,.1);border:1px solid rgba(10,132,255,.2)}.ptr-indicator{position:fixed;top:0;left:50%;transform:translateX(-50%) translateY(-50px);background:var(--s2);border:1px solid var(--border);border-radius:20px;padding:8px 16px;font-size:12px;font-weight:600;color:var(--muted2);transition:transform .3s cubic-bezier(.2,1.05,.4,1);z-index:200;display:flex;gap:6px;align-items:center}.ptr-indicator.show{transform:translateX(-50%) translateY(10px)}.ptr-spin{animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.watching-bar{display:flex;align-items:center;gap:6px;background:rgba(48,209,88,.08);border:1px solid rgba(48,209,88,.2);border-radius:10px;padding:7px 11px;margin-bottom:8px}.watching-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse .8s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}.watching-avs{display:flex}.watching-av{width:20px;height:20px;border-radius:50%;background:var(--s3);border:1.5px solid var(--bg);margin-left:-5px;font-size:9px;display:flex;align-items:center;justify-content:center;overflow:hidden}.watching-av:first-child{margin-left:0}.watching-txt{font-size:11px;font-weight:600;color:var(--teal)}.hit-card{display:flex;align-items:center;gap:12px;background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:12px 14px;margin-bottom:8px;cursor:pointer;transition:background .15s;animation:cin .4s both}.hit-card:active{background:var(--s2)}.hit-rank{font-size:22px;font-weight:900;min-width:30px;text-align:center}.hit-rank.r1{color:var(--gold)}.hit-rank.r2{color:#c0c0c0}.hit-rank.r3{color:#cd7f32}.hit-rank.other{color:var(--muted2);font-size:16px}.hit-thumb{width:44px;height:60px;border-radius:8px;object-fit:cover;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden}.hit-thumb img{width:100%;height:100%;object-fit:cover}.hit-info{flex:1;min-width:0}.hit-title{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hit-views{font-size:11px;color:var(--muted2);margin-top:2px}.hit-bar-wrap{width:60px;flex-shrink:0}.hit-bar{height:3px;background:var(--s3);border-radius:2px;overflow:hidden}.hit-bar-fill{height:100%;background:var(--gold);border-radius:2px}.chat-wrap{display:flex;flex-direction:column;height:100%}.chat-msgs{flex:1;overflow-y:auto;padding:10px 16px;display:flex;flex-direction:column;gap:8px;scrollbar-width:none}.chat-msgs::-webkit-scrollbar{display:none}.chat-msg{display:flex;gap:8px;animation:cin .3s both}.chat-msg.own{flex-direction:row-reverse}.chat-av{width:28px;height:28px;border-radius:50%;background:var(--s3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer}.chat-bubble{max-width:75%;background:var(--s2);border-radius:14px;padding:8px 12px;position:relative;border:1px solid var(--border)}.chat-msg.own .chat-bubble{background:rgba(10,132,255,.2);border-color:rgba(10,132,255,.3)}.chat-bubble-name{font-size:10px;font-weight:700;color:var(--blue);margin-bottom:2px}.chat-msg.own .chat-bubble-name{display:none}.chat-bubble-text{font-size:13px;line-height:1.5}.chat-bubble-time{font-size:9px;color:var(--muted);margin-top:3px;text-align:right}.chat-reply-preview{background:var(--s3);border-left:2px solid var(--blue);border-radius:4px;padding:3px 8px;margin-bottom:4px;font-size:10px;color:var(--muted2)}.chat-input-row{display:flex;gap:8px;padding:10px 16px;border-top:1px solid var(--border);background:var(--bg);flex-shrink:0;align-items:flex-end}.chat-inp{flex:1;background:var(--s2);border:1px solid var(--border);border-radius:18px;padding:9px 14px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;font-size:13px;color:var(--text);outline:none;transition:border-color .2s;resize:none;min-height:38px;max-height:100px}.chat-inp:focus{border-color:var(--border2)}.chat-inp::placeholder{color:var(--muted)}.chat-send{width:34px;height:34px;background:var(--blue);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:opacity .15s}.chat-send:active{opacity:.8}.chat-send svg{width:13px;height:13px;color:#fff;margin-left:1px}.chat-typing{font-size:11px;color:var(--muted2);padding:0 16px 6px;height:20px}.chat-del{font-size:10px;color:var(--red);cursor:pointer;margin-left:4px}.online-count{font-size:11px;color:var(--teal);font-weight:600}
+.skeleton{background:linear-gradient(90deg,var(--s2) 25%,var(--s3) 50%,var(--s2) 75%);
+background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:8px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel-card{height:260px;border-radius:14px}
+.skel-title{height:16px;width:70%;margin-bottom:8px}
+.skel-sub{height:12px;width:40%}
+#skelGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px 16px}
+#skelGrid.hidden{display:none}
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div class="splash" id="splash">
+  <div class="splash-logo">🎌</div>
+  <div class="splash-title">Акиру</div>
+  <div class="splash-sub">Дубляж Аниме</div>
+  <div class="splash-bar"><div class="splash-fill"></div></div>
+</div>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-logo">Акиру<span> — Дубляж Аниме</span></div>
+  <div class="hdr-btn" id="filterBtn" onclick="toggleFilter()" title="Фильтр">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+  </div>
+  <div class="hdr-btn" onclick="toggleSearch()">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+  </div>
+  <div class="hdr-btn" onclick="toggleTheme()" id="themeBtn">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+  </div>
+  <div class="hdr-btn" onclick="toggleNotif()" style="position:relative">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+    <div class="pip" id="notifPip"></div>
+  </div>
+</header>
+
+<!-- SEARCH -->
+<div class="srch" id="srchWrap">
+  <div class="srch-box">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input id="searchInput" type="text" placeholder="Поиск аниме...">
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filterBar">
+  <div class="filter-chip active" onclick="setFilter('all',this)">Все</div>
+  <div class="filter-chip" onclick="setFilter('ongoing',this)">Озвучивается</div>
+  <div class="filter-chip" onclick="setFilter('ended',this)">Завершено</div>
+  <div class="filter-chip" onclick="setFilter('Сёнен',this)">Сёнен</div>
+  <div class="filter-chip" onclick="setFilter('Сёдзё',this)">Сёдзё</div>
+  <div class="filter-chip" onclick="setFilter('Экшен',this)">Экшен</div>
+  <div class="filter-chip" onclick="setFilter('Романтика',this)">Романтика</div>
+  <div class="filter-chip" onclick="setFilter('Фэнтези',this)">Фэнтези</div>
+  <div class="filter-chip" onclick="setFilter('Sci-Fi',this)">Sci-Fi</div>
+  <div class="filter-chip" onclick="setFilter('Комедия',this)">Комедия</div>
+</div>
+
+<!-- CATALOG -->
+
+<div id="skelGrid">
+  <div class="skeleton skel-card"></div>
+  <div class="skeleton skel-card"></div>
+  <div class="skeleton skel-card"></div>
+  <div class="skeleton skel-card"></div>
+</div>
+<div class="view" id="viewCatalog">
+  <div class="vpad">
+    <div id="cwWrap" style="display:none">
+      <div class="sec"><div class="sec-t">Продолжить</div><div class="sec-m" onclick="showTabAnimated('history')">История →</div></div>
+      <div class="cw-scroll" id="cwScroll"></div>
+    </div>
+    <div id="featWrap">
+      <div class="sec"><div class="sec-t">Озвучивается</div></div>
+      <div class="feat-scroll" id="featScroll"></div>
+    </div>
+    <div class="sec" style="margin-top:4px"><div class="sec-t">Все тайтлы</div></div>
+    <div class="grid" id="catalogGrid"><div class="empty" style="grid-column:1/-1"><div class="empty-icon">🌀</div><p>Загрузка...</p></div></div>
+  </div>
+</div>
+
+<!-- WATCHLIST -->
+<div class="view hidden" id="viewWatchlist">
+  <div class="vpad">
+    <div class="sec"><div class="sec-t">Хочу посмотреть</div></div>
+    <div class="grid" id="watchlistGrid"><div class="empty" style="grid-column:1/-1"><div class="empty-icon">🔮</div><p>Список пуст — добавляй аниме!</p></div></div>
+  </div>
+</div>
+
+<!-- HISTORY -->
+<div class="view hidden" id="viewHistory">
+  <div class="vpad">
+    <div class="sec"><div class="sec-t">История просмотров</div><div class="sec-m" onclick="clearHistory()">Очистить</div></div>
+    <div id="historyList"><div class="empty"><div class="empty-icon">📺</div><p>История пуста</p></div></div>
+  </div>
+</div>
+
+<!-- ACTORS -->
+<div class="view hidden" id="viewActors">
+  <div class="vpad">
+    <div class="sec"><div class="sec-t">Команда Акиру</div></div>
+    <div class="act-srch">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="actorSearch" type="text" placeholder="Поиск по имени или роли...">
+    </div>
+    <div class="act-grid" id="actorsGrid"><div class="empty" style="grid-column:1/-1"><div class="empty-icon">🎙</div><p>Загрузка...</p></div></div>
+  </div>
+</div>
+
+<!-- NEWS -->
+<div class="view hidden" id="viewNews">
+  <div class="vpad">
+    <div class="sec"><div class="sec-t">Новости</div><div style="display:flex;gap:8px;align-items:center"><div class="sec-m" id="newsLink"></div><div class="sec-m" onclick="syncNewsFromChannel()">🔄</div></div></div>
+    <div id="newsList"><div class="empty"><div class="empty-icon">📰</div><p>Новостей пока нет</p></div></div>
+  </div>
+</div>
+
+<!-- CALENDAR -->
+<div class="view hidden" id="viewCalendar">
+  <div class="vpad">
+    <div class="cal-nav">
+      <div class="cal-m" id="calLabel"></div>
+      <div class="cal-btns">
+        <div class="cal-btn" onclick="calNav(-1)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></div>
+        <div class="cal-btn" onclick="calNav(1)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+      </div>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+    <div class="sec"><div class="sec-t">Скоро выходит</div></div>
+    <div id="calUpcoming"></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="view hidden" id="viewStats">
+  <div class="vpad">
+    <div class="sec"><div class="sec-t">Статистика</div></div>
+    <div class="stats-period">
+      <button class="period-btn active" onclick="setPeriod('all',this)">Всё время</button>
+      <button class="period-btn" onclick="setPeriod('month',this)">Месяц</button>
+      <button class="period-btn" onclick="setPeriod('week',this)">Неделя</button>
+      <button class="period-btn" onclick="setPeriod('day',this)">Сегодня</button>
+    </div>
+    <div class="stats-total">
+      <div class="stats-total-card"><div class="stv" id="stTotalV">0</div><div class="stl">Просмотров</div></div>
+      <div class="stats-total-card"><div class="stv" id="stTotalA">0</div><div class="stl">Аниме</div></div>
+      <div class="stats-total-card"><div class="stv" id="stTotalE">0</div><div class="stl">Серий</div></div>
+    </div>
+    <div class="act-chart">
+      <div class="act-chart-title">Активность по дням</div>
+      <div class="act-bars" id="actBars"></div>
+    </div>
+    <div class="sec"><div class="sec-t">Топ серий</div></div>
+    <div id="statsContent"></div>
+    <div class="sec" style="margin-top:8px"><div class="sec-t">Таблица лидеров</div></div>
+    <div id="leaderboardList"></div>
+  </div>
+</div>
+
+<!-- APPLY -->
+<div class="view hidden" id="viewApply">
+  <div class="apply-hero">
+    <div class="apply-icon">🎙</div>
+    <div class="apply-title">Вступить в команду</div>
+    <div class="apply-desc">Мы ищем талантливых людей! Заполни заявку — мы свяжемся с тобой.</div>
+  </div>
+  <div class="form-wrap">
+    <div class="form-group"><label class="form-label">ФИО *</label><input class="form-input" id="applyFio" placeholder="Иванов Иван Иванович"></div>
+    <div class="form-group"><label class="form-label">Возраст *</label><input class="form-input" id="applyAge" type="number" placeholder="18" min="14" max="99"></div>
+    <div class="form-group">
+      <label class="form-label">Часовой пояс *</label>
+      <select class="form-input form-select" id="applyTz">
+        <option value="">Выберите...</option>
+        <option>UTC+2 (Калининград)</option><option>UTC+3 (Москва)</option>
+        <option>UTC+4 (Самара)</option><option>UTC+5 (Екатеринбург)</option>
+        <option>UTC+6 (Омск)</option><option>UTC+7 (Красноярск)</option>
+        <option>UTC+8 (Иркутск)</option><option>UTC+9 (Якутск)</option>
+        <option>UTC+10 (Владивосток)</option><option>UTC+0 (Лондон)</option>
+        <option>UTC+1 (Берлин/Варшава)</option><option>Другой</option>
+      </select>
+    </div>
+    <div class="form-div"></div>
+    <div class="form-group">
+      <label class="form-label">На кого претендуете *</label>
+      <div class="role-grid" id="applyRoleGrid">
+        <div class="role-btn" onclick="selectRole(this,'actor')"><div class="role-btn-icon">🎙</div><div class="role-btn-name">Актёр</div><div class="role-btn-desc">Озвучка персонажей</div></div>
+        <div class="role-btn" onclick="selectRole(this,'sound')"><div class="role-btn-icon">🎚</div><div class="role-btn-name">Звукорежиссёр</div><div class="role-btn-desc">Монтаж и сведение</div></div>
+        <div class="role-btn" onclick="selectRole(this,'admin')"><div class="role-btn-icon">⚙️</div><div class="role-btn-name">Администратор</div><div class="role-btn-desc">Организация</div></div>
+        <div class="role-btn" onclick="selectRole(this,'other')"><div class="role-btn-icon">✨</div><div class="role-btn-name">Другое</div><div class="role-btn-desc">Предложу сам</div></div>
+      </div>
+    </div>
+    <div class="form-div"></div>
+    <div class="form-group"><label class="form-label">Опыт работы</label><textarea class="form-input form-textarea" id="applyExp" placeholder="Расскажи об опыте..."></textarea></div>
+    <div class="form-group"><label class="form-label">Образование / курсы</label><textarea class="form-input form-textarea" id="applyEdu" placeholder="Актёрские курсы, звукорежиссура..."></textarea></div>
+    <div class="form-group"><label class="form-label">Ссылка на демо</label><input class="form-input" id="applyDemo" placeholder="https://... или @username"></div>
+    <button class="submit-btn" id="applyBtn" onclick="submitApply()">Отправить заявку</button>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="view hidden" id="viewAbout">
+  <div class="vpad">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+      <div class="sec-t">О нас</div>
+      <div id="editAboutBtn" style="display:none;font-size:12px;font-weight:600;color:var(--muted2);cursor:pointer" onclick="showTab('editAbout')">✏️ Редактировать</div>
+    </div>
+    <div class="about-wrap">
+      <div class="about-icon">🎌</div>
+      <div class="about-name" id="aboutTeamName">Команда Акиру</div>
+      <div class="about-desc" id="aboutTeamDesc">Создаём качественную русскую озвучку аниме. Каждая серия — это труд всей команды.</div>
+      <div class="about-stats">
+        <div class="about-stat"><div class="abst-v" id="abEps">0</div><div class="abst-l">Серий</div></div>
+        <div class="about-stat"><div class="abst-v" id="abAnime">0</div><div class="abst-l">Аниме</div></div>
+        <div class="about-stat"><div class="abst-v" id="abActors">0</div><div class="abst-l">Актёров</div></div>
+      </div>
+      <div class="about-links" id="aboutLinks"></div>
+    </div>
+    <div class="about-note">Все права на оригинальные произведения принадлежат их авторам. Мы создаём некоммерческую озвучку.</div>
+  </div>
+</div>
+
+<!-- EDIT ABOUT -->
+<div class="view hidden" id="viewEditAbout">
+  <div class="vpad" style="padding-bottom:20px"><div class="sec"><div class="sec-t">Редактировать «О нас»</div></div></div>
+  <div style="padding:0 16px 100px">
+    <div class="afield"><label>Название команды</label><input class="form-input" id="editTeamName" placeholder="Команда Акиру"></div>
+    <div class="afield"><label>Описание</label><textarea class="form-input form-textarea" id="editTeamDesc"></textarea></div>
+    <div class="afield"><label>Telegram канал</label><input class="form-input" id="editChannel" placeholder="@akiry_dub"></div>
+    <div class="afield"><label>Telegram чат</label><input class="form-input" id="editChat" placeholder="@akiry_chat"></div>
+    <div class="afield"><label>Email</label><input class="form-input" id="editEmail" placeholder="akiry@mail.ru"></div>
+    <button class="submit-btn" onclick="saveAbout()">Сохранить</button>
+  </div>
+</div>
+
+<!-- APPLICATIONS -->
+<div class="view hidden" id="viewApplications">
+  <div class="vpad">
+    <div class="sec"><div class="sec-t">Заявки</div><div class="sec-m" id="appCount"></div></div>
+    <div id="appsList"><div class="empty"><div class="empty-icon">📋</div><p>Заявок пока нет</p></div></div>
+  </div>
+</div>
+
+
+<!-- PROFILE VIEW -->
+<div class="view hidden" id="viewProfile">
+  <div class="vpad">
+    <div class="profile-hero">
+      <div class="profile-av" id="profileAv">😊
+        <div class="profile-level" id="profileLevel">Новичок</div>
+      </div>
+      <div class="profile-name" id="profileName">Зритель</div>
+      <div class="profile-username" id="profileUsername"></div>
+      <div class="profile-since" id="profileSince"></div>
+      <div class="profile-genre" id="profileGenre">🎌 Жанр загружается...</div>
+      <div class="profile-stats">
+        <div class="pstat"><div class="pstat-v" id="pStatEps">0</div><div class="pstat-l">Серий</div></div>
+        <div class="pstat"><div class="pstat-v" id="pStatCmts">0</div><div class="pstat-l">Комментов</div></div>
+        <div class="pstat"><div class="pstat-v" id="pStatLikes">0</div><div class="pstat-l">Лайков</div></div>
+      </div>
+    </div>
+    <div class="badges-section" style="padding:0 0 16px">
+      <div class="badges-title">Бейджи</div>
+      <div class="badges-grid" id="badgesGrid"></div>
+    </div>
+    <div class="sec"><div class="sec-t">Достижения</div></div>
+    <div id="achievList"></div>
+  </div>
+</div>
+
+
+<!-- HITPARADE VIEW -->
+<div class="view hidden" id="viewHitparade">
+  <div class="vpad">
+    <div class="sec"><div class="sec-t">Хит-парад</div></div>
+    <div class="stats-period" style="margin-bottom:16px">
+      <button class="period-btn active" onclick="setHitPeriod('week',this)">Неделя</button>
+      <button class="period-btn" onclick="setHitPeriod('month',this)">Месяц</button>
+    </div>
+    <div id="hitList"><div class="empty"><div class="empty-icon">🏆</div><p>Загрузка...</p></div></div>
+  </div>
+</div>
+
+<!-- CHAT VIEW -->
+<div class="view hidden" id="viewChat" style="display:flex;flex-direction:column;overflow:hidden">
+  <div class="vpad" style="padding-bottom:8px;flex-shrink:0">
+    <div class="sec">
+      <div class="sec-t">Чат Акиру</div>
+      <div class="online-count" id="chatOnlineCount"></div>
+    </div>
+  </div>
+  <div class="chat-msgs" id="chatMsgs"></div>
+  <div class="chat-typing" id="chatTyping"></div>
+  <div class="chat-input-row">
+    <textarea class="chat-inp" id="chatInp" placeholder="Написать в чат..." rows="1"></textarea>
+    <button class="chat-send" onclick="sendChatMsg()">
+      <svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- DETAIL OVERLAY -->
+<div class="ov" id="detOv">
+  <div class="sheet">
+    <div class="drag"></div>
+    <div class="sb" id="detSb">
+      <div id="detHero"></div>
+      <div class="det-body">
+        <div class="det-chips" id="dChips"></div>
+        <div class="det-title" id="dTitle"></div>
+        <div class="det-jp" id="dJp"></div>
+        <div class="det-desc" id="dDesc"></div>
+        <div class="det-stats" id="dStats"></div>
+        <div class="det-acts">
+          <button class="watch-btn" onclick="watchFirst()">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>Смотреть
+          </button>
+          <div class="bm-btn" id="bmBtn" onclick="toggleBookmark()">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="wl-btn" id="wlBtn" onclick="toggleWatchlist()">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+        <div class="share-row">
+          <div class="share-btn-sm" onclick="shareAnime()">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            Поделиться
+          </div>
+        </div>
+        <div id="actPreWrap">
+          <div class="sec" style="margin-bottom:8px"><div class="sec-t" style="font-size:15px">Актёры озвучки</div></div>
+          <div class="act-pre" id="actPre"></div>
+        </div>
+        <div class="sub-row">
+          <div><div class="sub-label">Уведомления</div><div class="sub-sub">О новых сериях этого аниме</div></div>
+          <div class="tgl" id="subTgl" onclick="toggleSub()"><div class="tgl-k"></div></div>
+        </div>
+      </div>
+      <div class="eps-wrap">
+        <div class="eps-hdr">Серии</div>
+        <div id="epList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTOR OVERLAY -->
+<div class="ov" id="actOv">
+  <div class="sheet">
+    <div class="drag"></div>
+    <div class="sb">
+      <div class="ad-av" id="adAva"></div>
+      <div class="ad-name" id="adName"></div>
+      <div class="ad-role" id="adRole"></div>
+      <div class="ad-bio" id="adBio"></div>
+      <div id="adContacts"></div>
+      <div class="ad-roles-sec" id="adRoles"></div>
+      <div class="actor-cmts-section">
+        <div class="actor-cmts-title">Комментарии</div>
+        <div class="cmt-input-row">
+          <div class="cmt-av-sm">${MY_NAME?MY_NAME[0]:'?'}</div>
+          <textarea class="cmt-inp" id="actorCmtInp" placeholder="Оставь комментарий об актёре..." rows="1"></textarea>
+          <button class="cmt-send" id="actorCmtSend">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </div>
+        <div id="actorCmtList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PLAYER -->
+<div class="player-ov" id="playerOv">
+  <div class="player-top">
+    <div class="pl-back" onclick="closePlayer()">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5m0 0l7 7m-7-7 7-7"/></svg>
+    </div>
+    <div class="pl-hdr">
+      <div class="pl-ep" id="plEp"></div>
+      <div class="pl-anime" id="plAnime"></div>
+    </div>
+    <div class="pl-share" onclick="shareEp()">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Поделиться
+    </div>
+  </div>
+  <div class="pl-sources" id="plSources" style="display:none">
+    <div class="pl-src-btn active" id="srcBtn1" onclick="switchSource(1)">Sibnet</div>
+    <div class="pl-src-btn" id="srcBtn2" onclick="switchSource(2)">ВКонтакте</div>
+  </div>
+  <div class="pl-screen"><iframe id="plIframe" allowfullscreen allow="autoplay;fullscreen"></iframe></div>
+  <div class="pl-body">
+    <div class="pl-sec"><div class="pl-sec-t">Озвучили</div><div id="plCast"></div></div>
+    <div class="pl-sec" style="border:none;padding:0">
+      <div style="padding:12px 16px 6px" class="pl-sec-t">Все серии</div>
+      <div id="plEps"></div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTIFICATIONS -->
+<div class="notif-panel" id="notifPanel">
+  <div class="notif-hdr">
+    <div class="notif-title">Уведомления</div>
+    <div class="notif-mark" onclick="markAllRead()">Отметить все</div>
+  </div>
+  <div class="notif-list" id="notifList"></div>
+</div>
+
+<!-- ADMIN FAB -->
+<button class="admin-btn-fab" id="adminFab" onclick="openAdmin()">
+  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+</button>
+
+<!-- ADMIN PANEL -->
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-hdr">
+    <div class="admin-back" onclick="closeAdmin()">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5m0 0l7 7m-7-7 7-7"/></svg>
+    </div>
+    <div class="admin-title">Панель управления</div>
+  </div>
+  <div class="admin-tabs">
+    <div class="admin-tab active" onclick="adminTab('anime')">Аниме</div>
+    <div class="admin-tab" onclick="adminTab('episodes')">Серии</div>
+    <div class="admin-tab" onclick="adminTab('actors')">Актёры</div>
+    <div class="admin-tab" onclick="adminTab('schedule')">Расписание</div>
+    <div class="admin-tab" onclick="adminTab('push')">Рассылка</div>
+    <div class="admin-tab" onclick="adminTab('users')">Пользователи</div>
+  </div>
+  <div class="admin-body" id="adminBody"></div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bnav">
+  <button class="bnav-btn active" onclick="showTabAnimated('catalog')">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+    <span>Каталог</span>
+  </button>
+  <button class="bnav-btn" onclick="showTabAnimated('watchlist')">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <span>Хочу</span>
+  </button>
+  <button class="bnav-btn" onclick="showTabAnimated('history')">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <span>История</span>
+  </button>
+  <button class="bnav-btn" onclick="showTabAnimated('actors')">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <span>Актёры</span>
+  </button>
+  <button class="bnav-btn" onclick="showTabAnimated('news')">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a4 4 0 01-4-4V6"/></svg>
+    <span>Новости</span>
+  </button>
+  <button class="bnav-btn" onclick="showTabAnimated('calendar')">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <span>Расписание</span>
+    <div class="nbadge" id="calBadge"></div>
+  </button>
+  <button class="bnav-btn" onclick="showTabAnimated('apply')">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+    <span>В команду</span>
+  </button>
+  <button class="bnav-btn" onclick="showTabAnimated('about')">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg>
+    <span>О нас</span>
+  </button>
+  <button class="bnav-btn" onclick="showTabAnimated('profile')">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span>Профиль</span>
+  </button>
+  <button class="bnav-btn" onclick="showTabAnimated('hitparade')">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+    <span>Топ</span>
+  </button>
+  <button class="bnav-btn" onclick="showTabAnimated('chat')">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>Чат</span>
+    <div class="nbadge" id="chatBadge"></div>
+  </button>
+  <button class="bnav-btn" id="navStats" onclick="showTabAnimated('stats')" style="display:none">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    <span>Статистика</span>
+  </button>
+  <button class="bnav-btn" id="navApps" onclick="showTabAnimated('applications')" style="display:none">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <span>Заявки</span>
+    <div class="nbadge" id="appsBadge"></div>
+  </button>
+</nav>
+
+<canvas id="confettiCanvas"></canvas>
+<div class="ptr-indicator" id="ptrIndicator">🔄 <span id="ptrText">Потяни чтобы обновить</span></div>
+<div id="toast"></div>
+
+<script>const tg = window.Telegram?.WebApp;
+if(tg){tg.expand();}
+
+const SERVER_URL   = 'https://akiry.ru';
+const SERVER_TOKEN = 'mya';
+const MY_USER_ID   = tg?.initDataUnsafe?.user?.id || 0;
+const MY_NAME      = tg?.initDataUnsafe?.user?.first_name || 'Зритель';
+const MY_USERNAME  = tg?.initDataUnsafe?.user?.username || '';
+
+let DB = {anime:{},actors:{},schedule:[],notifications:[],news:[]};
+let curAnime = null, curEpIdx = 0;
+let calY = new Date().getFullYear(), calM = new Date().getMonth();
+let activeSource = 1, currentFilter = 'all';
+let replyTo = null;
+let autoRefreshTimer = null;
+
+const MONTHS = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+const EM = ['🌀','⚔️','🔥','🌊','✨','🎭','🌙','💫','🗡️','🎯'];
+const AEM = ['👤','🎙','🎭','🌟'];
+const em = id => EM[Math.abs(parseInt(id||0))%EM.length];
+const aem = id => AEM[Math.abs(parseInt(id||0))%AEM.length];
+const REACTIONS = ['❤️','😂','🔥','😮','👏','😢'];
+
+const getBM = () => {try{return JSON.parse(localStorage.getItem('bm')||'[]')}catch{return[]}};
+const saveBM = a => {try{localStorage.setItem('bm',JSON.stringify(a))}catch{}};
+const isBM = id => getBM().includes(id);
+const getWL = () => {try{return JSON.parse(localStorage.getItem('wl')||'[]')}catch{return[]}};
+const saveWL = a => {try{localStorage.setItem('wl',JSON.stringify(a))}catch{}};
+const isWL = id => getWL().includes(id);
+const getRat = () => {try{return JSON.parse(localStorage.getItem('rat')||'{}')}catch{return{}}};
+const saveRat = r => {try{localStorage.setItem('rat',JSON.stringify(r))}catch{}};
+const getViews = () => {try{return JSON.parse(localStorage.getItem('views')||'{}')}catch{return{}}};
+const getViewedEps = () => {try{return JSON.parse(localStorage.getItem('viewed')||'[]')}catch{return[]}};
+const addView = k => {
+  const viewed = getViewedEps();
+  if(viewed.includes(k)) return false;
+  viewed.push(k); try{localStorage.setItem('viewed',JSON.stringify(viewed.slice(-500)))}catch{}
+  let v = getViews(); v[k] = (v[k]||0)+1;
+  try{localStorage.setItem('views',JSON.stringify(v))}catch{}
+  
+  const [aid,en] = k.split('_');
+  fetch(SERVER_URL+'/view?anime_id='+aid+'&ep_num='+en+'&user_id='+MY_USER_ID, {method:'POST'}).catch(()=>{});
+  return true;
+};
+const getHistory = () => {try{return JSON.parse(localStorage.getItem('hist')||'[]')}catch{return[]}};
+const addHistory = (animeId, epIdx, progress) => {
+  let h = getHistory().filter(x => !(x.a===animeId&&x.i===epIdx));
+  h.unshift({a:animeId,i:epIdx,p:progress,ts:Date.now()});
+  try{localStorage.setItem('hist',JSON.stringify(h.slice(0,50)))}catch{}
+};
+const getCW = () => {try{return JSON.parse(localStorage.getItem('cw')||'[]')}catch{return[]}};
+const saveCW = (aid,idx,p) => {
+  let d = getCW().filter(x=>x.a!==aid); d.unshift({a:aid,i:idx,p});
+  try{localStorage.setItem('cw',JSON.stringify(d.slice(0,5)))}catch{}
+  addHistory(aid,idx,p);
+};
+
+function toggleTheme(){
+  const th = document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',th);
+  try{localStorage.setItem('theme',th)}catch{}
+  if(tg){ th==='dark'?tg.setHeaderColor('#000000'):tg.setHeaderColor('#f2f2f7'); }
+}
+function initTheme(){
+  const saved = localStorage.getItem('theme')||'dark';
+  document.documentElement.setAttribute('data-theme',saved);
+  if(tg){ saved==='dark'?tg.setHeaderColor('#000000'):tg.setHeaderColor('#f2f2f7'); }
+}
+
+function hideSplash(){setTimeout(()=>{document.getElementById('splash').classList.add('hide');setTimeout(()=>{document.getElementById('splash').style.display='none'},500)},1000)}
+
+async function loadDB(){
+  // Step 1: Show cached data instantly (< 1ms)
+  try{
+    const cached = localStorage.getItem('dbCache');
+    if(cached){
+      DB = JSON.parse(cached);
+      renderAll();
+      hideSplash();
+    }
+  }catch{}
+  // Step 2: Fetch fresh data in background
+  try{
+    const r = await fetch(SERVER_URL+'/db?t='+Date.now());
+    const fresh = await r.json();
+    const changed = JSON.stringify(fresh) !== JSON.stringify(DB);
+    DB = fresh;
+    try{localStorage.setItem('dbCache', JSON.stringify(fresh))}catch{}
+    if(changed){ renderAll(); }
+    hideSplash();
+  }catch{
+    if(!Object.keys(DB.anime||{}).length){
+      DB={anime:{},actors:{},schedule:[],notifications:[],news:[]};
+    }
+    hideSplash();
+  }
+  startAutoRefresh();
+}
+
+function startAutoRefresh(){
+  if(autoRefreshTimer) clearInterval(autoRefreshTimer);
+  autoRefreshTimer = setInterval(async()=>{
+    try{const r=await fetch(SERVER_URL+'/db?t='+Date.now());const newDB=await r.json();
+    if(JSON.stringify(newDB)!==JSON.stringify(DB)){DB=newDB;renderAll();showToast('🔄 Данные обновлены');}}
+    catch{}
+  }, 5*60*1000); 
+}
+
+function renderAll(){
+  const sk = document.getElementById('skelGrid');
+  if(sk) sk.classList.add('hidden');
+  renderCatalog(getFilteredAnime());
+  renderFeatured();
+  renderBookmarks();
+  renderActors();
+  renderCalendar();
+  renderNotifs();
+  renderCW();
+  renderNews();
+  renderWatchlist();
+  updateAbout();
+  initAdmin();
+  checkSmartNotifications();
+}
+
+function toggleSearch(){
+  const w=document.getElementById('srchWrap');w.classList.toggle('show');
+  if(w.classList.contains('show')) document.getElementById('searchInput').focus();
+  else{document.getElementById('searchInput').value='';renderCatalog(getFilteredAnime());}
+}
+function toggleFilter(){
+  const f=document.getElementById('filterBar');f.classList.toggle('show');
+}
+document.getElementById('searchInput').addEventListener('input',debounce(e=>{
+  const q=e.target.value.toLowerCase();
+  const list=getFilteredAnime().filter(a=>a.title.toLowerCase().includes(q)||(a.title_jp||'').toLowerCase().includes(q));
+  renderCatalog(list);
+  },200));
+function setFilter(val,el){
+  currentFilter=val;
+  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  renderCatalog(getFilteredAnime());
+}
+function getFilteredAnime(){
+  let list=Object.values(DB.anime||{});
+  if(currentFilter==='ongoing') list=list.filter(a=>a.status==='ongoing');
+  else if(currentFilter==='ended') list=list.filter(a=>a.status==='ended');
+  else if(currentFilter!=='all') list=list.filter(a=>a.genre===currentFilter);
+  return list;
+}
+
+function renderFeatured(){
+  const on=Object.values(DB.anime||{}).filter(a=>a.status==='ongoing');
+  const s=document.getElementById('featScroll');
+  document.getElementById('featWrap').style.display=on.length?'':'none';
+  s.innerHTML=on.map(a=>{
+    const img=a.cover_file_id?`<img class="feat-img" src="covers/${a.id}.jpg" onerror="this.outerHTML='<div class=\\'feat-ph\\'>${em(a.id)}</div>'">`:`<div class="feat-ph">${em(a.id)}</div>`;
+    return `<div class="feat-card" onclick="openAnime('${a.id}')">
+      ${img}<div class="feat-grad"></div>
+      <div class="feat-info">
+        <div class="feat-badge on">● Озвучивается</div>
+        <div class="feat-title">${a.title}</div>
+        <div class="feat-sub">${a.episodes?.length||0} серий · ${a.genre}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function getAvgR(id,r){
+  if(DB.ratings?.[id]){const avgs=Object.values(DB.ratings[id]).map(e=>e._avg).filter(Boolean);if(avgs.length)return(avgs.reduce((a,b)=>a+b,0)/avgs.length).toFixed(1);}
+  const v=r[id];if(!v||!Object.keys(v).length)return null;
+  return(Object.values(v).reduce((a,b)=>a+b,0)/Object.values(v).length).toFixed(1);
+}
+function renderCatalog(list){
+  const g=document.getElementById('catalogGrid');
+  if(!list.length){g.innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🔍</div><p>Ничего не найдено</p></div>`;return}
+  const r=getRat();
+  g.innerHTML=list.map((a,i)=>{
+    const eps=a.episodes?.length??0,on=a.status==='ongoing',bm=isBM(a.id),wl=isWL(a.id),avg=getAvgR(a.id,r);
+    const coverSrc=a.cover_file_id?`${SERVER_URL}/covers/${a.id}.jpg`:`covers/${a.id}.jpg`;const img=a.cover_file_id?`<img class="card-img" src="${coverSrc}" onerror="this.outerHTML='<div class=\\'card-ph\\'>${em(a.id)}<div class=\\'card-st ${on?'on':'off'}\\'>${on?'Озвучивается':'Озвучено'}</div></div>'">`:`<div class="card-ph">${em(a.id)}<div class="card-st ${on?'on':'off'}">${on?'Озвучивается':'Озвучено'}</div></div>`;
+    return `<div class="card" style="animation-delay:${i*.06}s" onclick="openAnime('${a.id}')">
+      <div class="card-img-w" style="position:relative">
+        ${img}
+        <div class="card-bm ${bm?'saved':''}" onclick="event.stopPropagation();quickBM('${a.id}',this)">
+          <svg fill="${bm?'#fff':'none'}" viewBox="0 0 24 24" stroke="white" stroke-width="2" width="13" height="13"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="card-wl ${wl?'added':''}" onclick="event.stopPropagation();quickWL('${a.id}',this)">
+          <svg fill="${wl?'var(--purple)':'none'}" viewBox="0 0 24 24" stroke="${wl?'var(--purple)':'white'}" stroke-width="2" width="13" height="13"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="card-preview">
+          <div class="card-preview-title">${a.title_jp||a.title}</div>
+          <div class="card-preview-desc">${a.description||''}</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">${a.title}</div>
+        <div class="card-row">
+          <div class="card-eps">${eps} серий</div>
+          ${avg?`<div class="card-rat"><svg viewBox="0 0 24 24" width="10" height="10"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>${avg}</div>`:''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+function quickBM(id,el){let b=getBM();const s=b.includes(id);if(s)b=b.filter(x=>x!==id);else b.push(id);saveBM(b);el.classList.toggle('saved',!s);el.querySelector('svg').setAttribute('fill',!s?'#fff':'none');renderBookmarks();showToast(s?'Удалено из закладок':'💾 Добавлено в закладки')}
+function quickWL(id,el){let w=getWL();const s=w.includes(id);if(s)w=w.filter(x=>x!==id);else w.push(id);saveWL(w);el.classList.toggle('added',!s);el.querySelector('svg').setAttribute('fill',!s?'var(--purple)':'none');el.querySelector('svg').setAttribute('stroke',!s?'var(--purple)':'white');renderWatchlist();showToast(s?'Убрано из списка':'🔮 Добавлено в «Хочу посмотреть»')}
+
+function renderBookmarks(){
+  
+}
+
+function renderWatchlist(){
+  const list=getWL().map(id=>DB.anime[id]).filter(Boolean);
+  const g=document.getElementById('watchlistGrid');
+  if(!list.length){g.innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🔮</div><p>Список пуст — добавляй аниме через ⭐ в каталоге</p></div>`;return}
+  const r=getRat();
+  g.innerHTML=list.map((a,i)=>{
+    const eps=a.episodes?.length??0,on=a.status==='ongoing',avg=getAvgR(a.id,r);
+    const coverSrc=a.cover_file_id?`${SERVER_URL}/covers/${a.id}.jpg`:`covers/${a.id}.jpg`;const img=a.cover_file_id?`<img class="card-img" src="${coverSrc}" onerror="this.outerHTML='<div class=\\'card-ph\\'>${em(a.id)}</div>'">`:`<div class="card-ph">${em(a.id)}</div>`;
+    return `<div class="card" style="animation-delay:${i*.06}s" onclick="openAnime('${a.id}')">
+      <div class="card-img-w" style="position:relative">${img}<div class="card-st ${on?'on':'off'}">${on?'Озвучивается':'Озвучено'}</div></div>
+      <div class="card-body"><div class="card-title">${a.title}</div>
+      <div class="card-row"><div class="card-eps">${eps} серий</div>${avg?`<div class="card-rat"><svg viewBox="0 0 24 24" width="10" height="10" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>${avg}</div>`:''}</div></div>
+    </div>`;
+  }).join('');
+}
+
+function renderHistory(){
+  const hist=getHistory();
+  const el=document.getElementById('historyList');
+  if(!hist.length){el.innerHTML=`<div class="empty"><div class="empty-icon">📺</div><p>История пуста</p></div>`;return}
+  el.innerHTML=hist.map(x=>{
+    const a=DB.anime[x.a];if(!a)return'';const ep=a.episodes?.[x.i];if(!ep)return'';
+    const d=new Date(x.ts);const ds=d.toLocaleDateString('ru',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+    return `<div class="cw-card" style="flex:1;max-width:100%;margin-bottom:8px" onclick="openAnimePlay('${x.a}',${x.i})">
+      <div class="cw-thumb">${em(a.id)}</div>
+      <div class="cw-info">
+        <div class="cw-ttl">${a.title}</div>
+        <div class="cw-ep">Серия ${ep.num} — ${ep.title}</div>
+        <div class="cw-bar"><div class="cw-fill" style="width:${x.p||30}%"></div></div>
+        <div style="font-size:9px;color:var(--muted);margin-top:3px">${ds}</div>
+      </div>
+      <div class="cw-btn"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></div>
+    </div>`;
+  }).join('');
+}
+function clearHistory(){if(confirm('Очистить историю?')){localStorage.removeItem('hist');localStorage.removeItem('cw');renderHistory();renderCW();showToast('🗑 История очищена')}}
+
+function renderCW(){
+  const d=getCW();if(!d.length){document.getElementById('cwWrap').style.display='none';return}
+  document.getElementById('cwWrap').style.display='';
+  document.getElementById('cwScroll').innerHTML=d.map(x=>{
+    const a=DB.anime[x.a];if(!a)return'';const ep=a.episodes?.[x.i];if(!ep)return'';
+    return `<div class="cw-card" onclick="openAnimePlay('${x.a}',${x.i})">
+      <div class="cw-thumb">${em(a.id)}</div>
+      <div class="cw-info"><div class="cw-ttl">${a.title}</div><div class="cw-ep">Серия ${ep.num} — ${ep.title}</div>
+      <div class="cw-bar"><div class="cw-fill" style="width:${x.p||30}%"></div></div></div>
+      <div class="cw-btn"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></div>
+    </div>`;
+  }).join('');
+}
+
+
+
+
+
+async function loadCmtCount(animeId,epNum){
+  try{
+    const r=await fetch(SERVER_URL+'/comments/'+animeId+'/'+epNum);
+    const d=await r.json();
+    const el=document.getElementById('cmtCnt_'+animeId+'_'+epNum);
+    if(el) el.textContent=d.total>0?d.total:'';
+  }catch{}
+}
+
+function rateEp(epNum,stars){
+  const a=curAnime;if(!a)return;
+  const r=getRat();if(!r[a.id])r[a.id]={};
+  r[a.id][epNum]=stars;saveRat(r);renderEpList();
+  showToast(`⭐ ${stars}/5`);
+  if(tg)tg.sendData(JSON.stringify({action:'rate',anime_id:a.id,ep_num:epNum,stars,user_id:MY_USER_ID}));
+}
+
+function watchFirst(){if(curAnime?.episodes?.length)openPlayer(0)}
+function toggleBookmark(){
+  const a=curAnime;if(!a)return;
+  let b=getBM();const s=b.includes(a.id);
+  if(s)b=b.filter(x=>x!==a.id);else b.push(a.id);saveBM(b);
+  const bb=document.getElementById('bmBtn');bb.classList.toggle('saved',!s);bb.querySelector('svg').setAttribute('fill',!s?'var(--acc)':'none');
+  renderCatalog(getFilteredAnime());showToast(s?'Удалено из закладок':'💾 Добавлено в закладки');
+}
+function toggleWatchlist(){
+  const a=curAnime;if(!a)return;
+  let w=getWL();const s=w.includes(a.id);
+  if(s)w=w.filter(x=>x!==a.id);else w.push(a.id);saveWL(w);
+  const wb=document.getElementById('wlBtn');wb.classList.toggle('added',!s);wb.querySelector('svg').setAttribute('fill',!s?'var(--purple)':'none');
+  renderWatchlist();showToast(s?'Убрано из списка':'🔮 Добавлено в «Хочу посмотреть»');
+}
+function toggleSub(){const t=document.getElementById('subTgl');t.classList.toggle('on');showToast(t.classList.contains('on')?'🔔 Подписались':'🔕 Отписались')}
+function shareAnime(){
+  const a=curAnime;if(!a)return;
+  const text=`🎌 ${a.title}\n${a.episodes?.length||0} серий · ${a.genre}\n\nСмотри на Акиру!`;
+  if(tg?.switchInlineQuery) tg.switchInlineQuery(a.title,'users');
+  else{showToast('🔗 Ссылка скопирована!')}
+}
+function openAnimePlay(id,idx){openAnime(id);setTimeout(()=>openPlayer(idx),120)}
+
+function toggleComments(animeId,epNum){
+  const sec=document.getElementById('cmtSection_'+animeId+'_'+epNum);
+  if(sec.style.display==='none'){
+    sec.style.display='';
+    loadComments(animeId,epNum);
+  } else sec.style.display='none';
+}
+
+
+
+function renderComment(c,animeId,epNum,isAdm){
+  const ts=new Date(c.ts*1000).toLocaleDateString('ru',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+  const liked=c.likes.includes(MY_USER_ID);
+  const reactions=(c.reactions||{});
+  const reactionHtml=REACTIONS.map(r=>{
+    const count=(reactions[r]||[]).length;
+    const active=(reactions[r]||[]).includes(MY_USER_ID);
+    return count>0?`<div class="c-react ${active?'active':''}" onclick="addReaction('${c.id}','${animeId}',${epNum},'${r}',this)">
+      ${r}<span class="c-react-count">${count}</span>
+    </div>`:'';
+  }).join('');
+  
+  const text=c.text.replace(/@(\w+)/g,'<span class="c-mention">@$1</span>');
+  const repliesHtml=(c.replies||[]).map(rep=>renderComment(rep,animeId,epNum,isAdm)).join('');
+  return `<div class="cmt" id="cmt_${c.id}">
+    <div class="cmt-main">
+      <div class="c-av">${c.first_name?c.first_name[0]:'?'}</div>
+      <div class="c-body">
+        <div class="c-name">${c.first_name}${c.username?' · @'+c.username:''}</div>
+        <div class="c-text">${text}</div>
+        ${reactionHtml?`<div class="c-reactions">${reactionHtml}</div>`:''}
+        <div class="c-meta">
+          <div class="c-time">${ts}</div>
+          <div class="c-like ${liked?'liked':''}" onclick="likeComment('${c.id}','${animeId}',${epNum},this)">
+            <svg fill="${liked?'currentColor':'none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            ${c.likes.length}
+          </div>
+          <div class="c-reply-btn" onclick="showReplyInput('${c.id}','${animeId}',${epNum},'${c.first_name}')">Ответить</div>
+          <div class="react-pick" onclick="showReactPicker('${c.id}','${animeId}',${epNum},this)">😊</div>
+          ${isAdm?`<div class="c-del" onclick="deleteCmt('${c.id}','${animeId}',${epNum})">Удалить</div>`:''}
+        </div>
+        <div id="reactPicker_${c.id}" style="display:none">
+          <div class="react-picker">
+            ${REACTIONS.map(r=>`<span class="react-pick" onclick="addReaction('${c.id}','${animeId}',${epNum},'${r}',this);document.getElementById('reactPicker_${c.id}').style.display='none'">${r}</span>`).join('')}
+          </div>
+        </div>
+        <div id="replyInput_${c.id}" style="display:none">
+          <div class="reply-input-row">
+            <input class="reply-inp" id="replyInp_${c.id}" placeholder="Ответить @${c.first_name}...">
+            <button class="reply-send" onclick="sendReply('${c.id}','${animeId}',${epNum})">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    ${repliesHtml?`<div class="c-replies">${repliesHtml}</div>`:''}
+  </div>`;
+}
+
+function showReactPicker(cmtId,animeId,epNum){
+  const el=document.getElementById('reactPicker_'+cmtId);
+  if(el)el.style.display=el.style.display==='none'?'':'none';
+}
+
+function showReplyInput(cmtId,animeId,epNum,name){
+  const el=document.getElementById('replyInput_'+cmtId);
+  if(el){el.style.display=el.style.display==='none'?'':'none';
+  const inp=document.getElementById('replyInp_'+cmtId);if(inp){inp.focus();inp.placeholder=`Ответить @${name}...`;}}
+}
+
+async function sendReply(parentId,animeId,epNum){
+  const inp=document.getElementById('replyInp_'+parentId);
+  const text=inp?.value.trim();if(!text)return;
+  inp.value='';
+  try{
+    await fetch(SERVER_URL+'/comments',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({anime_id:animeId,ep_num:epNum,text,user_id:MY_USER_ID,username:MY_USERNAME,first_name:MY_NAME,reply_to:parentId})});
+    loadComments(animeId,epNum);
+  }catch{showToast('❌ Ошибка')}
+}
+
+async function sendComment(animeId,epNum){
+  const inp=document.getElementById('cmtInp_'+animeId+'_'+epNum);
+  const text=inp?.value.trim();if(!text)return;inp.value='';
+  try{
+    await fetch(SERVER_URL+'/comments',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({anime_id:animeId,ep_num:epNum,text,user_id:MY_USER_ID,username:MY_USERNAME,first_name:MY_NAME})});
+    loadComments(animeId,epNum);
+  }catch{showToast('❌ Ошибка отправки')}
+}
+
+async function likeComment(id,animeId,epNum,el){
+  try{
+    const r=await fetch(SERVER_URL+'/like?comment_id='+id+'&user_id='+MY_USER_ID+'&anime_id='+animeId+'&ep_num='+epNum,{method:'POST'});
+    const d=await r.json();
+    el.classList.toggle('liked',d.liked);el.querySelector('svg').setAttribute('fill',d.liked?'currentColor':'none');
+    el.lastChild.textContent=' '+d.likes;
+  }catch{}
+}
+
+async function addReaction(cmtId,animeId,epNum,reaction,el){
+  try{
+    const r=await fetch(`${SERVER_URL}/react?comment_id=${cmtId}&anime_id=${animeId}&ep_num=${epNum}&user_id=${MY_USER_ID}&reaction=${encodeURIComponent(reaction)}`,{method:'POST'});
+    const d=await r.json();
+    loadComments(animeId,epNum);
+  }catch{}
+}
+
+async function deleteCmt(id,animeId,epNum){
+  if(!confirm('Удалить?'))return;
+  try{await fetch(`${SERVER_URL}/comment?comment_id=${id}&anime_id=${animeId}&ep_num=${epNum}&token=${SERVER_TOKEN}`,{method:'DELETE'});document.getElementById('cmt_'+id)?.remove();showToast('🗑 Удалено')}catch{}
+}
+
+
+function switchSource(src){
+  const ep=curAnime?.episodes?.[curEpIdx];if(!ep)return;
+  activeSource=src;
+  document.getElementById('srcBtn1').classList.toggle('active',src===1);
+  document.getElementById('srcBtn2').classList.toggle('active',src===2);
+  document.getElementById('plIframe').src=src===1?ep.video_url:ep.video_url_vk;
+}
+
+function shareEp(){
+  const a=curAnime;const ep=a?.episodes?.[curEpIdx];if(!ep)return;
+  if(tg?.switchInlineQuery)tg.switchInlineQuery(`${a.title} серия ${ep.num}`,'users');
+  else showToast('🔗 Ссылка скопирована!');
+}
+
+function renderActors(query=''){
+  let list=Object.values(DB.actors||{});
+  if(query)list=list.filter(a=>a.name.toLowerCase().includes(query)||a.role?.toLowerCase().includes(query));
+  const g=document.getElementById('actorsGrid');
+  if(!list.length){g.innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🎙</div><p>${query?'Не найдено':'Актёры не добавлены'}</p></div>`;return}
+  const roleMap={lead:'ВЕДУЩИЙ',support:'ВТ. ПЛАН',director:'РЕЖИССЁР',sound:'ЗВУКОРЕЖ.',admin:'АДМИН'};
+  const badgeMap={lead:'ab-lead',support:'ab-sup',director:'ab-dir',sound:'ab-sound',admin:'ab-admin'};
+  g.innerHTML=list.map((a,i)=>{
+    const rl=roleMap[a.role]||'АКТЁР',rc=badgeMap[a.role]||'ab-sup';
+    const chars=(a.roles||[]).slice(0,3).map(r=>{const an=DB.anime?.[r.anime_id];return`${r.character}${an?` (${an.title.split(' ')[0]})`:''}`;}).join(', ')||'Роли не указаны';
+    return `<div class="act-card" style="animation-delay:${i*.06}s" onclick="openActor('${a.id}')">
+      ${a.role==='lead'?'<div class="act-star">⭐</div>':''}
+      <div class="act-av-w"><div class="act-av">${a.photo?`<img src="${a.photo}">`:`${aem(a.id)}`}</div></div>
+      <div class="act-name">${a.name}</div>
+      <span class="act-badge ${rc}">${rl}</span>
+      <div class="act-chars">${chars}</div>
+    </div>`;
+  }).join('');
+}
+document.getElementById('actorSearch').addEventListener('input',e=>renderActors(e.target.value.toLowerCase()));
+
+function openActor(id){
+  const a=DB.actors?.[id];if(!a)return;
+  const roleMap={lead:'ВЕДУЩИЙ АКТЁР',support:'ВТОРОЙ ПЛАН',director:'РЕЖИССЁР',sound:'ЗВУКОРЕЖИССЁР',admin:'АДМИНИСТРАТОР'};
+  const badgeMap={lead:'ab-lead',support:'ab-sup',director:'ab-dir',sound:'ab-sound',admin:'ab-admin'};
+  const rl=roleMap[a.role]||'АКТЁР',rc=badgeMap[a.role]||'ab-sup';
+  document.getElementById('adAva').innerHTML=a.photo?`<img src="${a.photo}">`:`${aem(a.id)}`;
+  document.getElementById('adName').textContent=a.name;
+  document.getElementById('adRole').innerHTML=`<span class="act-badge ${rc}" style="display:inline-block">${rl}</span>`;
+  document.getElementById('adBio').textContent=a.bio||'Биография не добавлена.';
+  const contacts=[];
+  if(a.telegram)contacts.push(`<a class="ad-ct-btn" href="https://t.me/${a.telegram.replace('@','')}"><div class="ad-ct-icon ct-tg">✈️</div><div><div class="ad-ct-lbl">Telegram</div><div class="ad-ct-val">${a.telegram}</div></div></a>`);
+  if(a.vk)contacts.push(`<a class="ad-ct-btn" href="${a.vk.startsWith('http')?a.vk:'https://vk.com/'+a.vk}"><div class="ad-ct-icon ct-vk">💙</div><div><div class="ad-ct-lbl">ВКонтакте</div><div class="ad-ct-val">${a.vk}</div></div></a>`);
+  if(a.email)contacts.push(`<a class="ad-ct-btn" href="mailto:${a.email}"><div class="ad-ct-icon ct-mail">✉️</div><div><div class="ad-ct-lbl">Почта</div><div class="ad-ct-val">${a.email}</div></div></a>`);
+  document.getElementById('adContacts').innerHTML=contacts.length?`<div style="padding:0 16px 4px;font-size:15px;font-weight:700">Контакты</div><div class="ad-contacts">${contacts.join('')}</div>`:'';
+  document.getElementById('adRoles').innerHTML=`
+    <div style="font-size:15px;font-weight:700;margin-bottom:10px">Роли</div>
+    ${(a.roles||[]).map(r=>{const an=DB.anime?.[r.anime_id];return`<div class="ad-role-item"><div class="ad-em">${em(r.anime_id)}</div><div><div class="ad-an">${an?.title||'—'}</div><div class="ad-ch">${r.character}</div></div></div>`;}).join('')||`<div style="color:var(--muted2);font-size:13px">Роли не указаны</div>`}`;
+  document.getElementById('actOv').classList.add('open');if(tg)tg.BackButton.show();
+  setupActorComments(id);
+}
+
+function renderNews(){
+  const news=DB.news||[];
+  const el=document.getElementById('newsList');
+  if(!news.length){el.innerHTML='<div class="empty"><div class="empty-icon">📰</div><p>Новостей пока нет</p></div>';return}
+  el.innerHTML=news.map((n,i)=>`
+    <div class="news-card" style="animation-delay:${i*.05}s" onclick="${n.link?`openLink('${n.link}')`:''}" >
+      ${n.photo?`<img class="news-img" src="${n.photo}">`:''}
+      <div class="news-body">
+        <div class="news-date">${n.date}</div>
+        <div class="news-text">${n.text}</div>
+        ${n.link?`<span class="news-link">Читать полностью →</span>`:''}
+      </div>
+    </div>`).join('');
+  const ch=DB.news_channel;if(ch)document.getElementById('newsLink').innerHTML=`<a href="https://t.me/${ch.replace('@','')}" style="color:var(--muted2);text-decoration:none;font-size:12px;font-weight:600">Открыть канал →</a>`;
+}
+function openLink(url){if(tg)tg.openLink(url);else window.open(url,'_blank')}
+
+function renderCalendar(){
+  document.getElementById('calLabel').textContent=`${MONTHS[calM]} ${calY}`;
+  const g=document.getElementById('calGrid');
+  const dows=['ПН','ВТ','СР','ЧТ','ПТ','СБ','ВС'];
+  let h=dows.map(d=>`<div class="cal-dow">${d}</div>`).join('');
+  const first=new Date(calY,calM,1),start=(first.getDay()+6)%7,days=new Date(calY,calM+1,0).getDate();
+  const today=new Date();
+  for(let i=0;i<start;i++){const d=new Date(calY,calM,1-start+i);h+=`<div class="cal-day dim"><div class="cdn">${d.getDate()}</div></div>`}
+  for(let d=1;d<=days;d++){
+    const ds=`${calY}-${String(calM+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const has=(DB.schedule||[]).some(s=>s.date===ds);
+    const isT=today.getFullYear()===calY&&today.getMonth()===calM&&today.getDate()===d;
+    h+=`<div class="cal-day${isT?' today':''}"><div class="cdn">${d}</div>${has?'<div class="cdot"></div>':''}</div>`;
+  }
+  g.innerHTML=h;
+  const up=(DB.schedule||[]).filter(s=>new Date(s.date)>=new Date()).sort((a,b)=>new Date(a.date)-new Date(b.date)).slice(0,5);
+  document.getElementById('calUpcoming').innerHTML=up.map(s=>{
+    const a=DB.anime?.[s.anime_id];const d=new Date(s.date);
+    const ds=`${d.getDate()} ${['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'][d.getMonth()]}`;
+    return `<div class="cal-ep-item" onclick="openAnime('${s.anime_id}')">
+      <div class="cal-ep-thumb">${em(s.anime_id)}</div>
+      <div><div class="cal-ep-an">${a?.title||'—'}</div><div class="cal-ep-ep">Серия ${s.episode_num} — ${s.title}</div></div>
+      <div class="cal-ep-date">${ds}</div>
+    </div>`;
+  }).join('')||`<div class="empty"><div class="empty-icon">📅</div><p>Нет запланированных серий</p></div>`;
+  const uc=(DB.schedule||[]).filter(s=>new Date(s.date)>=new Date()).length;
+  const b=document.getElementById('calBadge');uc>0?(b.textContent=uc,b.classList.add('show')):b.classList.remove('show');
+}
+function calNav(d){calM+=d;if(calM>11){calM=0;calY++}else if(calM<0){calM=11;calY--}renderCalendar()}
+
+let statsPeriod='all';
+function setPeriod(period,el){
+  statsPeriod=period;
+  document.querySelectorAll('.period-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');
+  renderStats();
+}
+
+async function renderStats(){
+  try{
+    const r=await fetch(SERVER_URL+'/stats?period='+statsPeriod);
+    const d=await r.json();
+    const views=d.views||{};
+    let total=Object.values(views).reduce((s,v)=>s+v,0);
+    document.getElementById('stTotalV').textContent=total;
+    document.getElementById('stTotalA').textContent=Object.keys(DB.anime||{}).length;
+    document.getElementById('stTotalE').textContent=Object.values(DB.anime||{}).reduce((s,a)=>s+(a.episodes?.length||0),0);
+    
+    const today=new Date();
+    const dayViews=[];
+    for(let i=6;i>=0;i--){const d=new Date(today);d.setDate(d.getDate()-i);const ds=d.toISOString().split('T')[0];const lbl=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'][d.getDay()===0?6:d.getDay()-1];dayViews.push({lbl,v:0})}
+    const maxDV=Math.max(...dayViews.map(x=>x.v),1);
+    document.getElementById('actBars').innerHTML=dayViews.map(x=>`
+      <div class="act-bar-wrap">
+        <div class="act-bar" style="height:${Math.max(x.v/maxDV*100,5)}%"></div>
+        <div class="act-bar-lbl">${x.lbl}</div>
+      </div>`).join('');
+    
+    const animeStats={};
+    Object.entries(views).forEach(([k,v])=>{
+      const[aid,en]=k.split('_');if(!aid||!en)return;
+      if(!animeStats[aid])animeStats[aid]={total:0,eps:{}};
+      animeStats[aid].total+=v;animeStats[aid].eps[en]=v;
+    });
+    const sorted=Object.entries(animeStats).sort((a,b)=>b[1].total-a[1].total);
+    const maxV=sorted[0]?.[1]?.total||1;
+    document.getElementById('statsContent').innerHTML=sorted.slice(0,5).map(([aid,data])=>{
+      const a=DB.anime?.[aid];if(!a)return'';
+      const eps=Object.entries(data.eps).sort((a,b)=>b[1]-a[1]).slice(0,3);
+      return `<div class="stats-card">
+        <div class="stats-anime-title">${a.title} <span style="color:var(--gold);font-size:12px">${data.total} просм.</span></div>
+        ${eps.map(([en,v])=>{const ep=a.episodes?.find(e=>e.num==en);const pct=Math.round(v/maxV*100);
+          return `<div class="stats-row"><div class="stats-ep">Серия ${en}${ep?' — '+ep.title.slice(0,20):''}</div>
+          <div class="stats-bar-wrap"><div class="stats-bar" style="width:${pct}%"></div></div>
+          <div class="stats-count">${v}</div></div>`;}).join('')}
+      </div>`;
+    }).join('')||'<div class="empty"><div class="empty-icon">📊</div><p>Нет данных</p></div>';
+  }catch{document.getElementById('statsContent').innerHTML='<div class="empty"><div class="empty-icon">📊</div><p>Нет данных за период</p></div>';}
+  
+  loadLeaderboard();
+}
+
+
+
+let selectedRole='';
+function selectRole(el,role){
+  selectedRole=role;
+  document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('selected'));el.classList.add('selected');
+}
+function submitApply(){
+  const fio=document.getElementById('applyFio').value.trim();
+  const age=document.getElementById('applyAge').value.trim();
+  const tz=document.getElementById('applyTz').value;
+  const exp=document.getElementById('applyExp').value.trim();
+  const edu=document.getElementById('applyEdu').value.trim();
+  const demo=document.getElementById('applyDemo').value.trim();
+  if(!fio){showToast('⚠️ Введи ФИО');return}
+  if(!age){showToast('⚠️ Введи возраст');return}
+  if(!tz){showToast('⚠️ Выбери часовой пояс');return}
+  if(!selectedRole){showToast('⚠️ Выбери роль');return}
+  const roleNames={actor:'Актёр',sound:'Звукорежиссёр',admin:'Администратор',other:'Другое'};
+  const tgUser=tg&&tg.initDataUnsafe&&tg.initDataUnsafe.user;
+  const lines=['📋 Новая заявка в команду','👤 ФИО: '+fio,'🎂 Возраст: '+age,'🌍 Часовой пояс: '+tz,'🎭 Претендует на: '+roleNames[selectedRole]];
+  if(exp)lines.push('💼 Опыт: '+exp);if(edu)lines.push('🎓 Образование: '+edu);if(demo)lines.push('🔗 Демо: '+demo);
+  lines.push('');lines.push('🆔 Telegram: '+(tgUser?.username?'@'+tgUser.username:'не указан'));
+  
+  const applyData = {
+    fio, age, tz, role: selectedRole,
+    exp, edu, demo,
+    tg: tgUser?.username ? '@'+tgUser.username : '',
+    first_name: MY_NAME || '',
+    user_id: MY_USER_ID || 0
+  };
+  fetch(SERVER_URL+'/apply', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(applyData)
+  }).then(r=>{
+    if(r.ok) showToast('🎉 Заявка отправлена!');
+    else showToast('❌ Ошибка отправки');
+  }).catch(()=>showToast('❌ Ошибка отправки'));
+  document.getElementById('applyBtn').disabled=true;
+  document.getElementById('applyBtn').textContent='✅ Заявка отправлена!';
+  setTimeout(()=>{['applyFio','applyAge','applyExp','applyEdu','applyDemo'].forEach(id=>document.getElementById(id).value='');document.getElementById('applyTz').value='';selectedRole='';document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('selected'));document.getElementById('applyBtn').disabled=false;document.getElementById('applyBtn').textContent='Отправить заявку';},3000);
+}
+
+function renderNotifs(){
+  const u=(DB.notifications||[]).filter(n=>!n.read).length;
+  document.getElementById('notifPip').classList.toggle('show',u>0);
+  const nb=document.getElementById('notifBadge');if(nb){u>0?(nb.textContent=u,nb.classList.add('show')):nb.classList.remove('show')}
+  document.getElementById('notifList').innerHTML=(DB.notifications||[]).map(n=>`
+    <div class="notif-row ${n.read?'':'unread'}">
+      <div class="notif-icon">${em(n.anime_id||'0')}</div>
+      <div class="notif-body"><div class="notif-txt">${n.text}</div><div class="notif-time">${n.date}</div></div>
+      ${!n.read?'<div class="npip"></div>':''}
+    </div>`).join('')||`<div style="text-align:center;padding:24px;color:var(--muted);font-size:13px">Нет уведомлений</div>`;
+}
+function toggleNotif(){document.getElementById('notifPanel').classList.toggle('open')}
+function markAllRead(){(DB.notifications||[]).forEach(n=>n.read=true);renderNotifs()}
+document.addEventListener('click',e=>{
+  const p=document.getElementById('notifPanel');
+  if(p.classList.contains('open')&&!p.contains(e.target)&&!e.target.closest('.hdr-btn'))p.classList.remove('open');
+});
+
+function updateAbout(){
+  const info=DB.team_info||{};
+  document.getElementById('abEps').textContent=Object.values(DB.anime||{}).reduce((s,a)=>s+(a.episodes?.length||0),0);
+  document.getElementById('abAnime').textContent=Object.keys(DB.anime||{}).length;
+  document.getElementById('abActors').textContent=Object.keys(DB.actors||{}).length;
+  const nameEl=document.getElementById('aboutTeamName');const descEl=document.getElementById('aboutTeamDesc');
+  if(nameEl&&info.name)nameEl.textContent=info.name;
+  if(descEl&&info.desc)descEl.textContent=info.desc;
+  const linksEl=document.getElementById('aboutLinks');
+  if(linksEl){
+    const links=[];
+    if(info.channel)links.push(`<a class="about-link-btn" href="https://t.me/${info.channel.replace('@','')}">✈️ Канал</a>`);
+    if(info.chat)links.push(`<a class="about-link-btn" href="https://t.me/${info.chat.replace('@','')}">💬 Чат</a>`);
+    if(info.email)links.push(`<a class="about-link-btn" href="mailto:${info.email}">✉️ Почта</a>`);
+    linksEl.innerHTML=links.join('');
+  }
+}
+function loadAboutForm(){
+  const info=DB.team_info||{};
+  document.getElementById('editTeamName').value=info.name||'Команда Акиру';
+  document.getElementById('editTeamDesc').value=info.desc||'';
+  document.getElementById('editChannel').value=info.channel||'';
+  document.getElementById('editChat').value=info.chat||'';
+  document.getElementById('editEmail').value=info.email||'';
+}
+async function saveAbout(){
+  const info={name:document.getElementById('editTeamName').value.trim(),desc:document.getElementById('editTeamDesc').value.trim(),channel:document.getElementById('editChannel').value.trim(),chat:document.getElementById('editChat').value.trim(),email:document.getElementById('editEmail').value.trim()};
+  DB.team_info=info;await pushDB();showToast('✅ Сохранено!');updateAbout();
+}
+
+function renderApplications(){
+  const apps=DB.applications||[];
+  const cnt=document.getElementById('appCount');if(cnt)cnt.textContent=apps.length+' шт.';
+  const badge=document.getElementById('appsBadge');const newApps=apps.filter(a=>!a.read).length;
+  if(badge&&newApps>0){badge.textContent=newApps;badge.classList.add('show')}
+  const roleNames={actor:'🎙 Актёр',sound:'🎚 Звукорежиссёр',admin:'⚙️ Администратор',other:'✨ Другое'};
+  const el=document.getElementById('appsList');
+  if(!apps.length){el.innerHTML='<div class="empty"><div class="empty-icon">📋</div><p>Заявок пока нет</p></div>';return}
+  el.innerHTML=[...apps].map((app,i)=>`
+    <div class="stats-card" style="animation-delay:${i*.05}s">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div style="font-size:14px;font-weight:700">${app.fio||'—'}</div>
+        <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:var(--s3);color:var(--muted2)">${roleNames[app.role]||app.role||'—'}</div>
+      </div>
+      <div style="font-size:12px;color:var(--muted2);margin-bottom:3px">Возраст: <span style="color:var(--text)">${app.age||'—'}</span> · ${app.tz||'—'}</div>
+      ${app.exp?`<div style="font-size:12px;color:var(--muted2);margin-bottom:3px">Опыт: <span style="color:var(--text)">${app.exp.slice(0,80)}</span></div>`:''}
+      ${app.demo?`<div style="font-size:12px;color:var(--blue)">${app.demo}</div>`:''}
+      ${app.tg?`<div style="font-size:11px;color:var(--teal);margin-top:6px">${app.tg}</div>`:''}
+      <div style="font-size:10px;color:var(--muted);margin-top:4px">${app.date||''}</div>
+    </div>`).join('');
+}
+
+function initAdmin(){
+  const isAdm=(DB.admin_ids||[]).includes(MY_USER_ID);
+  if(isAdm){
+    document.getElementById('navStats').style.display='';
+    document.getElementById('navApps').style.display='';
+    document.getElementById('adminFab').classList.add('show');
+    const eb=document.getElementById('editAboutBtn');if(eb)eb.style.display='';
+  }
+}
+function openAdmin(){document.getElementById('adminPanel').classList.add('open');adminTab('anime');if(tg)tg.BackButton.show()}
+function closeAdmin(){document.getElementById('adminPanel').classList.remove('open')}
+function adminTab(tab){
+  document.querySelectorAll('.admin-tab').forEach((el,i)=>el.classList.toggle('active',['anime','episodes','actors','schedule','push'][i]===tab));
+  const body=document.getElementById('adminBody');
+  if(tab==='anime')renderAdminAnime(body);
+  else if(tab==='episodes')renderAdminEpisodes(body);
+  else if(tab==='actors')renderAdminActors(body);
+  else if(tab==='schedule')renderAdminSchedule(body);
+  else if(tab==='push')renderAdminPush(body);
+  else if(tab==='users')renderAdminUsers(body);
+}
+
+function renderAdminAnime(body){
+  body.innerHTML=`
+    <div class="admin-sec-title">Добавить / редактировать аниме</div>
+    <div class="afield"><label>ID *</label><input id="aId" placeholder="1, 2, 3..."></div>
+    <div class="afield"><label>Название *</label><input id="aTitle" placeholder="Наруто"></div>
+    <div class="afield"><label>Японское название</label><input id="aJp" placeholder="NARUTO -ナルト-"></div>
+    <div class="afield"><label>Жанр</label><input id="aGenre" placeholder="Сёнен, Экшен..."></div>
+    <div class="afield"><label>Год</label><input id="aYear" type="number" placeholder="2024"></div>
+    <div class="afield"><label>Описание</label><textarea id="aDesc"></textarea></div>
+    <div class="afield"><label>Статус</label><select id="aStatus"><option value="ongoing">Озвучивается</option><option value="ended">Озвучено</option></select></div>
+    <button class="abtn primary" onclick="saveAnime()">💾 Сохранить аниме</button>
+    <button class="abtn secondary" id="posterUploadBtn" onclick="doPosterUpload()" style="display:none">🖼 Загрузить постер</button>
+    <div class="admin-sec-title" style="margin-top:16px">Список аниме</div>
+    ${Object.values(DB.anime||{}).map(a=>`
+      <div class="admin-list-item" onclick="loadAnimeEdit('${a.id}')">
+        <div><div class="ali-title">${a.title}</div><div class="ali-sub">ID: ${a.id} · ${a.episodes?.length||0} серий</div></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="color:var(--red);font-size:12px;font-weight:600;cursor:pointer" onclick="event.stopPropagation();deleteAnime('${a.id}')">✕</div>
+          <div class="ali-arr">›</div>
+        </div>
+      </div>`).join('')||'<div style="color:var(--muted);font-size:13px">Аниме не добавлено</div>'}`;
+}
+function loadAnimeEdit(id){
+  const a=DB.anime[id];if(!a)return;
+  document.getElementById('aId').value=a.id;document.getElementById('aTitle').value=a.title;
+  document.getElementById('aJp').value=a.title_jp||'';document.getElementById('aGenre').value=a.genre||'';
+  document.getElementById('aYear').value=a.year||'';document.getElementById('aDesc').value=a.description||'';
+  document.getElementById('aStatus').value=a.status||'ongoing';
+  document.getElementById('adminBody').scrollTop=0;showToast('📝 '+a.title);
+}
+async function saveAnime(){
+  const id=document.getElementById('aId').value.trim();const title=document.getElementById('aTitle').value.trim();
+  if(!id||!title){showToast('⚠️ Заполни ID и название');return}
+  if(!DB.anime)DB.anime={};
+  DB.anime[id]={id,title,title_jp:document.getElementById('aJp').value.trim(),genre:document.getElementById('aGenre').value.trim()||'Аниме',
+    year:parseInt(document.getElementById('aYear').value)||2024,description:document.getElementById('aDesc').value.trim()||'Описание не добавлено.',
+    status:document.getElementById('aStatus').value,cover_file_id:DB.anime[id]?.cover_file_id||'',episodes:DB.anime[id]?.episodes||[]};
+  await pushDB();showToast('✅ Аниме сохранено!');renderAdminAnime(document.getElementById('adminBody'));renderAll();
+}
+async function deleteAnime(id){
+  if(!confirm('Удалить аниме?'))return;delete DB.anime[id];await pushDB();showToast('🗑 Удалено');renderAdminAnime(document.getElementById('adminBody'));renderAll();
+}
+
+function renderAdminEpisodes(body){
+  const opts=Object.values(DB.anime||{}).map(a=>`<option value="${a.id}">${a.title}</option>`).join('');
+  body.innerHTML=`
+    <div class="admin-sec-title">Добавить серию</div>
+    <div class="afield"><label>Аниме *</label><select id="epAnime" onchange="loadEpList()">${opts}</select></div>
+    <div class="afield"><label>Номер *</label><input id="epNum" type="number" placeholder="1"></div>
+    <div class="afield"><label>Название *</label><input id="epTitle" placeholder="Название эпизода"></div>
+    <div class="afield"><label>Длительность</label><input id="epDur" placeholder="23:40"></div>
+    <div class="afield"><label>Sibnet URL</label><input id="epUrl" placeholder="https://video.sibnet.ru/shell.php?videoid=..."></div>
+    <div class="afield"><label>VK URL</label><input id="epVkUrl" placeholder="https://vk.com/video..."></div>
+    <div class="cast-editor">
+      <div class="cast-editor-title">Состав серии</div>
+      <button class="tg-parse-btn" onclick="parseCastFromTg()">📋 Вставить состав (Актёр — Персонаж)</button>
+      <div id="castEditorRows"></div>
+      <button class="cast-add-btn" onclick="addCastRow()">+ Добавить актёра</button>
+    </div>
+    <button class="abtn primary" onclick="saveEpisode()">💾 Сохранить серию</button>
+    <div class="admin-sec-title" style="margin-top:16px">Серии</div>
+    <div id="epListAdmin"></div>`;
+  if(Object.keys(DB.anime||{}).length)loadEpList();
+}
+
+
+async function deleteEpisode(animeId,num){
+  if(!confirm('Удалить серию?'))return;DB.anime[animeId].episodes=DB.anime[animeId].episodes.filter(e=>e.num!==num);await pushDB();showToast('🗑 Удалена');loadEpList();
+}
+
+function renderAdminActors(body){
+  body.innerHTML=`
+    <div class="admin-sec-title">Добавить / редактировать актёра</div>
+    <div class="afield"><label>ID *</label><input id="actId" placeholder="1" oninput="onActorIdChange(this.value)"></div>
+    <div class="photo-upload-area" id="actPhotoArea" onclick="uploadActorPhoto()">
+      <div class="photo-upload-icon">📷</div>
+      <div class="photo-upload-label">Нажми чтобы загрузить фото</div>
+      <div class="photo-upload-sub">JPG, PNG · до 5MB</div>
+      <img class="photo-preview" id="actPhotoPreview">
+    </div>
+    <div class="afield"><label>Имя *</label><input id="actName" placeholder="Иван Петров"></div>
+    <div class="afield"><label>Роль</label><select id="actRole"><option value="lead">Ведущий</option><option value="support">Второй план</option><option value="sound">Звукорежиссёр</option><option value="director">Режиссёр</option><option value="admin">Администратор</option></select></div>
+    <div class="afield"><label>Биография</label><textarea id="actBio"></textarea></div>
+    <div class="afield"><label>Telegram</label><input id="actTg" placeholder="@username"></div>
+    <div class="afield"><label>ВКонтакте</label><input id="actVk" placeholder="vkusername"></div>
+    <div class="afield"><label>Email</label><input id="actEmail" placeholder="mail@example.com"></div>
+    <button class="abtn primary" onclick="saveActor()">💾 Сохранить актёра</button>
+    <div class="admin-sec-title" style="margin-top:16px">Список актёров</div>
+    ${Object.values(DB.actors||{}).map(a=>`<div class="admin-list-item" onclick="loadActorEdit('${a.id}')"><div><div class="ali-title">${a.name}</div><div class="ali-sub">ID: ${a.id} · ${a.role||'—'}</div></div><div class="ali-arr">›</div></div>`).join('')||'<div style="color:var(--muted);font-size:13px">Актёры не добавлены</div>'}`;
+}
+
+async function saveActor(){
+  const id=document.getElementById('actId')?.value.trim();const name=document.getElementById('actName')?.value.trim();
+  if(!id||!name){showToast('⚠️ Заполни ID и имя');return}
+  if(!DB.actors)DB.actors={};
+  DB.actors[id]={id,name,role:document.getElementById('actRole')?.value,bio:document.getElementById('actBio')?.value.trim(),telegram:document.getElementById('actTg')?.value.trim(),vk:document.getElementById('actVk')?.value.trim(),email:document.getElementById('actEmail')?.value.trim(),photo:DB.actors[id]?.photo||'',roles:DB.actors[id]?.roles||[]};
+  await pushDB();showToast('✅ Актёр сохранён!');renderAdminActors(document.getElementById('adminBody'));renderActors();
+}
+
+function renderAdminSchedule(body){
+  const opts=Object.values(DB.anime||{}).map(a=>`<option value="${a.id}">${a.title}</option>`).join('');
+  const schedule=DB.schedule||[];
+  body.innerHTML=`
+    <div class="admin-sec-title">Добавить в расписание</div>
+    <div class="afield"><label>Аниме *</label><select id="schAnime">${opts}</select></div>
+    <div class="afield"><label>Номер серии *</label><input id="schNum" type="number" placeholder="5"></div>
+    <div class="afield"><label>Название</label><input id="schTitle" placeholder="Название эпизода"></div>
+    <div class="afield"><label>Дата *</label><input id="schDate" type="date"></div>
+    <button class="abtn primary" onclick="saveSchedule()">💾 Добавить</button>
+    <div class="admin-sec-title" style="margin-top:16px">Расписание</div>
+    ${schedule.map(s=>{const a=DB.anime[s.anime_id];return`<div class="admin-list-item"><div><div class="ali-title">${a?.title||s.anime_id} — Серия ${s.episode_num}</div><div class="ali-sub">${s.title} · ${s.date}</div></div><div style="color:var(--red);font-size:12px;font-weight:600;cursor:pointer" onclick="deleteSchedule('${s.anime_id}',${s.episode_num})">✕</div></div>`;}).join('')||'<div style="color:var(--muted);font-size:13px">Расписание пусто</div>'}`;
+}
+async function saveSchedule(){
+  const animeId=document.getElementById('schAnime')?.value;const epNum=parseInt(document.getElementById('schNum')?.value);const title=document.getElementById('schTitle')?.value.trim()||'Новая серия';const date=document.getElementById('schDate')?.value;
+  if(!animeId||!epNum||!date){showToast('⚠️ Заполни поля');return}
+  if(!DB.schedule)DB.schedule=[];DB.schedule=DB.schedule.filter(s=>!(s.anime_id===animeId&&s.episode_num===epNum));DB.schedule.push({date,anime_id:animeId,episode_num:epNum,title});DB.schedule.sort((a,b)=>a.date.localeCompare(b.date));
+  await pushDB();showToast('✅ Добавлено!');renderAdminSchedule(document.getElementById('adminBody'));renderCalendar();
+}
+async function deleteSchedule(animeId,epNum){
+  DB.schedule=(DB.schedule||[]).filter(s=>!(s.anime_id===animeId&&s.episode_num===epNum));await pushDB();showToast('🗑 Удалено');renderAdminSchedule(document.getElementById('adminBody'));
+}
+
+function renderAdminPush(body){
+  body.innerHTML=`
+    <div class="admin-sec-title">Рассылка всем подписчикам</div>
+    <div class="afield"><label>Текст *</label><textarea id="pushText" placeholder="Вышла новая серия..."></textarea></div>
+    <button class="abtn primary" onclick="sendPush()">📢 Разослать</button>
+    <div class="admin-sec-title" style="margin-top:16px">Уведомление о серии</div>
+    <div class="afield"><label>Аниме</label><select id="pushAnime">${Object.values(DB.anime||{}).map(a=>`<option value="${a.id}">${a.title}</option>`).join('')}</select></div>
+    <div class="afield"><label>Номер серии</label><input id="pushEpNum" type="number" placeholder="5"></div>
+    <button class="abtn secondary" onclick="sendEpPush()">🎌 Уведомить о серии</button>`;
+}
+function sendPush(){const text=document.getElementById('pushText')?.value.trim();if(!text){showToast('⚠️ Введи текст');return}if(tg)tg.sendData(JSON.stringify({action:'push',text}));showToast('📢 Отправлено боту!')}
+function sendEpPush(){const animeId=document.getElementById('pushAnime')?.value;const epNum=parseInt(document.getElementById('pushEpNum')?.value);if(!animeId||!epNum){showToast('⚠️ Выбери аниме и серию');return}if(tg)tg.sendData(JSON.stringify({action:'push_ep',anime_id:animeId,ep_num:epNum}));showToast('🎌 Уведомление отправлено!')}
+
+async function pushDB(){
+  try{
+    const r=await fetch(SERVER_URL+'/db?token='+SERVER_TOKEN,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(DB)});
+    if(!r.ok)throw new Error('err');
+  }catch(e){showToast('❌ Ошибка сохранения');throw e;}
+}
+
+function showTab(tab){
+  ['catalog','watchlist','history','actors','news','calendar','apply','about','editAbout','stats','applications','profile','hitparade','chat'].forEach(t=>{
+    const el=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
+    if(el)el.classList.toggle('hidden',t!==tab);
+  });
+  document.querySelectorAll('.bnav-btn').forEach(el=>{el.classList.toggle('active',(el.getAttribute('onclick')||'').includes("'"+tab+"'"))});
+  if(tab==='calendar')renderCalendar();
+  if(tab==='history')renderHistory();
+  if(tab==='watchlist')renderWatchlist();
+  if(tab==='stats')renderStats();
+  if(tab==='applications')renderApplications();
+  if(tab==='editAbout')loadAboutForm();
+  if(tab==='profile')renderProfile();
+  if(tab==='hitparade')renderHitparade();
+  if(tab==='chat'){
+    loadChat();startChatPolling();
+    document.getElementById('chatBadge')?.classList.remove('show');
+  } else {
+    stopChatPolling();
+  }
+  if(tab==='catalog'){document.getElementById('srchWrap').classList.remove('show');document.getElementById('filterBar').classList.remove('show');}
+  
+  if(tab!=='catalog'){document.getElementById('filterBtn').style.display='none';}
+  else document.getElementById('filterBtn').style.display='';
+}
+
+function closeOv(id){document.getElementById(id).classList.remove('open')}
+document.getElementById('detOv').addEventListener('click',e=>{if(e.target===document.getElementById('detOv'))closeOv('detOv')});
+document.getElementById('actOv').addEventListener('click',e=>{if(e.target===document.getElementById('actOv'))closeOv('actOv')});
+if(tg)tg.BackButton.onClick(()=>{
+  if(document.getElementById('adminPanel').classList.contains('open')){closeAdmin();return}
+  if(document.getElementById('playerOv').classList.contains('open')){closePlayer();return}
+  if(document.getElementById('actOv').classList.contains('open')){closeOv('actOv');return}
+  if(document.getElementById('detOv').classList.contains('open')){closeOv('detOv');tg.BackButton.hide();return}
+  tg.BackButton.hide();
+});
+
+let toastT;
+function showToast(msg){clearTimeout(toastT);const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');toastT=setTimeout(()=>t.classList.remove('show'),2400)}
+
+const BADGES = [
+  {id:'first_view', icon:'👁', name:'Первый взгляд', desc:'Посмотрел первую серию'},
+  {id:'fan10', icon:'🌟', name:'Фанат', desc:'Посмотрел 10 серий'},
+  {id:'legend50', icon:'🏆', name:'Легенда', desc:'Посмотрел 50 серий'},
+  {id:'master100', icon:'👑', name:'Мастер', desc:'Посмотрел 100 серий'},
+  {id:'first_cmt', icon:'💬', name:'Голос', desc:'Первый комментарий'},
+  {id:'active_cmt', icon:'🗣', name:'Активист', desc:'10 комментариев'},
+  {id:'early_bird', icon:'🌅', name:'Ранний зритель', desc:'Один из первых'},
+  {id:'bookmarker', icon:'🔖', name:'Коллекционер', desc:'5 закладок'},
+  {id:'rater', icon:'⭐', name:'Критик', desc:'Оценил 5 серий'},
+];
+
+const ACHIEVEMENTS = [
+  {id:'eps_1', icon:'🎬', name:'Первый эпизод', desc:'Посмотри 1 серию', req:1, type:'eps'},
+  {id:'eps_10', icon:'📺', name:'Марафон', desc:'Посмотри 10 серий', req:10, type:'eps'},
+  {id:'eps_50', icon:'🎭', name:'Заядлый зритель', desc:'Посмотри 50 серий', req:50, type:'eps'},
+  {id:'eps_100', icon:'👑', name:'Аниме-гуру', desc:'Посмотри 100 серий', req:100, type:'eps'},
+  {id:'cmt_1', icon:'💬', name:'Первое слово', desc:'Оставь 1 комментарий', req:1, type:'cmts'},
+  {id:'cmt_10', icon:'🗣', name:'Активный', desc:'Оставь 10 комментариев', req:10, type:'cmts'},
+  {id:'cmt_50', icon:'📢', name:'Голос сообщества', desc:'Оставь 50 комментариев', req:50, type:'cmts'},
+  {id:'bm_5', icon:'🔖', name:'Коллекционер', desc:'Добавь 5 аниме в закладки', req:5, type:'bm'},
+  {id:'rate_5', icon:'⭐', name:'Критик', desc:'Оцени 5 серий', req:5, type:'ratings'},
+];
+
+function getUnlockedBadges(stats){
+  const unlocked = new Set(JSON.parse(localStorage.getItem('badges')||'[]'));
+  
+  if(stats.eps >= 1) unlocked.add('first_view');
+  if(stats.eps >= 10) unlocked.add('fan10');
+  if(stats.eps >= 50) unlocked.add('legend50');
+  if(stats.eps >= 100) unlocked.add('master100');
+  if(stats.cmts >= 1) unlocked.add('first_cmt');
+  if(stats.cmts >= 10) unlocked.add('active_cmt');
+  if(getBM().length >= 5) unlocked.add('bookmarker');
+  if(Object.keys(getRat()).length >= 5) unlocked.add('rater');
+  try{localStorage.setItem('badges',JSON.stringify([...unlocked]))}catch{}
+  return unlocked;
+}
+
+function getUserLevel(eps){
+  if(eps >= 100) return {name:'Легенда 👑', color:'#ffd60a'};
+  if(eps >= 50) return {name:'Мастер 🏆', color:'#bf5af2'};
+  if(eps >= 20) return {name:'Фанат 🌟', color:'#30d158'};
+  if(eps >= 5) return {name:'Зритель 👁', color:'#0a84ff'};
+  return {name:'Новичок 🌱', color:'#aeaeb2'};
+}
+
+function getFavoriteGenre(history){
+  const genres = {};
+  history.forEach(h=>{
+    const a = DB.anime[h.a]; if(!a) return;
+    genres[a.genre] = (genres[a.genre]||0)+1;
+  });
+  const sorted = Object.entries(genres).sort((a,b)=>b[1]-a[1]);
+  return sorted[0]?.[0] || null;
+}
+
+async function renderProfile(){
+  const views = getViews();
+  const eps = Object.values(views).reduce((s,v)=>s+v,0);
+  const hist = getHistory();
+  const bm = getBM();
+  const rat = getRat();
+  const ratCount = Object.values(rat).reduce((s,v)=>s+Object.keys(v).length,0);
+
+  let serverStats = {comments:0, likes:0};
+  try{
+    const r = await fetch(SERVER_URL+'/leaderboard?limit=100');
+    const d = await r.json();
+    const me = (d.leaderboard||[]).find(u=>u.user_id===MY_USER_ID);
+    if(me){serverStats.comments=me.comments||0; serverStats.points=me.points||0;}
+  }catch{}
+
+  const stats = {eps, cmts:serverStats.comments, likes:serverStats.likes||0};
+  const unlocked = getUnlockedBadgesAnimated({...stats, ratings:ratCount, bm:bm.length});
+  const level = getUserLevel(eps);
+  const favGenre = getFavoriteGenre(hist);
+
+  const user = tg?.initDataUnsafe?.user;
+  document.getElementById('profileName').textContent = user?.first_name || MY_NAME || 'Зритель';
+  document.getElementById('profileUsername').textContent = user?.username ? '@'+user.username : '';
+
+  const avEl = document.getElementById('profileAv');
+  if(user?.photo_url){avEl.innerHTML=`<img src="${user.photo_url}"><div class="profile-level" id="profileLevel" style="color:#000;background:${level.color}">${level.name}</div>`;}
+  else{avEl.innerHTML=`${(user?.first_name||'?')[0]}<div class="profile-level" style="color:#000;background:${level.color}">${level.name}</div>`;}
+
+  const sinceKey = 'joinDate';
+  let since = localStorage.getItem(sinceKey);
+  if(!since){since=new Date().toLocaleDateString('ru',{day:'numeric',month:'long',year:'numeric'});try{localStorage.setItem(sinceKey,since)}catch{}}
+  document.getElementById('profileSince').textContent = 'С нами с '+since;
+
+  document.getElementById('profileGenre').textContent = favGenre ? '🎌 Любимый жанр: '+favGenre : '🎌 Смотри больше для определения жанра';
+
+  document.getElementById('pStatEps').textContent = eps;
+  document.getElementById('pStatCmts').textContent = serverStats.comments;
+  document.getElementById('pStatLikes').textContent = serverStats.points||0;
+
+  document.getElementById('badgesGrid').innerHTML = BADGES.map(b=>`
+    <div class="badge-item ${unlocked.has(b.id)?'unlocked':'locked'}">
+      <div class="badge-icon">${b.icon}</div>
+      <div class="badge-name">${b.name}</div>
+      <div class="badge-desc">${b.desc}</div>
+    </div>`).join('');
+
+  const achievData = {eps, cmts:serverStats.comments, bm:bm.length, ratings:ratCount};
+  document.getElementById('achievList').innerHTML = ACHIEVEMENTS.map(a=>{
+    const cur = achievData[a.type]||0;
+    const done = cur >= a.req;
+    const pct = Math.min(Math.round(cur/a.req*100),100);
+    return `<div class="achiev-item ${done?'unlocked':'locked'}">
+      <div class="achiev-icon">${a.icon}</div>
+      <div class="achiev-info">
+        <div class="achiev-name">${a.name}</div>
+        <div class="achiev-desc">${a.desc}</div>
+        ${!done?`<div class="achiev-progress">
+          <div class="achiev-bar"><div class="achiev-fill" style="width:${pct}%"></div></div>
+          <div class="achiev-pct">${cur} / ${a.req}</div>
+        </div>`:''}
+      </div>
+      <div class="achiev-check">${done?'✅':''}</div>
+    </div>`;
+  }).join('');
+
+  const prev = new Set(JSON.parse(localStorage.getItem('prevBadges')||'[]'));
+  unlocked.forEach(b=>{
+    if(!prev.has(b)){
+      const badge = BADGES.find(x=>x.id===b);
+      if(badge) setTimeout(()=>showToast(`🏅 Новый бейдж: ${badge.name}!`),500);
+    }
+  });
+  try{localStorage.setItem('prevBadges',JSON.stringify([...unlocked]))}catch{}
+}
+
+async function renderAdminUsers(body){
+  body.innerHTML=`<div class="admin-sec-title">Загрузка пользователей...</div>`;
+  try{
+    
+    const subs = DB.subscribers || [];
+    const banned = DB.banned_users || [];
+    const total = subs.length;
+    body.innerHTML=`
+      <div class="admin-sec-title">Всего подписчиков: <span style="color:var(--gold)">${total}</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+        <div class="pstat"><div class="pstat-v" style="font-size:16px">${total}</div><div class="pstat-l">Подписчиков</div></div>
+        <div class="pstat"><div class="pstat-v" style="font-size:16px;color:var(--red)">${banned.length}</div><div class="pstat-l">Забанено</div></div>
+      </div>
+      <div class="admin-sec-title">Таблица лидеров — управление</div>
+      <div id="adminUsersList"></div>
+      <div class="admin-sec-title" style="margin-top:16px">Забанить по ID</div>
+      <div class="afield"><label>User ID</label><input id="banUserId" type="number" placeholder="123456789"></div>
+      <button class="abtn danger" onclick="adminBanUser()">🚫 Забанить пользователя</button>
+      <button class="abtn secondary" onclick="adminUnbanUser()">✅ Разбанить пользователя</button>`;
+    
+    const r = await fetch(SERVER_URL+'/leaderboard?limit=50');
+    const d = await r.json();
+    const lb = d.leaderboard||[];
+    document.getElementById('adminUsersList').innerHTML = lb.map(u=>{
+      const isBanned = banned.includes(u.user_id);
+      return `<div class="user-item">
+        <div class="user-av">${u.first_name?u.first_name[0]:'?'}</div>
+        <div class="user-info">
+          <div class="user-name">${u.first_name||'—'}${u.username?' @'+u.username:''}</div>
+          <div class="user-meta">ID: ${u.user_id} · ${u.comments||0} комм. · ${u.points||0} очков</div>
+        </div>
+        <button class="user-ban-btn ${isBanned?'unban':'ban'}" onclick="toggleBanUser(${u.user_id},'${u.first_name||''}',this)">${isBanned?'Разбанить':'Бан'}</button>
+      </div>`;
+    }).join('')||'<div style="color:var(--muted);font-size:13px">Нет данных</div>';
+  }catch(e){body.innerHTML=`<div style="color:var(--muted2);font-size:13px">Ошибка загрузки: ${e.message}</div>`;}
+}
+
+async function toggleBanUser(userId,name,btn){
+  const isBanned = btn.textContent.trim()==='Бан'?false:true;
+  try{
+    if(!isBanned){
+      
+      await fetch(`${SERVER_URL}/ban?user_id=${userId}&token=${SERVER_TOKEN}`,{method:'POST'});
+      btn.textContent='Разбанить';btn.className='user-ban-btn unban';
+      showToast(`🚫 ${name} забанен`);
+      if(tg)tg.sendData(JSON.stringify({action:'ban_user',user_id:userId}));
+    }else{
+      
+      await fetch(`${SERVER_URL}/ban?user_id=${userId}&token=${SERVER_TOKEN}`,{method:'DELETE'});
+      btn.textContent='Бан';btn.className='user-ban-btn ban';
+      showToast(`✅ ${name} разбанен`);
+      if(tg)tg.sendData(JSON.stringify({action:'unban_user',user_id:userId}));
+    }
+  }catch{showToast('❌ Ошибка')}
+}
+
+async function adminBanUser(){
+  const uid = parseInt(document.getElementById('banUserId')?.value);
+  if(!uid){showToast('⚠️ Введи User ID');return}
+  try{
+    await fetch(`${SERVER_URL}/ban?user_id=${uid}&token=${SERVER_TOKEN}`,{method:'POST'});
+    if(tg)tg.sendData(JSON.stringify({action:'ban_user',user_id:uid}));
+    showToast('🚫 Пользователь забанен');
+  }catch{showToast('❌ Ошибка')}
+}
+
+async function adminUnbanUser(){
+  const uid = parseInt(document.getElementById('banUserId')?.value);
+  if(!uid){showToast('⚠️ Введи User ID');return}
+  try{
+    await fetch(`${SERVER_URL}/ban?user_id=${uid}&token=${SERVER_TOKEN}`,{method:'DELETE'});
+    if(tg)tg.sendData(JSON.stringify({action:'unban_user',user_id:uid}));
+    showToast('✅ Пользователь разбанен');
+  }catch{showToast('❌ Ошибка')}
+}
+
+function checkSmartNotifications(){
+  const hist = getHistory();
+  if(!hist.length) return;
+
+  const unfinished = hist.filter(h=>h.p<90); 
+  if(unfinished.length > 0){
+    const h = unfinished[0];
+    const a = DB.anime[h.a]; const ep = a?.episodes?.[h.i];
+    if(a && ep){
+      const lastNotif = localStorage.getItem('lastContinueNotif');
+      const now = Date.now();
+      if(!lastNotif || now - parseInt(lastNotif) > 24*60*60*1000){ 
+        if(tg) tg.sendData(JSON.stringify({
+          action:'smart_notif',
+          type:'continue',
+          text:`Не забудь досмотреть «${a.title}» — Серия ${ep.num}: ${ep.title}`,
+          anime_id:h.a
+        }));
+        try{localStorage.setItem('lastContinueNotif',now.toString())}catch{}
+      }
+    }
+  }
+
+  const watchedAnime = [...new Set(hist.map(h=>h.a))];
+  const today = new Date().toISOString().split('T')[0];
+  const upcoming = (DB.schedule||[]).filter(s=>s.date===today && watchedAnime.includes(s.anime_id));
+  upcoming.forEach(s=>{
+    const notifKey = 'notif_'+s.anime_id+'_'+s.episode_num;
+    if(!localStorage.getItem(notifKey)){
+      const a = DB.anime[s.anime_id];
+      if(a) showToast(`🔔 Вышла серия ${s.episode_num} аниме «${a.title}»!`);
+      try{localStorage.setItem(notifKey,'1')}catch{}
+    }
+  });
+}
+
+let curActorId = null;
+
+function setupActorComments(actorId){
+  curActorId = actorId;
+  loadActorComments(actorId);
+  const sendBtn = document.getElementById('actorCmtSend');
+  if(sendBtn) sendBtn.onclick = () => sendActorComment(actorId);
+}
+
+async function loadActorComments(actorId){
+  const el = document.getElementById('actorCmtList');
+  if(!el) return;
+  el.innerHTML = '<div style="color:var(--muted);font-size:13px">Загрузка...</div>';
+  try{
+    const r = await fetch(SERVER_URL+'/comments/actor_'+actorId+'/0');
+    const d = await r.json();
+    const isAdm = (DB.admin_ids||[]).includes(MY_USER_ID);
+    if(!d.comments?.length){el.innerHTML='<div style="color:var(--muted2);font-size:13px;padding:4px 0">Будь первым кто оставит комментарий!</div>';return}
+    el.innerHTML = d.comments.map(c=>{
+      const ts = new Date(c.ts*1000).toLocaleDateString('ru',{day:'numeric',month:'short'});
+      const liked = c.likes.includes(MY_USER_ID);
+      return `<div class="cmt" id="acmt_${c.id}">
+        <div class="cmt-main">
+          <div class="c-av">${c.first_name?c.first_name[0]:'?'}</div>
+          <div class="c-body">
+            <div class="c-name">${c.first_name}${c.username?' · @'+c.username:''}</div>
+            <div class="c-text">${c.text}</div>
+            <div class="c-meta">
+              <div class="c-time">${ts}</div>
+              <div class="c-like ${liked?'liked':''}" onclick="likeActorComment('${c.id}','${actorId}',this)">
+                <svg fill="${liked?'currentColor':'none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="10" height="10"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                ${c.likes.length}
+              </div>
+              ${isAdm?`<div class="c-del" onclick="deleteActorComment('${c.id}','${actorId}')">Удалить</div>`:''}
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }catch{el.innerHTML='<div style="color:var(--muted2);font-size:13px">Ошибка загрузки</div>';}
+}
+
+async function sendActorComment(actorId){
+  const inp = document.getElementById('actorCmtInp');
+  const text = inp?.value.trim(); if(!text) return;
+  inp.value = '';
+  try{
+    await fetch(SERVER_URL+'/comments',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({anime_id:'actor_'+actorId,ep_num:0,text,user_id:MY_USER_ID,username:MY_USERNAME,first_name:MY_NAME})});
+    loadActorComments(actorId);
+    showToast('💬 Комментарий добавлен!');
+  }catch{showToast('❌ Ошибка')}
+}
+
+async function likeActorComment(id,actorId,el){
+  try{
+    const r=await fetch(SERVER_URL+'/like?comment_id='+id+'&user_id='+MY_USER_ID+'&anime_id=actor_'+actorId+'&ep_num=0',{method:'POST'});
+    const d=await r.json();
+    el.classList.toggle('liked',d.liked);el.querySelector('svg').setAttribute('fill',d.liked?'currentColor':'none');
+    el.lastChild.textContent=' '+d.likes;
+  }catch{}
+}
+
+async function deleteActorComment(id,actorId){
+  if(!confirm('Удалить?'))return;
+  try{await fetch(SERVER_URL+'/comment?comment_id='+id+'&anime_id=actor_'+actorId+'&ep_num=0&token='+SERVER_TOKEN,{method:'DELETE'});document.getElementById('acmt_'+id)?.remove();showToast('🗑 Удалено')}catch{}
+}
+
+function openPosterUpload(animeId){
+  
+  const inp = document.createElement('input');
+  inp.type = 'file'; inp.accept = 'image/*';
+  inp.onchange = async(e) => {
+    const file = e.target.files[0]; if(!file) return;
+    if(file.size > 5*1024*1024){showToast('❌ Файл слишком большой (макс 5MB)');return}
+    showToast('⏳ Загружаю постер...');
+    try{
+      const fd = new FormData();
+      fd.append('file', file);
+      fd.append('token', SERVER_TOKEN);
+      fd.append('anime_id', animeId);
+      const r = await fetch(SERVER_URL+'/upload_cover', {method:'POST', body:fd});
+      const d = await r.json();
+      if(d.ok){
+        showToast('✅ Постер загружен!');
+        if(DB.anime[animeId]) DB.anime[animeId].cover_file_id = animeId+'.jpg';
+        renderAll();
+      }else showToast('❌ Ошибка загрузки');
+    }catch(e){showToast('❌ Ошибка: '+e.message)}
+  };
+  inp.click();
+}
+
+document.addEventListener('input', e=>{
+  if(e.target.id==='aId'){
+    const btn=document.getElementById('posterUploadBtn');
+    if(btn) btn.style.display=e.target.value.trim()?'':'none';
+  }
+});
+function doPosterUpload(){
+  const animeId=document.getElementById('aId')?.value.trim();
+  if(!animeId){showToast('⚠️ Сначала введи ID аниме');return}
+  openPosterUpload(animeId);
+}
+
+const TAB_ORDER = ['catalog','watchlist','history','actors','news','calendar','apply','about','editAbout','stats','applications','profile','hitparade','chat'];
+let lastTabIndex = 0;
+
+function showTabAnimated(tab){
+  const newIdx = TAB_ORDER.indexOf(tab);
+  const oldIdx = lastTabIndex;
+  const goRight = newIdx >= oldIdx;
+
+  const views = document.querySelectorAll('.view:not(.hidden)');
+  views.forEach(v=>{
+    v.classList.add(goRight?'slide-out-left':'slide-out-right');
+    setTimeout(()=>v.classList.remove('slide-out-left','slide-out-right'),300);
+  });
+
+  setTimeout(()=>{
+    showTab(tab);
+    const newView = document.getElementById('view'+tab.charAt(0).toUpperCase()+tab.slice(1));
+    if(newView){
+      newView.classList.add(goRight?'slide-in-right':'slide-in-left');
+      setTimeout(()=>newView.classList.remove('slide-in-right','slide-in-left'),400);
+    }
+  }, 80);
+  
+  lastTabIndex = newIdx;
+}
+
+function launchConfetti(duration=2500){
+  const canvas = document.getElementById('confettiCanvas');
+  if(!canvas) return;
+  canvas.style.display = 'block';
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const ctx = canvas.getContext('2d');
+  const pieces = [];
+  const colors = ['#ffd60a','#30d158','#0a84ff','#bf5af2','#ff453a','#ff9f0a','#fff'];
+  const shapes = ['circle','rect','triangle'];
+  
+  for(let i=0;i<120;i++){
+    pieces.push({
+      x: Math.random()*canvas.width,
+      y: -20 - Math.random()*canvas.height*0.5,
+      vx: (Math.random()-0.5)*6,
+      vy: 2+Math.random()*5,
+      rot: Math.random()*360,
+      vrot: (Math.random()-0.5)*10,
+      color: colors[Math.floor(Math.random()*colors.length)],
+      shape: shapes[Math.floor(Math.random()*shapes.length)],
+      size: 5+Math.random()*8,
+      alpha: 1
+    });
+  }
+  
+  const start = Date.now();
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    const elapsed = Date.now()-start;
+    const progress = elapsed/duration;
+    pieces.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy; p.vy+=0.12; p.rot+=p.vrot;
+      p.alpha = Math.max(0, 1-(progress*1.5));
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+      if(p.shape==='circle'){ctx.beginPath();ctx.arc(0,0,p.size/2,0,Math.PI*2);ctx.fill();}
+      else if(p.shape==='rect'){ctx.fillRect(-p.size/2,-p.size/4,p.size,p.size/2);}
+      else{ctx.beginPath();ctx.moveTo(0,-p.size/2);ctx.lineTo(p.size/2,p.size/2);ctx.lineTo(-p.size/2,p.size/2);ctx.closePath();ctx.fill();}
+      ctx.restore();
+    });
+    ctx.globalAlpha=1;
+    if(elapsed<duration) requestAnimationFrame(draw);
+    else{ctx.clearRect(0,0,canvas.width,canvas.height);canvas.style.display='none';}
+  }
+  requestAnimationFrame(draw);
+}
+
+function addRipple(el, e){
+  const rect = el.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height)*2;
+  const x = (e.clientX-rect.left) - size/2;
+  const y = (e.clientY-rect.top) - size/2;
+  const ripple = document.createElement('span');
+  ripple.className = 'ripple';
+  ripple.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px`;
+  el.style.position='relative';el.style.overflow='hidden';
+  el.appendChild(ripple);
+  setTimeout(()=>ripple.remove(), 600);
+}
+document.addEventListener('click',e=>{
+  const btn = e.target.closest('.watch-btn,.abtn,.submit-btn,.cal-btn,.bnav-btn');
+  if(btn) addRipple(btn, e);
+});
+
+const origOpenAnime = openAnime;
+function openAnime(id){
+  origOpenAnime(id);
+  
+  const sheet = document.querySelector('#detOv .sheet');
+  if(sheet){
+    sheet.style.animation='none';
+    sheet.offsetHeight; 
+    sheet.style.animation='sheetUp .35s cubic-bezier(.2,1.05,.4,1) both';
+  }
+}
+
+function animateNumber(el, target, duration=800){
+  if(!el) return;
+  const start = parseInt(el.textContent)||0;
+  const startTime = Date.now();
+  function update(){
+    const elapsed = Date.now()-startTime;
+    const progress = Math.min(elapsed/duration,1);
+    const eased = 1-Math.pow(1-progress,3);
+    el.textContent = Math.round(start+(target-start)*eased);
+    if(progress<1) requestAnimationFrame(update);
+    else el.textContent = target;
+  }
+  requestAnimationFrame(update);
+}
+
+const origGetUnlocked = getUnlockedBadges;
+let prevUnlockedSet = new Set(JSON.parse(localStorage.getItem('prevBadges')||'[]'));
+
+function getUnlockedBadgesAnimated(stats){
+  const unlocked = origGetUnlocked(stats);
+  const newOnes = [...unlocked].filter(b=>!prevUnlockedSet.has(b));
+  if(newOnes.length > 0){
+    launchConfetti(3000);
+    newOnes.forEach((b,i)=>{
+      const badge = BADGES.find(x=>x.id===b);
+      if(badge) setTimeout(()=>showToast(`🏅 Бейдж разблокирован: ${badge.name}!`), i*1000);
+    });
+  }
+  prevUnlockedSet = unlocked;
+  try{localStorage.setItem('prevBadges',JSON.stringify([...unlocked]))}catch{}
+  return unlocked;
+}
+
+function onActorIdChange(val){
+  const area = document.getElementById('actPhotoArea');
+  if(area) area.dataset.actorId = val;
+  
+  if(val && DB.actors?.[val]?.photo){
+    const prev = document.getElementById('actPhotoPreview');
+    if(prev){prev.src=DB.actors[val].photo;prev.classList.add('show');}
+    document.getElementById('actPhotoArea')?.classList.add('has-photo');
+  }
+}
+
+function uploadActorPhoto(){
+  const area = document.getElementById('actPhotoArea');
+  const actorId = document.getElementById('actId')?.value.trim() || area?.dataset.actorId;
+  if(!actorId){showToast('⚠️ Сначала введи ID актёра');return}
+  const inp = document.createElement('input');
+  inp.type='file';inp.accept='image/*';
+  inp.onchange = async(e)=>{
+    const file = e.target.files[0]; if(!file) return;
+    if(file.size > 5*1024*1024){showToast('❌ Файл слишком большой');return}
+    showToast('⏳ Загружаю фото...');
+    try{
+      const fd = new FormData();
+      fd.append('file', file);
+      fd.append('token', SERVER_TOKEN);
+      fd.append('actor_id', actorId);
+      const r = await fetch(SERVER_URL+'/upload_actor_photo', {method:'POST', body:fd});
+      const d = await r.json();
+      if(d.ok){
+        showToast('✅ Фото загружено!');
+        const prev = document.getElementById('actPhotoPreview');
+        if(prev){prev.src=d.url;prev.classList.add('show');}
+        document.getElementById('actPhotoArea')?.classList.add('has-photo');
+        
+        if(!DB.actors) DB.actors={};
+        if(!DB.actors[actorId]) DB.actors[actorId]={};
+        DB.actors[actorId].photo = d.url;
+        await pushDB();
+      }else showToast('❌ Ошибка загрузки');
+    }catch(e){showToast('❌ Ошибка: '+e.message)}
+  };
+  inp.click();
+}
+
+function loadActorEdit(id){
+  const a = DB.actors[id]; if(!a) return;
+  document.getElementById('actId').value = a.id;
+  document.getElementById('actName').value = a.name;
+  document.getElementById('actRole').value = a.role||'support';
+  document.getElementById('actBio').value = a.bio||'';
+  document.getElementById('actTg').value = a.telegram||'';
+  document.getElementById('actVk').value = a.vk||'';
+  document.getElementById('actEmail').value = a.email||'';
+  
+  const prev = document.getElementById('actPhotoPreview');
+  const area = document.getElementById('actPhotoArea');
+  if(prev && a.photo){prev.src=a.photo;prev.classList.add('show');area?.classList.add('has-photo');}
+  else if(prev){prev.classList.remove('show');area?.classList.remove('has-photo');}
+  if(area) area.dataset.actorId = id;
+  document.getElementById('adminBody').scrollTop=0;
+  showToast('📝 '+a.name);
+}
+
+let castRows = [];
+
+function initCastEditor(animeId, epNum){
+  castRows = [];
+  const a = DB.anime?.[animeId];
+  if(a && epNum){
+    const ep = a.episodes?.find(e=>e.num===parseInt(epNum));
+    if(ep?.cast) castRows = ep.cast.map(c=>({actor_id:c.actor_id, character:c.character}));
+  }
+  renderCastRows();
+}
+
+function renderCastRows(){
+  const el = document.getElementById('castEditorRows'); if(!el) return;
+  const actors = Object.values(DB.actors||{});
+  el.innerHTML = castRows.map((row,i)=>{
+    const actorMatch = DB.actors?.[row.actor_id];
+    const hint = row.actor_name && !actorMatch ? `<div style="font-size:10px;color:var(--red);margin-top:2px">⚠️ ${row.actor_name} не найден в базе</div>` : '';
+    return `<div class="cast-row" style="flex-direction:column;align-items:stretch;gap:4px">
+      <div style="display:flex;gap:8px">
+        <select style="flex:1;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:7px 10px;color:var(--text);font-family:Inter,sans-serif;font-size:12px;outline:none;-webkit-appearance:none" onchange="castRows[${i}].actor_id=this.value">
+          <option value="">— Выбери актёра —</option>
+          ${actors.map(a=>`<option value="${a.id}" ${row.actor_id===a.id?'selected':''}>${a.name}</option>`).join('')}
+        </select>
+        <input style="flex:1;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:7px 10px;color:var(--text);font-family:Inter,sans-serif;font-size:12px;outline:none" placeholder="Персонаж" value="${row.character||''}" oninput="castRows[${i}].character=this.value">
+        <button class="cast-row-del" onclick="castRows.splice(${i},1);renderCastRows()">×</button>
+      </div>
+      ${hint}
+    </div>`;
+  }).join('');
+}
+
+function addCastRow(){
+  castRows.push({actor_id:'',character:''});
+  renderCastRows();
+}
+
+async function parseCastFromTg(){
+  const url = prompt('Вставь ссылку на пост: https://t.me/channel/123');
+  if(!url) return;
+  showToast('⏳ Читаю пост...');
+  try{
+    const r = await fetch(SERVER_URL+'/parse_tg_post?url='+encodeURIComponent(url)+'&token='+SERVER_TOKEN);
+    const d = await r.json();
+    if(d.cast && d.cast.length){
+      castRows = d.cast;
+      renderCastRows();
+      showToast('✅ Состав загружен из поста!');
+    } else {
+      showToast('⚠️ Состав не найден в посте');
+    }
+  }catch{showToast('❌ Ошибка загрузки поста')}
+}
+
+const origSaveEpisode = saveEpisode;
+async function saveEpisode(){
+  const animeId = document.getElementById('epAnime')?.value;
+  const num = parseInt(document.getElementById('epNum')?.value);
+  const title = document.getElementById('epTitle')?.value.trim();
+  if(!animeId||!num||!title){showToast('⚠️ Заполни обязательные поля');return}
+  const validCast = castRows.filter(r=>r.actor_id&&r.character);
+  const ep={
+    num, title,
+    duration: document.getElementById('epDur')?.value.trim()||'—',
+    video_url: document.getElementById('epUrl')?.value.trim(),
+    video_url_vk: document.getElementById('epVkUrl')?.value.trim(),
+    cast: validCast
+  };
+  const eps = DB.anime[animeId].episodes.filter(e=>e.num!==num);
+  eps.push(ep); eps.sort((a,b)=>a.num-b.num);
+  DB.anime[animeId].episodes = eps;
+  await pushDB();
+  showToast('✅ Серия сохранена!');
+  loadEpList();
+}
+
+function loadEpForEdit(animeId, epNum){
+  document.getElementById('epNum').value = epNum;
+  const a = DB.anime?.[animeId];
+  const ep = a?.episodes?.find(e=>e.num===epNum);
+  if(ep){
+    document.getElementById('epTitle').value = ep.title||'';
+    document.getElementById('epDur').value = ep.duration||'';
+    document.getElementById('epUrl').value = ep.video_url||'';
+    document.getElementById('epVkUrl').value = ep.video_url_vk||'';
+    initCastEditor(animeId, epNum);
+  }
+}
+
+function openTgProfile(username){
+  if(!username) return;
+  const clean = username.replace('@','');
+  if(tg) tg.openLink('https://t.me/'+clean);
+  else window.open('https://t.me/'+clean,'_blank');
+}
+
+function openTgById(userId){
+  if(!userId) return;
+  if(tg) tg.openLink('tg://user?id='+userId);
+  else showToast('Используй Telegram чтобы открыть профиль');
+}
+
+const origLoadLeaderboard = loadLeaderboard;
+async function loadLeaderboard(){
+  try{
+    const r = await fetch(SERVER_URL+'/leaderboard?limit=10');
+    const d = await r.json();
+    const lb = d.leaderboard||[];
+    const medals = ['🥇','🥈','🥉'];
+    document.getElementById('leaderboardList').innerHTML = lb.map((u,i)=>`
+      <div class="lb-item" style="animation-delay:${i*.05}s">
+        <div class="lb-rank ${i===0?'gold':i===1?'silver':i===2?'bronze':''}">${medals[i]||i+1}</div>
+        <div class="lb-info">
+          <div class="lb-name">${u.first_name||'—'}${u.username?` <span style="color:var(--muted2)">@${u.username}</span>`:''}</div>
+          <div class="lb-pts">${u.comments||0} комментариев · ${u.points||0} очков</div>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center">
+          ${i<3?`<div class="lb-badge">${['Топ 1','Топ 2','Топ 3'][i]}</div>`:''}
+          ${u.username?`<a class="lb-tg-btn" onclick="openTgProfile('${u.username}')">✈️ Написать</a>`:''}
+        </div>
+      </div>`).join('')||'<div class="empty"><div class="empty-icon">🏆</div><p>Пока никто не комментировал</p></div>';
+  }catch{}
+}
+
+function renderCommentWithTg(c, animeId, epNum, isAdm){
+  const ts = new Date(c.ts*1000).toLocaleDateString('ru',{day:'numeric',month:'short'});
+  const liked = c.likes.includes(MY_USER_ID);
+  const text = c.text.replace(/@(\w+)/g,'<span class="c-mention">@$1</span>');
+  const repliesHtml = (c.replies||[]).map(rep=>renderCommentWithTg(rep,animeId,epNum,isAdm)).join('');
+  return `<div class="cmt" id="cmt_${c.id}">
+    <div class="cmt-main">
+      <div class="c-av" style="cursor:pointer" onclick="${c.username?`openTgProfile('${c.username}')`:`openTgById(${c.user_id})`}">${c.first_name?c.first_name[0]:'?'}</div>
+      <div class="c-body">
+        <div class="c-name" style="display:flex;align-items:center;gap:6px">
+          ${c.first_name}
+          ${c.username?`<a class="c-tg-link" onclick="openTgProfile('${c.username}')"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.012 9.482c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L6.144 14.33l-2.972-.924c-.645-.204-.657-.645.136-.953l11.57-4.463c.537-.194 1.006.131.684.258z"/></svg>Написать</a>`:''}
+        </div>
+        <div class="c-text">${text}</div>
+        <div class="c-meta">
+          <div class="c-time">${ts}</div>
+          <div class="c-like ${liked?'liked':''}" onclick="likeComment('${c.id}','${animeId}',${epNum},this)">
+            <svg fill="${liked?'currentColor':'none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="10" height="10"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            ${c.likes.length}
+          </div>
+          <div class="c-reply-btn" onclick="showReplyInput('${c.id}','${animeId}',${epNum},'${c.first_name}')">Ответить</div>
+          <div class="react-pick" onclick="showReactPicker('${c.id}','${animeId}',${epNum})">😊</div>
+          ${isAdm?`<div class="c-del" onclick="deleteCmt('${c.id}','${animeId}',${epNum})">Удалить</div>`:''}
+        </div>
+        <div id="reactPicker_${c.id}" style="display:none">
+          <div class="react-picker">${REACTIONS.map(r=>`<span class="react-pick" onclick="addReaction('${c.id}','${animeId}',${epNum},'${r}',this);document.getElementById('reactPicker_${c.id}').style.display='none'">${r}</span>`).join('')}</div>
+        </div>
+        <div id="replyInput_${c.id}" style="display:none">
+          <div class="reply-input-row">
+            <input class="reply-inp" id="replyInp_${c.id}" placeholder="Ответить...">
+            <button class="reply-send" onclick="sendReply('${c.id}','${animeId}',${epNum})">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    ${repliesHtml?`<div class="c-replies">${repliesHtml}</div>`:''}
+  </div>`;
+}
+
+const origLoadComments = loadComments;
+async function loadComments(animeId, epNum, offset=0){
+  const el = document.getElementById('cmtList_'+animeId+'_'+epNum); if(!el) return;
+  if(offset===0) el.innerHTML='<div class="cmt-loading">Загрузка...</div>';
+  try{
+    const r = await fetch(SERVER_URL+'/comments/'+animeId+'/'+epNum+'?offset='+offset+'&limit=20');
+    const d = await r.json();
+    const isAdm = (DB.admin_ids||[]).includes(MY_USER_ID);
+    const html = d.comments.map(c=>renderCommentWithTg(c,animeId,epNum,isAdm)).join('');
+    if(offset===0) el.innerHTML = html||'<div style="color:var(--muted2);font-size:13px;padding:8px 0">Будь первым кто оставит комментарий!</div>';
+    else el.innerHTML = el.innerHTML.replace('<div class="cmt-load-more"', html+'<div class="cmt-load-more"');
+    if(d.has_more) el.innerHTML+=`<div class="cmt-load-more" onclick="loadComments('${animeId}',${epNum},${offset+20})">Загрузить ещё</div>`;
+    const cnt = document.getElementById('cmtCnt_'+animeId+'_'+epNum);
+    if(cnt) cnt.textContent = d.total>0?d.total:'';
+  }catch{el.innerHTML='<div style="color:var(--muted2);font-size:13px">Ошибка загрузки</div>';}
+}
+
+const origLoadEpList = loadEpList;
+function loadEpList(){
+  origLoadEpList();
+  
+  const animeId = document.getElementById('epAnime')?.value;
+  if(!animeId) return;
+  const rows = document.querySelectorAll('#epListAdmin .admin-list-item');
+  rows.forEach(row=>{
+    row.onclick = ()=>{
+      const num = parseInt(row.querySelector('.ali-title')?.textContent);
+      if(num) loadEpForEdit(animeId, num);
+    };
+  });
+  initCastEditor(animeId, null);
+}
+
+async function syncNewsFromChannel(){
+  showToast('⏳ Синхронизирую новости...');
+  if(tg) tg.sendData(JSON.stringify({action:'sync_news'}));
+  
+  setTimeout(async()=>{
+    await loadDB();
+    renderNews();
+    showToast('✅ Новости обновлены!');
+  }, 3000);
+}
+
+let ptrStartY = 0, ptrDist = 0, ptrActive = false;
+const PTR_THRESHOLD = 80;
+
+document.addEventListener('touchstart', e=>{
+  const view = document.querySelector('.view:not(.hidden)');
+  if(!view || view.scrollTop > 0) return;
+  ptrStartY = e.touches[0].clientY;
+  ptrActive = true;
+}, {passive:true});
+
+document.addEventListener('touchmove', e=>{
+  if(!ptrActive) return;
+  const view = document.querySelector('.view:not(.hidden)');
+  if(!view || view.scrollTop > 0){ptrActive=false;return}
+  ptrDist = Math.max(0, e.touches[0].clientY - ptrStartY);
+  if(ptrDist > 10){
+    const ind = document.getElementById('ptrIndicator');
+    const txt = document.getElementById('ptrText');
+    if(ind){
+      ind.classList.add('show');
+      if(ptrDist > PTR_THRESHOLD){
+        txt.textContent = '↑ Отпусти для обновления';
+        ind.style.background='rgba(48,209,88,.15)';
+        ind.style.borderColor='rgba(48,209,88,.3)';
+        ind.style.color='var(--teal)';
+      } else {
+        txt.textContent = '↓ Потяни чтобы обновить';
+        ind.style.background='';ind.style.borderColor='';ind.style.color='';
+      }
+    }
+  }
+}, {passive:true});
+
+document.addEventListener('touchend', async e=>{
+  if(!ptrActive) return;
+  ptrActive = false;
+  const ind = document.getElementById('ptrIndicator');
+  const txt = document.getElementById('ptrText');
+  if(ptrDist > PTR_THRESHOLD){
+    if(txt) txt.innerHTML='<span class="ptr-spin">🔄</span> Обновляем...';
+    try{
+      const r = await fetch(SERVER_URL+'/db?t='+Date.now());
+      const newDB = await r.json();
+      DB = newDB; renderAll();
+      showToast('✅ Данные обновлены!');
+    }catch{showToast('❌ Ошибка обновления')}
+  }
+  setTimeout(()=>{
+    if(ind) ind.classList.remove('show');
+    ptrDist=0;
+    if(txt) txt.textContent='Потяни чтобы обновить';
+    if(ind){ind.style.background='';ind.style.borderColor='';ind.style.color='';}
+  }, 400);
+});
+
+let watchingTimer = null;
+
+function startWatching(animeId, epNum){
+  stopWatching();
+  
+  fetch(SERVER_URL+'/watching', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({user_id:MY_USER_ID, username:MY_USERNAME, first_name:MY_NAME, anime_id:animeId, ep_num:epNum})
+  }).catch(()=>{});
+  
+  watchingTimer = setInterval(()=>{
+    fetch(SERVER_URL+'/watching', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({user_id:MY_USER_ID, username:MY_USERNAME, first_name:MY_NAME, anime_id:animeId, ep_num:epNum})
+    }).catch(()=>{});
+  }, 120000);
+  loadWatchingNow(animeId, epNum);
+}
+
+function stopWatching(){
+  if(watchingTimer){clearInterval(watchingTimer);watchingTimer=null;}
+  if(MY_USER_ID) fetch(SERVER_URL+'/watching/'+MY_USER_ID, {method:'DELETE'}).catch(()=>{});
+}
+
+async function loadWatchingNow(animeId, epNum){
+  try{
+    const r = await fetch(SERVER_URL+'/watching/'+animeId+'/'+epNum);
+    const d = await r.json();
+    const el = document.getElementById('watchingBar_'+animeId+'_'+epNum);
+    if(!el) return;
+    if(d.count > 0){
+      const others = d.watchers.filter(w=>w.user_id!==MY_USER_ID);
+      const avs = others.slice(0,4).map(w=>`<div class="watching-av">${w.first_name?w.first_name[0]:'?'}</div>`).join('');
+      const txt = d.count===1 ? 'Только ты смотришь' : `${d.count} смотрят сейчас`;
+      el.innerHTML=`<div class="watching-dot"></div><div class="watching-avs">${avs}</div><div class="watching-txt">${txt}</div>`;
+      el.style.display='flex';
+    } else el.style.display='none';
+  }catch{}
+}
+
+const origOpenPlayer = openPlayer;
+function openPlayer(idx){
+  origOpenPlayer(idx);
+  const a = curAnime; const ep = a?.episodes?.[idx];
+  if(a && ep) startWatching(a.id, ep.num);
+}
+const origClosePlayer = closePlayer;
+function closePlayer(){
+  origClosePlayer();
+  stopWatching();
+}
+
+let hitPeriod = 'week';
+
+function setHitPeriod(period, el){
+  hitPeriod = period;
+  document.querySelectorAll('.stats-period .period-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  renderHitparade();
+}
+
+async function renderHitparade(){
+  const el = document.getElementById('hitList'); if(!el) return;
+  el.innerHTML='<div class="empty"><div class="empty-icon">⏳</div><p>Загрузка...</p></div>';
+  try{
+    const r = await fetch(SERVER_URL+'/hitparade');
+    const d = await r.json();
+    const list = d[hitPeriod] || [];
+    if(!list.length){
+      el.innerHTML='<div class="empty"><div class="empty-icon">📊</div><p>Нет данных за этот период</p></div>';
+      return;
+    }
+    const maxV = list[0]?.views || 1;
+    el.innerHTML = list.map((item,i)=>{
+      const a = DB.anime?.[item.anime_id];
+      if(!a) return '';
+      const ranks = ['🥇','🥈','🥉'];
+      const rankClass = i<3 ? ['r1','r2','r3'][i] : 'other';
+      const pct = Math.round(item.views/maxV*100);
+      const thumb = a.cover_file_id
+        ? `<img src="${SERVER_URL}/covers/${a.id}.jpg" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`
+        : '';
+      return `<div class="hit-card" style="animation-delay:${i*.05}s" onclick="openAnime('${a.id}')">
+        <div class="hit-rank ${rankClass}">${i<3?ranks[i]:i+1}</div>
+        <div class="hit-thumb">${thumb}<span style="${a.cover_file_id?'display:none':''}">${em(a.id)}</span></div>
+        <div class="hit-info">
+          <div class="hit-title">${a.title}</div>
+          <div class="hit-views">👁 ${item.views} просмотров</div>
+          <div class="hit-bar"><div class="hit-bar-fill" style="width:${pct}%"></div></div>
+        </div>
+      </div>`;
+    }).join('');
+  }catch{el.innerHTML='<div class="empty"><div class="empty-icon">📊</div><p>Нет данных</p></div>';}
+}
+
+let chatOffset = 0, chatReplying = null, chatPollTimer = null;
+let lastChatMsgCount = 0;
+
+async function loadChat(append=false){
+  const el = document.getElementById('chatMsgs'); if(!el) return;
+  if(!append) el.innerHTML='<div class="empty"><div class="empty-icon">💬</div><p>Загрузка...</p></div>';
+  try{
+    const r = await fetch(SERVER_URL+'/chat?offset=0&limit=50');
+    const d = await r.json();
+    const isAdm = (DB.admin_ids||[]).includes(MY_USER_ID);
+    const msgs = d.messages || [];
+
+    if(msgs.length > lastChatMsgCount && lastChatMsgCount > 0){
+      const badge = document.getElementById('chatBadge');
+      const diff = msgs.length - lastChatMsgCount;
+      if(badge && !document.getElementById('viewChat')?.classList.contains('hidden')===false){
+        badge.textContent = diff; badge.classList.add('show');
+      }
+    }
+    lastChatMsgCount = msgs.length;
+    
+    el.innerHTML = msgs.map(m=>{
+      const isOwn = m.user_id === MY_USER_ID;
+      const ts = new Date(m.ts*1000).toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'});
+      const text = m.text.replace(/@(\w+)/g,'<span class="c-mention">@$1</span>');
+      return `<div class="chat-msg ${isOwn?'own':''}" id="cmsg_${m.id}">
+        <div class="chat-av" onclick="${m.username?`openTgProfile('${m.username}')`:`openTgById(${m.user_id})`}">${m.first_name?m.first_name[0]:'?'}</div>
+        <div>
+          <div class="chat-bubble" onclick="setChatReply('${m.id}','${m.first_name}')">
+            ${!isOwn?`<div class="chat-bubble-name">${m.first_name}${m.username?' @'+m.username:''}</div>`:''}
+            ${m.reply_to?`<div class="chat-reply-preview">↩ Ответ</div>`:''}
+            <div class="chat-bubble-text">${text}</div>
+            <div class="chat-bubble-time">${ts}${isAdm?` <span class="chat-del" onclick="event.stopPropagation();deleteChatMsg('${m.id}')">✕</span>`:''}</div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    if(!append) setTimeout(()=>el.scrollTop=el.scrollHeight,100);
+
+    const onlineEl = document.getElementById('chatOnlineCount');
+    if(onlineEl) onlineEl.textContent = '';
+  }catch{if(!append)el.innerHTML='<div class="empty"><div class="empty-icon">💬</div><p>Ошибка загрузки</p></div>';}
+}
+
+function setChatReply(msgId, name){
+  chatReplying = msgId;
+  const inp = document.getElementById('chatInp');
+  if(inp){inp.placeholder=`Ответить @${name}...`;inp.focus();}
+  showToast('↩ Отвечаешь @'+name);
+}
+
+async function sendChatMsg(){
+  const inp = document.getElementById('chatInp');
+  const text = inp?.value.trim(); if(!text) return;
+  inp.value=''; chatReplying=null; inp.placeholder='Написать в чат...';
+  try{
+    await fetch(SERVER_URL+'/chat',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({user_id:MY_USER_ID, username:MY_USERNAME, first_name:MY_NAME, text, reply_to:chatReplying})
+    });
+    loadChat();
+  }catch{showToast('❌ Ошибка отправки')}
+}
+
+document.getElementById('chatInp')?.addEventListener('keydown', e=>{
+  if(e.key==='Enter' && !e.shiftKey){e.preventDefault();sendChatMsg();}
+});
+
+async function deleteChatMsg(msgId){
+  if(!confirm('Удалить сообщение?')) return;
+  try{
+    await fetch(SERVER_URL+'/chat/'+msgId+'?token='+SERVER_TOKEN, {method:'DELETE'});
+    document.getElementById('cmsg_'+msgId)?.remove();
+    showToast('🗑 Удалено');
+  }catch{}
+}
+
+function startChatPolling(){
+  if(chatPollTimer) clearInterval(chatPollTimer);
+  chatPollTimer = setInterval(()=>loadChat(), 10000); 
+}
+
+function stopChatPolling(){
+  if(chatPollTimer){clearInterval(chatPollTimer);chatPollTimer=null;}
+}
+
+const origRenderEpList = renderEpList;
+function renderEpList(){
+  origRenderEpList();
+  
+  if(curAnime){
+    curAnime.episodes?.forEach(ep=>{
+      const epEl = document.getElementById('ep_'+ep.num);
+      if(epEl && !epEl.querySelector('.watching-bar')){
+        const bar = document.createElement('div');
+        bar.className='watching-bar';
+        bar.id='watchingBar_'+curAnime.id+'_'+ep.num;
+        bar.style.display='none';
+        epEl.insertBefore(bar, epEl.firstChild);
+        loadWatchingNow(curAnime.id, ep.num);
+      }
+    });
+  }
+}
+
+
+// Lazy initialization flags
+const lazyLoaded = {};
+function lazyLoad(key, fn){
+  if(!lazyLoaded[key]){lazyLoaded[key]=true;fn();}
+}
+
+
+// ── PERFORMANCE: Debounce search ─────────────────────
+function debounce(fn, delay){
+  let t; return (...args)=>{clearTimeout(t);t=setTimeout(()=>fn(...args),delay)};
+}
+
+// ── PERFORMANCE: RequestAnimationFrame for renders ────
+function rafRender(fn){ requestAnimationFrame(fn) }
+
+// ── PERFORMANCE: Virtual scroll for large lists ───────
+// Only render visible cards
+const CARD_HEIGHT = 250;
+function getVisibleCount(){
+  return Math.ceil(window.innerHeight / CARD_HEIGHT) + 4;
+}
+
+// ── PERFORMANCE: Image lazy loading ──────────────────
+const imgObserver = typeof IntersectionObserver !== 'undefined' ? new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const img = e.target;
+      if(img.dataset.src){img.src=img.dataset.src;imgObserver.unobserve(img);}
+    }
+  });
+},{rootMargin:'100px'}) : null;
+
+function lazyImg(src, fallback){
+  if(!imgObserver) return `<img src="${src}" onerror="${fallback}">`;
+  return `<img data-src="${src}" src="" style="background:var(--s2)" onload="this.style.background=''" onerror="${fallback}">`;
+}
+
+initTheme();
+loadDB();</script>
+</body>
+</html>
